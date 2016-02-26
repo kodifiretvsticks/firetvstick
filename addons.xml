@@ -1,16 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.demo.kodi" name="Demonstration repository" version="0.0.2" provider-name="Mafarricos">
-	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
-		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-kodi-demo-repo/master/addons.xml</info>
-		<checksum>http://raw.github.com/Mafarricos/Mafarricos-kodi-demo-repo/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-kodi-demo-repo/master/repo/</datadir>
+<addon id="plugin.program.firetvupdater" name="Fire TV Updater" version="1.1" provider-name="John">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Fire TV Updater</summary>
+    <description lang="en">In this tool you will find the latest update from John and tools to maintain your Kodi setup.</description>
+	<disclaimer lang="en">I do not host nor control the content found within!!!!!</disclaimer>
+		<forum> kodifiretvsticks@gmail.com</forum>
+		<source> kodifiretvsticks@gmail.com</source>
+		<website>http://dynamicrobotics.com</website>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.firelivetv" name="Fire Live TV" version="1.0" provider-name="John">
+  <requires>
+    <import addon="script.module.simplejson" version="3.3.0"/>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.t0mm0.common" version="2.0.0"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+    <import addon="script.module.urlresolver"  version="2.1.2"/>
+    <import addon="script.common.plugin.cache" version="2.5.2"/>
+    <import addon="script.module.metahandler" version="2.5.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Free Live TV Playlists courtesy of John</summary>
+    <description lang="en">Free Live TV Playlists courtesy of John</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.youtube" name="YouTube" version="5.1.18" provider-name="John">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Demonstration Addon</summary>
-		<description>Addon Description</description>
+        <summary lang="en">Plugin for YouTube</summary>
+		<disclaimer lang="en"/>
+		<language/>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=200735</forum>
+		<website>http://www.youtube.com</website>
+	</extension>
+</addon>
+
+<addon id="repository.exodus" version="1.0.0" name="Exodus repository" provider-name="l*m*d*">
+	<extension point="xbmc.addon.repository" name="Exodus repository">
+		<dir>
+			<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
+			<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+		</dir>
+		<info compressed="false">https://offshoregit.com/exodus/addons.xml</info>
+		<checksum>https://offshoregit.com/exodus/addons.xml.md5</checksum>
+		<datadir zip="true">https://offshoregit.com/exodus/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Exodus repository</summary>
+		<description lang="en">Exodus repository</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.firetvstick" name="Fire TV Stick repository" version="0.0.1" provider-name="John">
+	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
+		<info compressed="false">http://raw.github.com/firetvstick/firetvstick/master/addons.xml</info>
+		<checksum>http://raw.github.com/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/firetvstick/firetvstick/master/repo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Fire TV Stick Repository</summary>
+		<description>This is where we update the addons that are maintained by us</description>
 		<disclaimer></disclaimer>
 		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="skin.ftv" version="2.4.20" name="fTV" provider-name="John">
+	<requires>
+		<import addon="xbmc.gui" version="5.11.0"/>
+		<import addon="script.toolbox" version="1.0.0"/>
+		<import addon="script.favourites" version="5.0.2"/>
+		<import addon="script.extendedinfo" version="2.0.3"/>
+		<import addon="script.globalsearch" version="3.0.4"/>
+		<import addon="script.skinshortcuts" version="0.4.0"/>
+        <import addon="resource.uisounds.ftv" version="1.0.0"/>
+		<import addon="script.artwork.downloader" version="12.0.29"/>
+	</requires>
+	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Skin based on the Fire TV UI</summary>
+		<disclaimer lang="en">Does not support:[CR]Mouse[CR]Touch[CR]Live TV</disclaimer>
+		<description lang="en">Provides the look and feel of the Fire TV user interface.[CR]For the complete experience enable 'TV Show wide icons' and either use Artwork Downloader to grab logos or create your own artwork and add it to the database (see forum for more details).[CR][CR]Special thanks to the following people:[CR]Unfledged[CR]Mesoptier[CR]'Black[CR]marcelveldt</description>
 	</extension>
 </addon>
 </addons>

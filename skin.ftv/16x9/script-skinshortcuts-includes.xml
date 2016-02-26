@@ -1,0 +1,1109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<includes>
+	<include name="skinshortcuts-mainmenu">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>Movies</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Fmovies.png/</thumb>
+			<property name="labelID">movies</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
+			<property name="widgetName">Widget Group 1</property>
+			<property name="widget">widget1</property>
+			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</onclick>
+			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=movieNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">movies</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>TV Shows</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Ftvshows.png/</thumb>
+			<property name="labelID">tvshows</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
+			<property name="widgetName">Widget Group 2</property>
+			<property name="widget">widget2</property>
+			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</onclick>
+			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=tvNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">tvshows</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>Search</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Fsearch.png/</thumb>
+			<property name="labelID">search</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=searchNavigator",return)</property>
+			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=searchNavigator",return)</onclick>
+			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=searchNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=searchNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">search</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>GamePass</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultAddon.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.video.nfl.gamepass%2Ficon.png/</thumb>
+			<property name="labelID">plugin.video.nfl.gamepass</property>
+			<property name="defaultID">plugin.video.nfl.gamepass</property>
+			<property name="translatedPath">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<onclick>RunAddOn(plugin.video.nfl.gamepass)</onclick>
+			<property name="path">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<property name="list">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">plugin-video-nfl-gamepass</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUM[5]</property>
+			<label>Sports</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png/</thumb>
+			<property name="labelID">sports</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.program.super.favourites/?label=Sports&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSports&amp;image=%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png&amp;fanart=NULL&amp;content_type=",return)</property>
+			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.program.super.favourites/?label=Sports&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSports&amp;image=%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png&amp;fanart=NULL&amp;content_type=",return)</onclick>
+			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.program.super.favourites/?label=Sports&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSports&amp;image=%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png&amp;fanart=NULL&amp;content_type=",return)</property>
+			<property name="list">plugin://plugin.program.super.favourites/?label=Sports&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSports&amp;image=%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png&amp;fanart=NULL&amp;content_type=</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">sports</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUM[6]</property>
+			<label>Addons</label>
+			<label2>Videos</label2>
+			<icon>DefaultAddonVideo.png</icon>
+			<thumb />
+			<property name="labelID">addons</property>
+			<property name="defaultID">1037</property>
+			<property name="translatedPath">ActivateWindow(Videos,addons://sources/video/,return)</property>
+			<onclick>ActivateWindow(Videos,addons://sources/video/,return)</onclick>
+			<property name="path">ActivateWindow(Videos,addons://sources/video/,return)</property>
+			<property name="list">addons://sources/video/</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">addons</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUM[7]</property>
+			<label>Music</label>
+			<label2>Music</label2>
+			<icon>DefaultAddonMusic.png</icon>
+			<thumb />
+			<property name="labelID">music</property>
+			<property name="defaultID">1038</property>
+			<property name="translatedPath">ActivateWindow(MusicLibrary,addons://sources/audio/,return)</property>
+			<onclick>ActivateWindow(Music,addons://sources/audio/,return)</onclick>
+			<property name="path">ActivateWindow(Music,addons://sources/audio/,return)</property>
+			<property name="list">addons://sources/audio/</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">music</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUM[8]</property>
+			<label>Maintenance</label>
+			<label2>Program</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.firetvupdater%2Ficon.png/</thumb>
+			<property name="labelID">plugin.program.firetvupdater</property>
+			<property name="defaultID">plugin.program.firetvupdater</property>
+			<property name="translatedPath">ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</property>
+			<onclick>ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</onclick>
+			<property name="path">ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</property>
+			<property name="list">plugin://plugin.program.firetvupdater</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">plugin-program-firetvupdater</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="9">
+			<property name="id">$NUM[9]</property>
+			<label>$LOCALIZE[10004]</label>
+			<label2>Settings</label2>
+			<icon>DefaultSettings.png</icon>
+			<thumb />
+			<property name="labelID">settings</property>
+			<property name="defaultID">settings</property>
+			<property name="translatedPath">ActivateWindow(Settings)</property>
+			<onclick>ActivateWindow(Settings)</onclick>
+			<property name="path">ActivateWindow(Settings)</property>
+			<property name="list">Settings</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">settings</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">True</property>
+		</item>
+		<item id="10">
+			<property name="id">$NUM[10]</property>
+			<label>$LOCALIZE[136]</label>
+			<label2>item</label2>
+			<icon>DefaultVideoPlaylists.png</icon>
+			<thumb />
+			<property name="labelID">136</property>
+			<property name="defaultID">136</property>
+			<property name="translatedPath">ActivateWindow(Videos,special://videoplaylists/,return)</property>
+			<onclick>ActivateWindow(Videos,special://videoplaylists/,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://videoplaylists/,return)</property>
+			<property name="list">special://videoplaylists/</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">num-136</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+			<property name="hasSubmenu">True</property>
+		</item>
+	</include>
+	<include />
+	<include name="skinshortcuts-submenu">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[7]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultFolder.png</icon>
+			<thumb />
+			<property name="labelID">7</property>
+			<property name="defaultID">7</property>
+			<onclick>ActivateWindow(FileManager)</onclick>
+			<property name="path">ActivateWindow(FileManager)</property>
+			<property name="list">FileManager</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13200]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">13200</property>
+			<property name="defaultID">13200</property>
+			<onclick>ActivateWindow(Profiles)</onclick>
+			<property name="path">ActivateWindow(Profiles)</property>
+			<property name="list">Profiles</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[10007]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="defaultID">10007</property>
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<property name="path">ActivateWindow(SystemInfo)</property>
+			<property name="list">SystemInfo</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[14111]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">14111</property>
+			<property name="defaultID">14111</property>
+			<visible>[system.getbool(eventlog.enabled)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),settings)</visible>
+			<onclick>ActivateWindow(EventLog,events://,return)</onclick>
+			<property name="path">ActivateWindow(EventLog,events://,return)</property>
+			<property name="list">events://</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[13009]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">13009</property>
+			<property name="defaultID">13009</property>
+			<visible>[System.ShowExitButton] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Quit</onclick>
+			<property name="path">Quit</property>
+			<property name="list">Quit</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13011]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13011</property>
+			<property name="defaultID">13011</property>
+			<visible>[System.CanSuspend] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Suspend</onclick>
+			<property name="path">Suspend</property>
+			<property name="list">Suspend</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[13010]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13010</property>
+			<property name="defaultID">13010</property>
+			<visible>[System.CanHibernate] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Hibernate</onclick>
+			<property name="path">Hibernate</property>
+			<property name="list">Hibernate</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[13013]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultReboot.png</icon>
+			<thumb />
+			<property name="labelID">13013</property>
+			<property name="defaultID">13013</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>Reboot</onclick>
+			<property name="path">Reboot</property>
+			<property name="list">Reboot</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUM[5]</property>
+			<label>$LOCALIZE[13016]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13016</property>
+			<property name="defaultID">13016</property>
+			<visible>[System.CanPowerDown] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>PowerDown</onclick>
+			<property name="path">PowerDown</property>
+			<property name="list">PowerDown</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUM[6]</property>
+			<label>$LOCALIZE[13005]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13005</property>
+			<property name="defaultID">13005</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ShutDown</onclick>
+			<property name="path">ShutDown</property>
+			<property name="list">ShutDown</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUM[7]</property>
+			<label>$LOCALIZE[19026]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultTimer.png</icon>
+			<thumb />
+			<property name="labelID">19026</property>
+			<property name="defaultID">19026</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>AlarmClock(shutdowntimer,XBMC.Shutdown())</onclick>
+			<property name="path">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<property name="list">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUM[8]</property>
+			<label>$LOCALIZE[20151]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">20151</property>
+			<property name="defaultID">20151</property>
+			<visible>[System.HasAlarm(shutdowntimer)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>CancelAlarm(shutdowntimer)</onclick>
+			<property name="path">CancelAlarm(shutdowntimer)</property>
+			<property name="list">CancelAlarm(shutdowntimer)</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="9">
+			<property name="id">$NUM[9]</property>
+			<label>$LOCALIZE[360]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultScreensaver.png</icon>
+			<thumb />
+			<property name="labelID">360</property>
+			<property name="defaultID">360</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateScreensaver</onclick>
+			<property name="path">ActivateScreensaver</property>
+			<property name="list">ActivateScreensaver</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="10">
+			<property name="id">$NUM[10]</property>
+			<label>$LOCALIZE[20045]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultMastermode.png</icon>
+			<thumb />
+			<property name="labelID">20045</property>
+			<property name="defaultID">20045</property>
+			<visible>[System.HasLocks] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Mastermode</onclick>
+			<property name="path">Mastermode</property>
+			<property name="list">Mastermode</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="11">
+			<property name="id">$NUM[11]</property>
+			<label>$LOCALIZE[20126]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultActor.png</icon>
+			<thumb />
+			<property name="labelID">20126</property>
+			<property name="defaultID">20126</property>
+			<visible>[[System.HasLoginScreen | IntegerGreaterThan(System.ProfileCount,1)] + System.Loggedon] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>System.LogOff</onclick>
+			<property name="path">System.LogOff</property>
+			<property name="list">System.LogOff</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="12">
+			<property name="id">$NUM[12]</property>
+			<label>$LOCALIZE[10004]</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultSettings.png</icon>
+			<thumb />
+			<property name="labelID">settings</property>
+			<property name="defaultID">settings</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateWindow(Settings)</onclick>
+			<property name="path">ActivateWindow(Settings)</property>
+			<property name="list">Settings</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Container(99).ListItem.Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include />
+	<include name="skinshortcuts-submenu-1" />
+	<include />
+	<include name="skinshortcuts-submenu-2" />
+	<include />
+	<include name="skinshortcuts-submenu-3" />
+	<include />
+	<include name="skinshortcuts-submenu-4" />
+	<include />
+	<include name="skinshortcuts-submenu-5" />
+	<include name="skinshortcuts-group-movies" />
+	<include name="skinshortcuts-group-alt-movies" />
+	<include name="skinshortcuts-group-movies-1" />
+	<include name="skinshortcuts-group-alt-movies-1" />
+	<include name="skinshortcuts-group-movies-2" />
+	<include name="skinshortcuts-group-alt-movies-2" />
+	<include name="skinshortcuts-group-movies-3" />
+	<include name="skinshortcuts-group-alt-movies-3" />
+	<include name="skinshortcuts-group-movies-4" />
+	<include name="skinshortcuts-group-alt-movies-4" />
+	<include name="skinshortcuts-group-movies-5" />
+	<include name="skinshortcuts-group-alt-movies-5" />
+	<include name="skinshortcuts-group-tvshows" />
+	<include name="skinshortcuts-group-alt-tvshows" />
+	<include name="skinshortcuts-group-tvshows-1" />
+	<include name="skinshortcuts-group-alt-tvshows-1" />
+	<include name="skinshortcuts-group-tvshows-2" />
+	<include name="skinshortcuts-group-alt-tvshows-2" />
+	<include name="skinshortcuts-group-tvshows-3" />
+	<include name="skinshortcuts-group-alt-tvshows-3" />
+	<include name="skinshortcuts-group-tvshows-4" />
+	<include name="skinshortcuts-group-alt-tvshows-4" />
+	<include name="skinshortcuts-group-tvshows-5" />
+	<include name="skinshortcuts-group-alt-tvshows-5" />
+	<include name="skinshortcuts-group-search" />
+	<include name="skinshortcuts-group-alt-search" />
+	<include name="skinshortcuts-group-search-1" />
+	<include name="skinshortcuts-group-alt-search-1" />
+	<include name="skinshortcuts-group-search-2" />
+	<include name="skinshortcuts-group-alt-search-2" />
+	<include name="skinshortcuts-group-search-3" />
+	<include name="skinshortcuts-group-alt-search-3" />
+	<include name="skinshortcuts-group-search-4" />
+	<include name="skinshortcuts-group-alt-search-4" />
+	<include name="skinshortcuts-group-search-5" />
+	<include name="skinshortcuts-group-alt-search-5" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-1" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-1" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-2" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-2" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-3" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-3" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-4" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-4" />
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-5" />
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-5" />
+	<include name="skinshortcuts-group-sports" />
+	<include name="skinshortcuts-group-alt-sports" />
+	<include name="skinshortcuts-group-sports-1" />
+	<include name="skinshortcuts-group-alt-sports-1" />
+	<include name="skinshortcuts-group-sports-2" />
+	<include name="skinshortcuts-group-alt-sports-2" />
+	<include name="skinshortcuts-group-sports-3" />
+	<include name="skinshortcuts-group-alt-sports-3" />
+	<include name="skinshortcuts-group-sports-4" />
+	<include name="skinshortcuts-group-alt-sports-4" />
+	<include name="skinshortcuts-group-sports-5" />
+	<include name="skinshortcuts-group-alt-sports-5" />
+	<include name="skinshortcuts-group-addons" />
+	<include name="skinshortcuts-group-alt-addons" />
+	<include name="skinshortcuts-group-addons-1" />
+	<include name="skinshortcuts-group-alt-addons-1" />
+	<include name="skinshortcuts-group-addons-2" />
+	<include name="skinshortcuts-group-alt-addons-2" />
+	<include name="skinshortcuts-group-addons-3" />
+	<include name="skinshortcuts-group-alt-addons-3" />
+	<include name="skinshortcuts-group-addons-4" />
+	<include name="skinshortcuts-group-alt-addons-4" />
+	<include name="skinshortcuts-group-addons-5" />
+	<include name="skinshortcuts-group-alt-addons-5" />
+	<include name="skinshortcuts-group-music" />
+	<include name="skinshortcuts-group-alt-music" />
+	<include name="skinshortcuts-group-music-1" />
+	<include name="skinshortcuts-group-alt-music-1" />
+	<include name="skinshortcuts-group-music-2" />
+	<include name="skinshortcuts-group-alt-music-2" />
+	<include name="skinshortcuts-group-music-3" />
+	<include name="skinshortcuts-group-alt-music-3" />
+	<include name="skinshortcuts-group-music-4" />
+	<include name="skinshortcuts-group-alt-music-4" />
+	<include name="skinshortcuts-group-music-5" />
+	<include name="skinshortcuts-group-alt-music-5" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater-1" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-1" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater-2" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-2" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater-3" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-3" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater-4" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-4" />
+	<include name="skinshortcuts-group-plugin-program-firetvupdater-5" />
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-5" />
+	<include name="skinshortcuts-group-settings">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[7]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultFolder.png</icon>
+			<thumb />
+			<property name="labelID">7</property>
+			<property name="defaultID">7</property>
+			<onclick>ActivateWindow(FileManager)</onclick>
+			<property name="path">ActivateWindow(FileManager)</property>
+			<property name="list">FileManager</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13200]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">13200</property>
+			<property name="defaultID">13200</property>
+			<onclick>ActivateWindow(Profiles)</onclick>
+			<property name="path">ActivateWindow(Profiles)</property>
+			<property name="list">Profiles</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[10007]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="defaultID">10007</property>
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<property name="path">ActivateWindow(SystemInfo)</property>
+			<property name="list">SystemInfo</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[14111]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">14111</property>
+			<property name="defaultID">14111</property>
+			<visible>system.getbool(eventlog.enabled)</visible>
+			<onclick>ActivateWindow(EventLog,events://,return)</onclick>
+			<property name="path">ActivateWindow(EventLog,events://,return)</property>
+			<property name="list">events://</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-settings">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[7]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultFolder.png</icon>
+			<thumb />
+			<property name="labelID">7</property>
+			<property name="defaultID">7</property>
+			<onclick>ActivateWindow(FileManager)</onclick>
+			<property name="path">ActivateWindow(FileManager)</property>
+			<property name="list">FileManager</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13200]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">13200</property>
+			<property name="defaultID">13200</property>
+			<onclick>ActivateWindow(Profiles)</onclick>
+			<property name="path">ActivateWindow(Profiles)</property>
+			<property name="list">Profiles</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[10007]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="defaultID">10007</property>
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<property name="path">ActivateWindow(SystemInfo)</property>
+			<property name="list">SystemInfo</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),settings)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[14111]</label>
+			<label2>$ADDON[script.skinshortcuts 32034]</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">14111</property>
+			<property name="defaultID">14111</property>
+			<visible>[system.getbool(eventlog.enabled)] + StringCompare(Window(10000).Property(submenuVisibility),settings)</visible>
+			<onclick>ActivateWindow(EventLog,events://,return)</onclick>
+			<property name="path">ActivateWindow(EventLog,events://,return)</property>
+			<property name="list">events://</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">settings</property>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-settings-1" />
+	<include name="skinshortcuts-group-alt-settings-1" />
+	<include name="skinshortcuts-group-settings-2" />
+	<include name="skinshortcuts-group-alt-settings-2" />
+	<include name="skinshortcuts-group-settings-3" />
+	<include name="skinshortcuts-group-alt-settings-3" />
+	<include name="skinshortcuts-group-settings-4" />
+	<include name="skinshortcuts-group-alt-settings-4" />
+	<include name="skinshortcuts-group-settings-5" />
+	<include name="skinshortcuts-group-alt-settings-5" />
+	<include name="skinshortcuts-group-136" />
+	<include name="skinshortcuts-group-alt-136" />
+	<include name="skinshortcuts-group-136-1" />
+	<include name="skinshortcuts-group-alt-136-1" />
+	<include name="skinshortcuts-group-136-2" />
+	<include name="skinshortcuts-group-alt-136-2" />
+	<include name="skinshortcuts-group-136-3" />
+	<include name="skinshortcuts-group-alt-136-3" />
+	<include name="skinshortcuts-group-136-4" />
+	<include name="skinshortcuts-group-alt-136-4" />
+	<include name="skinshortcuts-group-136-5" />
+	<include name="skinshortcuts-group-alt-136-5" />
+	<include name="skinshortcuts-group-shutdown">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[13009]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">13009</property>
+			<property name="defaultID">13009</property>
+			<visible>System.ShowExitButton</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Quit</onclick>
+			<property name="path">Quit</property>
+			<property name="list">Quit</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13011]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13011</property>
+			<property name="defaultID">13011</property>
+			<visible>System.CanSuspend</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Suspend</onclick>
+			<property name="path">Suspend</property>
+			<property name="list">Suspend</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[13010]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13010</property>
+			<property name="defaultID">13010</property>
+			<visible>System.CanHibernate</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Hibernate</onclick>
+			<property name="path">Hibernate</property>
+			<property name="list">Hibernate</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[13013]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultReboot.png</icon>
+			<thumb />
+			<property name="labelID">13013</property>
+			<property name="defaultID">13013</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>Reboot</onclick>
+			<property name="path">Reboot</property>
+			<property name="list">Reboot</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUM[5]</property>
+			<label>$LOCALIZE[13016]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13016</property>
+			<property name="defaultID">13016</property>
+			<visible>System.CanPowerDown</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>PowerDown</onclick>
+			<property name="path">PowerDown</property>
+			<property name="list">PowerDown</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUM[6]</property>
+			<label>$LOCALIZE[13005]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13005</property>
+			<property name="defaultID">13005</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ShutDown</onclick>
+			<property name="path">ShutDown</property>
+			<property name="list">ShutDown</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUM[7]</property>
+			<label>$LOCALIZE[19026]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultTimer.png</icon>
+			<thumb />
+			<property name="labelID">19026</property>
+			<property name="defaultID">19026</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>AlarmClock(shutdowntimer,XBMC.Shutdown())</onclick>
+			<property name="path">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<property name="list">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUM[8]</property>
+			<label>$LOCALIZE[20151]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">20151</property>
+			<property name="defaultID">20151</property>
+			<visible>System.HasAlarm(shutdowntimer)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>CancelAlarm(shutdowntimer)</onclick>
+			<property name="path">CancelAlarm(shutdowntimer)</property>
+			<property name="list">CancelAlarm(shutdowntimer)</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="9">
+			<property name="id">$NUM[9]</property>
+			<label>$LOCALIZE[360]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultScreensaver.png</icon>
+			<thumb />
+			<property name="labelID">360</property>
+			<property name="defaultID">360</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateScreensaver</onclick>
+			<property name="path">ActivateScreensaver</property>
+			<property name="list">ActivateScreensaver</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="10">
+			<property name="id">$NUM[10]</property>
+			<label>$LOCALIZE[20045]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultMastermode.png</icon>
+			<thumb />
+			<property name="labelID">20045</property>
+			<property name="defaultID">20045</property>
+			<visible>System.HasLocks</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Mastermode</onclick>
+			<property name="path">Mastermode</property>
+			<property name="list">Mastermode</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="11">
+			<property name="id">$NUM[11]</property>
+			<label>$LOCALIZE[20126]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultActor.png</icon>
+			<thumb />
+			<property name="labelID">20126</property>
+			<property name="defaultID">20126</property>
+			<visible>[System.HasLoginScreen | IntegerGreaterThan(System.ProfileCount,1)] + System.Loggedon</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>System.LogOff</onclick>
+			<property name="path">System.LogOff</property>
+			<property name="list">System.LogOff</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="12">
+			<property name="id">$NUM[12]</property>
+			<label>$LOCALIZE[10004]</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultSettings.png</icon>
+			<thumb />
+			<property name="labelID">settings</property>
+			<property name="defaultID">settings</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateWindow(Settings)</onclick>
+			<property name="path">ActivateWindow(Settings)</property>
+			<property name="list">Settings</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-shutdown">
+		<item id="1">
+			<property name="id">$NUM[1]</property>
+			<label>$LOCALIZE[13009]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">13009</property>
+			<property name="defaultID">13009</property>
+			<visible>[System.ShowExitButton] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Quit</onclick>
+			<property name="path">Quit</property>
+			<property name="list">Quit</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUM[2]</property>
+			<label>$LOCALIZE[13011]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13011</property>
+			<property name="defaultID">13011</property>
+			<visible>[System.CanSuspend] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Suspend</onclick>
+			<property name="path">Suspend</property>
+			<property name="list">Suspend</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUM[3]</property>
+			<label>$LOCALIZE[13010]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultSleep.png</icon>
+			<thumb />
+			<property name="labelID">13010</property>
+			<property name="defaultID">13010</property>
+			<visible>[System.CanHibernate] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Hibernate</onclick>
+			<property name="path">Hibernate</property>
+			<property name="list">Hibernate</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUM[4]</property>
+			<label>$LOCALIZE[13013]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultReboot.png</icon>
+			<thumb />
+			<property name="labelID">13013</property>
+			<property name="defaultID">13013</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>Reboot</onclick>
+			<property name="path">Reboot</property>
+			<property name="list">Reboot</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUM[5]</property>
+			<label>$LOCALIZE[13016]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13016</property>
+			<property name="defaultID">13016</property>
+			<visible>[System.CanPowerDown] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>PowerDown</onclick>
+			<property name="path">PowerDown</property>
+			<property name="list">PowerDown</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUM[6]</property>
+			<label>$LOCALIZE[13005]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultShutdown.png</icon>
+			<thumb />
+			<property name="labelID">13005</property>
+			<property name="defaultID">13005</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ShutDown</onclick>
+			<property name="path">ShutDown</property>
+			<property name="list">ShutDown</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUM[7]</property>
+			<label>$LOCALIZE[19026]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultTimer.png</icon>
+			<thumb />
+			<property name="labelID">19026</property>
+			<property name="defaultID">19026</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>AlarmClock(shutdowntimer,XBMC.Shutdown())</onclick>
+			<property name="path">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<property name="list">AlarmClock(shutdowntimer,XBMC.Shutdown())</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUM[8]</property>
+			<label>$LOCALIZE[20151]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb />
+			<property name="labelID">20151</property>
+			<property name="defaultID">20151</property>
+			<visible>[System.HasAlarm(shutdowntimer)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>CancelAlarm(shutdowntimer)</onclick>
+			<property name="path">CancelAlarm(shutdowntimer)</property>
+			<property name="list">CancelAlarm(shutdowntimer)</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="9">
+			<property name="id">$NUM[9]</property>
+			<label>$LOCALIZE[360]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultScreensaver.png</icon>
+			<thumb />
+			<property name="labelID">360</property>
+			<property name="defaultID">360</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateScreensaver</onclick>
+			<property name="path">ActivateScreensaver</property>
+			<property name="list">ActivateScreensaver</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="10">
+			<property name="id">$NUM[10]</property>
+			<label>$LOCALIZE[20045]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultMastermode.png</icon>
+			<thumb />
+			<property name="labelID">20045</property>
+			<property name="defaultID">20045</property>
+			<visible>[System.HasLocks] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>Mastermode</onclick>
+			<property name="path">Mastermode</property>
+			<property name="list">Mastermode</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="11">
+			<property name="id">$NUM[11]</property>
+			<label>$LOCALIZE[20126]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultActor.png</icon>
+			<thumb />
+			<property name="labelID">20126</property>
+			<property name="defaultID">20126</property>
+			<visible>[[System.HasLoginScreen | IntegerGreaterThan(System.ProfileCount,1)] + System.Loggedon] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<onclick condition="true">Close</onclick>
+			<onclick>System.LogOff</onclick>
+			<property name="path">System.LogOff</property>
+			<property name="list">System.LogOff</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="12">
+			<property name="id">$NUM[12]</property>
+			<label>$LOCALIZE[10004]</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultSettings.png</icon>
+			<thumb />
+			<property name="labelID">settings</property>
+			<property name="defaultID">settings</property>
+			<onclick condition="true">Close</onclick>
+			<onclick>ActivateWindow(Settings)</onclick>
+			<property name="path">ActivateWindow(Settings)</property>
+			<property name="list">Settings</property>
+			<visible>[StringCompare(System.ProfileName,Master user)] + StringCompare(Window(10000).Property(submenuVisibility),shutdown)</visible>
+			<property name="group">shutdown</property>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-shutdown-1" />
+	<include name="skinshortcuts-group-alt-shutdown-1" />
+	<include name="skinshortcuts-group-shutdown-2" />
+	<include name="skinshortcuts-group-alt-shutdown-2" />
+	<include name="skinshortcuts-group-shutdown-3" />
+	<include name="skinshortcuts-group-alt-shutdown-3" />
+	<include name="skinshortcuts-group-shutdown-4" />
+	<include name="skinshortcuts-group-alt-shutdown-4" />
+	<include name="skinshortcuts-group-shutdown-5" />
+	<include name="skinshortcuts-group-alt-shutdown-5" />
+</includes>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.firetvstick" name="Fire TV Stick repository" version="0.0.1" provider-name="John">
+	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
+		<info compressed="false">http://raw.github.com/firetvstick/firetvstick/master/addons.xml</info>
+		<checksum>http://raw.github.com/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/firetvstick/firetvstick/master/repo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Fire TV Stick Repository</summary>
+		<description>This is where we update the addons that are maintained by us</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
