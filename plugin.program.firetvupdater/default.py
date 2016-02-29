@@ -44,7 +44,7 @@ def MainMenu():
 		addFolder('folder','Maintenance and Tools','fanart', 'Tools', 'maintenance.png','','','')	
 	setView('movies', 'MAIN')
 def FireTVBuildMenu():
-    link = OPEN_URL('http://dynamicrobotics.com/wizard.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('http://johnsrepairs.com/firetv/builds/wizard.txt').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,FanArt,description in match:
         addXMLMenu(name,url,1,iconimage,FanArt,description)
