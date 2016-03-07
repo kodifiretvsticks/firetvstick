@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<!-- videoosd -->
-	<onload condition="!Skin.HasSetting(HideOSDControls)">SetFocus(304)</onload>
-	<onload condition="Skin.HasSetting(HideOSDControls) + system.getbool(videoplayer.autoplaynextitem)">SetFocus(16)</onload>
-	<onload condition="Skin.HasSetting(HideOSDControls) + !system.getbool(videoplayer.autoplaynextitem)">SetFocus(15)</onload>
+	<onload condition="IsEmpty(Window(home).Property(ShowOptions)) + !Skin.HasSetting(HideOSDControls)">SetFocus(304)</onload>
+	<onload condition="IsEmpty(Window(home).Property(ShowOptions)) + Skin.HasSetting(HideOSDControls)">SetFocus(400)</onload>
+	<onload condition="!IsEmpty(Window(home).Property(ShowOptions)) + VideoPlayer.Content(livetv)">SetFocus(19)</onload>
+	<onload condition="!IsEmpty(Window(home).Property(ShowOptions)) + !VideoPlayer.Content(livetv) + system.getbool(videoplayer.autoplaynextitem)">SetFocus(16)</onload>
+	<onload condition="!IsEmpty(Window(home).Property(ShowOptions)) + !VideoPlayer.Content(livetv) + !system.getbool(videoplayer.autoplaynextitem)">SetFocus(15)</onload>
+	<onunload>ClearProperty(ShowOptions,home)</onunload>
 	<controls>
 		<control type="group">
-			<visible>!Window.IsVisible(osdvideosettings) + !Window.IsVisible(osdaudiosettings) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(subtitlesearch)</visible>
+			<visible>!Window.IsVisible(osdvideosettings) + !Window.IsVisible(osdaudiosettings) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(subtitlesearch) +  IsEmpty(Window(home).Property(ShowXRay))</visible>
 			<control type="image">
 				<width>1920</width>
 				<height>210</height>
@@ -17,66 +20,16 @@
 				<width>1920</width>
 				<height>720</height>
 				<texture border="1">osd/mask_bottom.png</texture>
-				<visible>!Player.Forwarding + !Player.Rewinding</visible>
+				<visible>!IsEmpty(Window(home).Property(ShowOptions))</visible>
 			</control>
 			<control type="image">
 				<bottom>0</bottom>
 				<width>1980</width>
 				<height>120</height>
 				<texture>osd/mask.png</texture>
-				<visible>Player.Forwarding | Player.Rewinding</visible>
+				<visible>IsEmpty(Window(home).Property(ShowOptions))</visible>
 			</control>
-			<control type="grouplist">
-				<left>20</left>
-				<top>64</top>
-				<width>1880</width>
-				<height>50</height>
-				<align>center</align>
-				<itemgap>0</itemgap>
-				<orientation>horizontal</orientation>
-				<!--  Movie title -->
-				<control type="label">
-					<width>auto</width>
-					<height>50</height>
-					<font>Med40</font>
-					<textcolor>ffeaeaea</textcolor>
-					<shadowcolor>ff000000</shadowcolor>
-					<label>$INFO[VideoPlayer.Title]</label>
-					<visible>IsEmpty(VideoPlayer.TVShowTitle)</visible>
-				</control>
-				<!--  TV Show title -->
-				<control type="label">
-					<width>auto</width>
-					<height>50</height>
-					<font>Med40</font>
-					<textcolor>ffeaeaea</textcolor>
-					<shadowcolor>ff000000</shadowcolor>
-					<label>$INFO[VideoPlayer.TVShowTitle]</label>
-					<visible>!IsEmpty(VideoPlayer.TVShowTitle)</visible>
-				</control>
-				<!-- Season/Episode number -->
-				<control type="label">
-					<width>auto</width>
-					<height>50</height>
-					<font>Med40</font>
-					<textcolor>ffeaeaea</textcolor>
-					<shadowcolor>ff000000</shadowcolor>
-					<label>$VAR[PlayerEpisodeValue]</label>
-				</control>
-			</control>
-			<!--  Episode title -->
-			<control type="label">
-				<left>20</left>
-				<top>127</top>
-				<width>1880</width>
-				<height>40</height>
-				<align>center</align>
-				<font>Light26</font>
-				<textcolor>fffe8e8e8</textcolor>
-				<shadowcolor>ff000000</shadowcolor>
-				<label>$INFO[VideoPlayer.Title]</label>
-				<visible>!IsEmpty(VideoPlayer.TVShowTitle)</visible>
-			</control>
+			<include>PlayerTitles</include>
 			<!-- Pause -->
 			<control type="image">
 				<centerleft>50%</centerleft>
@@ -155,13 +108,20 @@
 					<label>$VAR[PlayerResolution]</label>
 				</control>
 			</control>
+			<!-- Player controls -->
 			<control id="300" type="grouplist">
 				<centerleft>50%</centerleft>
 				<bottom>26</bottom>
 				<width>800</width>
 				<height>64</height>
-				<onup condition="system.getbool(videoplayer.autoplaynextitem)">SetFocus(16)</onup>
-				<onup condition="!system.getbool(videoplayer.autoplaynextitem)">SetFocus(15)</onup>
+				<onup condition="!Skin.HasSetting(HideOSDControls)">SetProperty(ShowOptions,1,home)</onup>
+				<onup condition="!Skin.HasSetting(HideOSDControls) + VideoPlayer.Content(livetv)">SetFocus(19)</onup>
+				<onup condition="!Skin.HasSetting(HideOSDControls) + !VideoPlayer.Content(livetv) + system.getbool(videoplayer.autoplaynextitem)">SetFocus(16)</onup>
+				<onup condition="!Skin.HasSetting(HideOSDControls) + !VideoPlayer.Content(livetv) + !system.getbool(videoplayer.autoplaynextitem)">SetFocus(15)</onup>
+				<onup condition="Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">Dialog.Close(videoosd,true)</onup>
+				<onup condition="Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">ActivateWindow(fullscreeninfo)</onup>
+				<ondown condition="!Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">Dialog.Close(videoosd,true)</ondown>
+				<ondown condition="!Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">ActivateWindow(fullscreeninfo)</ondown>
 				<itemgap>0</itemgap>
 				<align>center</align>
 				<orientation>horizontal</orientation>
@@ -225,16 +185,77 @@
 					<onclick>PlayerControl(Next)</onclick>
 				</control>
 			</control>
-			<!--  Current time -->
-			<control type="label">
-				<right>92</right>
-				<bottom>45</bottom>
-				<width>800</width>
-				<height>30</height>
-				<font>Reg27</font>
-				<align>right</align>
-				<textcolor>fff3f3f3</textcolor>
-				<label>$INFO[System.Time]</label>
+			<!-- Options and Cast -->
+			<control type="group">
+				<visible>!Control.IsVisible(200) + !Player.Forwarding + !Player.Rewinding</visible>
+				<!-- Options HiddenControl -->
+				<control type="button" id="400">
+					<visible>Skin.HasSetting(HideOSDControls)</visible>
+					<include>HiddenControl</include>
+					<onup condition="[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">Dialog.Close(videoosd,true)</onup>
+					<onup condition="[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]">ActivateWindow(fullscreeninfo)</onup>
+					<onclick condition="Skin.HasSetting(HideOSDControls)">SetProperty(ShowOptions,1,home)</onclick>
+					<onclick condition="Skin.HasSetting(HideOSDControls) + VideoPlayer.Content(livetv)">SetFocus(19)</onclick>
+					<onclick condition="Skin.HasSetting(HideOSDControls) + !VideoPlayer.Content(livetv) + system.getbool(videoplayer.autoplaynextitem)">SetFocus(16)</onclick>
+					<onclick condition="Skin.HasSetting(HideOSDControls) + !VideoPlayer.Content(livetv) + !system.getbool(videoplayer.autoplaynextitem)">SetFocus(15)</onclick>
+				</control>
+				<!--Xray Icon-->
+				<control type="grouplist">					
+					<right>92</right>
+					<bottom>40</bottom>
+					<height>40</height>
+					<itemgap>10</itemgap>
+					<align>right</align>
+					<orientation>horizontal</orientation>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="label">
+						<top>4</top>
+						<width>auto</width>
+						<height>30</height>
+						<font>Reg27</font>
+						<textcolor>fff3f3f3</textcolor>
+						<label>$LOCALIZE[31240]</label>
+						<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]</visible>
+					</control>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture>osd/x_ray.png</texture>
+						<visible>Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]</visible>
+					</control>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture flipy="true">osd/x_ray.png</texture>
+						<visible>!Skin.HasSetting(HideOSDControls) + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]</visible>
+					</control>
+					<control type="label">
+						<top>4</top>
+						<width>auto</width>
+						<height>30</height>
+						<font>Reg27</font>
+						<textcolor>fff3f3f3</textcolor>
+						<label>    $LOCALIZE[33063]</label>
+					</control>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture>osd/options.png</texture>
+						<visible>false</visible>
+					</control>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture>osd/options.png</texture>
+						<visible>Skin.HasSetting(HideOSDControls)</visible>
+					</control>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture>osd/x_ray.png</texture>
+						<visible>!Skin.HasSetting(HideOSDControls)</visible>
+					</control>
+				</control>
 			</control>
 			<!-- Options -->
 			<control id="100" type="grouplist">
@@ -244,11 +265,14 @@
 				<height>600</height>
 				<align>right</align>
 				<itemgap>0</itemgap>
+				<onup>noop</onup>
 				<onleft>noop</onleft>
-				<onright>noop</onright>
+				<onright>noop</onright>				
+				<ondown>ClearProperty(ShowOptions,home)</ondown>
+				<ondown condition="Skin.HasSetting(HideOSDControls)">400</ondown>
 				<ondown condition="!Skin.HasSetting(HideOSDControls)">304</ondown>
 				<orientation>vertical</orientation>
-				<visible>!Control.IsVisible(200) + !Player.Forwarding + !Player.Rewinding</visible>
+				<visible>!Control.IsVisible(200) + !Player.Forwarding + !Player.Rewinding + ControlGroup(100).HasFocus + !IsEmpty(Window(home).Property(ShowOptions))</visible>
 				<!-- 3D mode -->
 				<control id="10" type="button">
 					<width>600</width>
@@ -261,7 +285,8 @@
 					<focusedcolor>ffffc04b</focusedcolor>
 					<texturefocus>-</texturefocus>
 					<texturenofocus>-</texturenofocus>
-					<onclick>SetFocus(200)</onclick>
+					<onclick>SetProperty(Show3DSettings,1,home)</onclick>
+					<onclick>ActivateWindow(123)</onclick>
 					<visible>VideoPlayer.IsStereoscopic</visible>
 				</control>
 				<!-- DVD menu -->
@@ -292,6 +317,7 @@
 					<texturefocus>-</texturefocus>
 					<texturenofocus>-</texturenofocus>
 					<onclick>SetFocus(200)</onclick>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 				</control>
 				<!-- Bookmarks -->
 				<control id="13" type="button">
@@ -307,6 +333,7 @@
 					<texturenofocus>-</texturenofocus>
 					<onclick>ActivateWindow(125)</onclick>
 					<onclick>Close</onclick>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 				</control>
 				<!-- Video Settings -->
 				<control id="14" type="button">
@@ -350,6 +377,70 @@
 					<texturenofocus>-</texturenofocus>
 					<onclick>PlayerControl(Next)</onclick>
 					<visible>Window.IsVisible(VideoFullScreen.xml) + system.getbool(videoplayer.autoplaynextitem)</visible>
+				</control>
+				<!-- Recording -->
+				<control id="17" type="button">
+					<width>600</width>
+					<height>58</height>
+					<font>Light32</font>
+					<align>right</align>
+					<label>$VAR[RecordingLabel]</label>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<focusedcolor>ffffc04b</focusedcolor>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>Dialog.Close(VideoOSD)</onclick>
+					<onclick>PlayerControl(Record)</onclick>
+					<visible>VideoPlayer.Content(livetv) + [Player.CanRecord | Player.Recording]</visible>
+				</control>
+				<!-- Teletext -->
+				<control id="20" type="button">
+					<width>600</width>
+					<height>58</height>
+					<font>Light32</font>
+					<align>right</align>
+					<label>$LOCALIZE[23050]</label>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<focusedcolor>ffffc04b</focusedcolor>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>Dialog.Close(VideoOSD)</onclick>
+					<onclick>ActivateWindow(Teletext)</onclick>
+					<visible>VideoPlayer.Content(livetv)</visible>
+				</control>
+				<!-- EPG -->
+				<control id="18" type="button">
+					<width>600</width>
+					<height>58</height>
+					<font>Light32</font>
+					<align>right</align>
+					<label>$LOCALIZE[4]</label>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<focusedcolor>ffffc04b</focusedcolor>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>Dialog.Close(VideoOSD)</onclick>
+					<onclick>ActivateWindow(tvguide)</onclick>
+					<visible>VideoPlayer.Content(livetv)</visible>
+				</control>
+				<!-- Channels -->
+				<control id="19" type="button">
+					<width>600</width>
+					<height>58</height>
+					<font>Light32</font>
+					<align>right</align>
+					<label>$LOCALIZE[19023]</label>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<focusedcolor>ffffc04b</focusedcolor>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>Dialog.Close(VideoOSD)</onclick>
+					<onclick>ActivateWindow(pvrosdchannels)</onclick>
+					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 			</control>
 			<control type="image">

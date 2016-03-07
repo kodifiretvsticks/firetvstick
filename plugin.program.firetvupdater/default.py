@@ -32,7 +32,7 @@ THUMBNAILS =  xbmc.translatePath(os.path.join(USERDATA,'Thumbnails'))
 zip =  ADDON.getSetting('zip')
 USB =  xbmc.translatePath(os.path.join(zip))
 skin =  xbmc.getSkinDir()
-VERSION = "1.0"
+VERSION = "1.1"
 PATH = "Fire TV Updater"
 
 def MainMenu():

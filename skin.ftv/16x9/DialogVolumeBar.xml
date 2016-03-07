@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<!-- volumebar -->
+	<zorder>2</zorder>
 	<controls>
 		<!-- Main group -->
 		<control type="group">
@@ -30,7 +31,7 @@
 				<top>26</top>
 				<width>111</width>
 				<height>111</height>
-				<texture>$VAR[VolumeIcon]</texture>
+				<texture>dialogs/notification_volume.png</texture>
 			</control>
 			<control type="group">
 				<visible>!player.passthrough</visible>
@@ -53,7 +54,7 @@
 					<align>right</align>
 					<font>Light26</font>
 					<textcolor>fffbbb45</textcolor>
-					<label>$VAR[VolumeDetails]</label>
+					<label>$INFO[Control.GetLabel(404),,%]</label>
 				</control>
 				<!-- Progress -->
 				<control id="404" type="progress">
@@ -62,17 +63,6 @@
 					<width>552</width>
 					<height>11</height>
 					<info>player.volume</info>
-					<visible>!Player.Muted</visible>
-				</control>
-				<!-- Progress -->
-				<control type="progress">
-					<left>160</left>
-					<top>104</top>
-					<width>552</width>
-					<height>11</height>
-					<info>player.volume</info>
-					<midtexture>-</midtexture>
-					<visible>Player.Muted</visible>
 				</control>
 			</control>
 			<control type="group">

@@ -6,12 +6,13 @@
 			<label>Movies</label>
 			<label2>Video Add-On</label2>
 			<icon>DefaultShortcut.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Fmovies.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">movies</property>
 			<property name="defaultID" />
 			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
 			<property name="widgetName">Widget Group 1</property>
 			<property name="widget">widget1</property>
+			<property name="ftvWidget">widget1</property>
 			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</onclick>
 			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
 			<property name="list">plugin://plugin.video.exodus/?action=movieNavigator</property>
@@ -25,12 +26,13 @@
 			<label>TV Shows</label>
 			<label2>Video Add-On</label2>
 			<icon>DefaultShortcut.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Ftvshows.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">tvshows</property>
 			<property name="defaultID" />
 			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
 			<property name="widgetName">Widget Group 2</property>
 			<property name="widget">widget2</property>
+			<property name="ftvWidget">widget2</property>
 			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</onclick>
 			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
 			<property name="list">plugin://plugin.video.exodus/?action=tvNavigator</property>
@@ -44,7 +46,7 @@
 			<label>Search</label>
 			<label2>Video Add-On</label2>
 			<icon>DefaultShortcut.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fscript.exodus.artwork%2Fresources%2Fmedia%2Fgenesis%2Fsearch.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">search</property>
 			<property name="defaultID" />
 			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.exodus/?action=searchNavigator",return)</property>
@@ -61,7 +63,7 @@
 			<label>GamePass</label>
 			<label2>Video Add-On</label2>
 			<icon>DefaultAddon.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.video.nfl.gamepass%2Ficon.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">plugin.video.nfl.gamepass</property>
 			<property name="defaultID">plugin.video.nfl.gamepass</property>
 			<property name="translatedPath">RunAddOn(plugin.video.nfl.gamepass)</property>
@@ -75,10 +77,27 @@
 		</item>
 		<item id="5">
 			<property name="id">$NUM[5]</property>
+			<label>Live TV</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonNone.png</thumb>
+			<property name="labelID">plugin.video.firelivetv</property>
+			<property name="defaultID">plugin.video.firelivetv</property>
+			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.video.firelivetv",return)</property>
+			<onclick>ActivateWindow(VideoLibrary,"plugin://plugin.video.firelivetv",return)</onclick>
+			<property name="path">ActivateWindow(VideoLibrary,"plugin://plugin.video.firelivetv",return)</property>
+			<property name="list">plugin://plugin.video.firelivetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">plugin-video-firelivetv</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUM[6]</property>
 			<label>Sports</label>
 			<label2>Video Add-On</label2>
 			<icon>DefaultShortcut.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">sports</property>
 			<property name="defaultID" />
 			<property name="translatedPath">ActivateWindow(VideoLibrary,"plugin://plugin.program.super.favourites/?label=Sports&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSports&amp;image=%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.super.favourites%2Ficon.png&amp;fanart=NULL&amp;content_type=",return)</property>
@@ -90,12 +109,12 @@
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">False</property>
 		</item>
-		<item id="6">
-			<property name="id">$NUM[6]</property>
+		<item id="7">
+			<property name="id">$NUM[7]</property>
 			<label>Addons</label>
 			<label2>Videos</label2>
 			<icon>DefaultAddonVideo.png</icon>
-			<thumb />
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">addons</property>
 			<property name="defaultID">1037</property>
 			<property name="translatedPath">ActivateWindow(Videos,addons://sources/video/,return)</property>
@@ -107,12 +126,12 @@
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">False</property>
 		</item>
-		<item id="7">
-			<property name="id">$NUM[7]</property>
+		<item id="8">
+			<property name="id">$NUM[8]</property>
 			<label>Music</label>
 			<label2>Music</label2>
 			<icon>DefaultAddonMusic.png</icon>
-			<thumb />
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">music</property>
 			<property name="defaultID">1038</property>
 			<property name="translatedPath">ActivateWindow(MusicLibrary,addons://sources/audio/,return)</property>
@@ -124,12 +143,12 @@
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">False</property>
 		</item>
-		<item id="8">
-			<property name="id">$NUM[8]</property>
+		<item id="9">
+			<property name="id">$NUM[9]</property>
 			<label>Maintenance</label>
 			<label2>Program</label2>
 			<icon>DefaultShortcut.png</icon>
-			<thumb>image://%2Fstorage%2Femulated%2F0%2FAndroid%2Fdata%2Forg.xbmc.kodi%2Ffiles%2F.kodi%2Faddons%2Fplugin.program.firetvupdater%2Ficon.png/</thumb>
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">plugin.program.firetvupdater</property>
 			<property name="defaultID">plugin.program.firetvupdater</property>
 			<property name="translatedPath">ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</property>
@@ -141,12 +160,12 @@
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">False</property>
 		</item>
-		<item id="9">
-			<property name="id">$NUM[9]</property>
+		<item id="10">
+			<property name="id">$NUM[10]</property>
 			<label>$LOCALIZE[10004]</label>
 			<label2>Settings</label2>
 			<icon>DefaultSettings.png</icon>
-			<thumb />
+			<thumb>DefaultAddonNone.png</thumb>
 			<property name="labelID">settings</property>
 			<property name="defaultID">settings</property>
 			<property name="translatedPath">ActivateWindow(Settings)</property>
@@ -158,20 +177,21 @@
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">True</property>
 		</item>
-		<item id="10">
-			<property name="id">$NUM[10]</property>
-			<label>$LOCALIZE[136]</label>
-			<label2>item</label2>
-			<icon>DefaultVideoPlaylists.png</icon>
-			<thumb />
-			<property name="labelID">136</property>
-			<property name="defaultID">136</property>
-			<property name="translatedPath">ActivateWindow(Videos,special://videoplaylists/,return)</property>
-			<onclick>ActivateWindow(Videos,special://videoplaylists/,return)</onclick>
-			<property name="path">ActivateWindow(Videos,special://videoplaylists/,return)</property>
-			<property name="list">special://videoplaylists/</property>
+		<item id="11">
+			<property name="id">$NUM[11]</property>
+			<label>$LOCALIZE[13009]</label>
+			<label2>Kodi Command</label2>
+			<icon>DefaultQuit.png</icon>
+			<thumb>DefaultAddonNone.png</thumb>
+			<property name="labelID">13009</property>
+			<property name="defaultID">13009</property>
+			<property name="translatedPath">Quit</property>
+			<visible>System.ShowExitButton</visible>
+			<onclick>Quit</onclick>
+			<property name="path">Quit</property>
+			<property name="list">Quit</property>
 			<visible>StringCompare(System.ProfileName,Master user)</visible>
-			<property name="submenuVisibility">num-136</property>
+			<property name="submenuVisibility">num-13009</property>
 			<property name="group">mainmenu</property>
 			<property name="hasSubmenu">False</property>
 			<property name="hasSubmenu">True</property>
@@ -440,112 +460,24 @@
 			<property name="isSubmenu">True</property>
 		</item>
 	</include>
-	<include />
-	<include name="skinshortcuts-submenu-1" />
-	<include />
-	<include name="skinshortcuts-submenu-2" />
-	<include />
-	<include name="skinshortcuts-submenu-3" />
-	<include />
-	<include name="skinshortcuts-submenu-4" />
-	<include />
-	<include name="skinshortcuts-submenu-5" />
 	<include name="skinshortcuts-group-movies" />
 	<include name="skinshortcuts-group-alt-movies" />
-	<include name="skinshortcuts-group-movies-1" />
-	<include name="skinshortcuts-group-alt-movies-1" />
-	<include name="skinshortcuts-group-movies-2" />
-	<include name="skinshortcuts-group-alt-movies-2" />
-	<include name="skinshortcuts-group-movies-3" />
-	<include name="skinshortcuts-group-alt-movies-3" />
-	<include name="skinshortcuts-group-movies-4" />
-	<include name="skinshortcuts-group-alt-movies-4" />
-	<include name="skinshortcuts-group-movies-5" />
-	<include name="skinshortcuts-group-alt-movies-5" />
 	<include name="skinshortcuts-group-tvshows" />
 	<include name="skinshortcuts-group-alt-tvshows" />
-	<include name="skinshortcuts-group-tvshows-1" />
-	<include name="skinshortcuts-group-alt-tvshows-1" />
-	<include name="skinshortcuts-group-tvshows-2" />
-	<include name="skinshortcuts-group-alt-tvshows-2" />
-	<include name="skinshortcuts-group-tvshows-3" />
-	<include name="skinshortcuts-group-alt-tvshows-3" />
-	<include name="skinshortcuts-group-tvshows-4" />
-	<include name="skinshortcuts-group-alt-tvshows-4" />
-	<include name="skinshortcuts-group-tvshows-5" />
-	<include name="skinshortcuts-group-alt-tvshows-5" />
 	<include name="skinshortcuts-group-search" />
 	<include name="skinshortcuts-group-alt-search" />
-	<include name="skinshortcuts-group-search-1" />
-	<include name="skinshortcuts-group-alt-search-1" />
-	<include name="skinshortcuts-group-search-2" />
-	<include name="skinshortcuts-group-alt-search-2" />
-	<include name="skinshortcuts-group-search-3" />
-	<include name="skinshortcuts-group-alt-search-3" />
-	<include name="skinshortcuts-group-search-4" />
-	<include name="skinshortcuts-group-alt-search-4" />
-	<include name="skinshortcuts-group-search-5" />
-	<include name="skinshortcuts-group-alt-search-5" />
 	<include name="skinshortcuts-group-plugin-video-nfl-gamepass" />
 	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass" />
-	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-1" />
-	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-1" />
-	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-2" />
-	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-2" />
-	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-3" />
-	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-3" />
-	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-4" />
-	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-4" />
-	<include name="skinshortcuts-group-plugin-video-nfl-gamepass-5" />
-	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass-5" />
+	<include name="skinshortcuts-group-plugin-video-firelivetv" />
+	<include name="skinshortcuts-group-alt-plugin-video-firelivetv" />
 	<include name="skinshortcuts-group-sports" />
 	<include name="skinshortcuts-group-alt-sports" />
-	<include name="skinshortcuts-group-sports-1" />
-	<include name="skinshortcuts-group-alt-sports-1" />
-	<include name="skinshortcuts-group-sports-2" />
-	<include name="skinshortcuts-group-alt-sports-2" />
-	<include name="skinshortcuts-group-sports-3" />
-	<include name="skinshortcuts-group-alt-sports-3" />
-	<include name="skinshortcuts-group-sports-4" />
-	<include name="skinshortcuts-group-alt-sports-4" />
-	<include name="skinshortcuts-group-sports-5" />
-	<include name="skinshortcuts-group-alt-sports-5" />
 	<include name="skinshortcuts-group-addons" />
 	<include name="skinshortcuts-group-alt-addons" />
-	<include name="skinshortcuts-group-addons-1" />
-	<include name="skinshortcuts-group-alt-addons-1" />
-	<include name="skinshortcuts-group-addons-2" />
-	<include name="skinshortcuts-group-alt-addons-2" />
-	<include name="skinshortcuts-group-addons-3" />
-	<include name="skinshortcuts-group-alt-addons-3" />
-	<include name="skinshortcuts-group-addons-4" />
-	<include name="skinshortcuts-group-alt-addons-4" />
-	<include name="skinshortcuts-group-addons-5" />
-	<include name="skinshortcuts-group-alt-addons-5" />
 	<include name="skinshortcuts-group-music" />
 	<include name="skinshortcuts-group-alt-music" />
-	<include name="skinshortcuts-group-music-1" />
-	<include name="skinshortcuts-group-alt-music-1" />
-	<include name="skinshortcuts-group-music-2" />
-	<include name="skinshortcuts-group-alt-music-2" />
-	<include name="skinshortcuts-group-music-3" />
-	<include name="skinshortcuts-group-alt-music-3" />
-	<include name="skinshortcuts-group-music-4" />
-	<include name="skinshortcuts-group-alt-music-4" />
-	<include name="skinshortcuts-group-music-5" />
-	<include name="skinshortcuts-group-alt-music-5" />
 	<include name="skinshortcuts-group-plugin-program-firetvupdater" />
 	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater" />
-	<include name="skinshortcuts-group-plugin-program-firetvupdater-1" />
-	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-1" />
-	<include name="skinshortcuts-group-plugin-program-firetvupdater-2" />
-	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-2" />
-	<include name="skinshortcuts-group-plugin-program-firetvupdater-3" />
-	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-3" />
-	<include name="skinshortcuts-group-plugin-program-firetvupdater-4" />
-	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-4" />
-	<include name="skinshortcuts-group-plugin-program-firetvupdater-5" />
-	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater-5" />
 	<include name="skinshortcuts-group-settings">
 		<item id="1">
 			<property name="id">$NUM[1]</property>
@@ -672,28 +604,8 @@
 			<property name="isSubmenu">True</property>
 		</item>
 	</include>
-	<include name="skinshortcuts-group-settings-1" />
-	<include name="skinshortcuts-group-alt-settings-1" />
-	<include name="skinshortcuts-group-settings-2" />
-	<include name="skinshortcuts-group-alt-settings-2" />
-	<include name="skinshortcuts-group-settings-3" />
-	<include name="skinshortcuts-group-alt-settings-3" />
-	<include name="skinshortcuts-group-settings-4" />
-	<include name="skinshortcuts-group-alt-settings-4" />
-	<include name="skinshortcuts-group-settings-5" />
-	<include name="skinshortcuts-group-alt-settings-5" />
-	<include name="skinshortcuts-group-136" />
-	<include name="skinshortcuts-group-alt-136" />
-	<include name="skinshortcuts-group-136-1" />
-	<include name="skinshortcuts-group-alt-136-1" />
-	<include name="skinshortcuts-group-136-2" />
-	<include name="skinshortcuts-group-alt-136-2" />
-	<include name="skinshortcuts-group-136-3" />
-	<include name="skinshortcuts-group-alt-136-3" />
-	<include name="skinshortcuts-group-136-4" />
-	<include name="skinshortcuts-group-alt-136-4" />
-	<include name="skinshortcuts-group-136-5" />
-	<include name="skinshortcuts-group-alt-136-5" />
+	<include name="skinshortcuts-group-13009" />
+	<include name="skinshortcuts-group-alt-13009" />
 	<include name="skinshortcuts-group-shutdown">
 		<item id="1">
 			<property name="id">$NUM[1]</property>
@@ -1096,14 +1008,4 @@
 			<property name="isSubmenu">True</property>
 		</item>
 	</include>
-	<include name="skinshortcuts-group-shutdown-1" />
-	<include name="skinshortcuts-group-alt-shutdown-1" />
-	<include name="skinshortcuts-group-shutdown-2" />
-	<include name="skinshortcuts-group-alt-shutdown-2" />
-	<include name="skinshortcuts-group-shutdown-3" />
-	<include name="skinshortcuts-group-alt-shutdown-3" />
-	<include name="skinshortcuts-group-shutdown-4" />
-	<include name="skinshortcuts-group-alt-shutdown-4" />
-	<include name="skinshortcuts-group-shutdown-5" />
-	<include name="skinshortcuts-group-alt-shutdown-5" />
 </includes>

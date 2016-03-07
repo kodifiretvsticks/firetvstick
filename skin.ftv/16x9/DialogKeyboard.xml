@@ -116,7 +116,7 @@
 					<font>Light39</font>
 					<textcolor>ffdadada</textcolor>
 					<focusedcolor>ffffc24b</focusedcolor>
-					<hinttext>[COLOR ff414141]TYPE HERE[/COLOR]</hinttext>
+					<hinttext>[COLOR ff414141]Joe Bloggs[/COLOR]</hinttext>
 				</control>
 				<!-- Edit Text line -->
 				<control type="image">

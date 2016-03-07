@@ -2,22 +2,13 @@
 <includes>
 	<include file="Animations.xml" />
 	<include file="Defaults.xml" />
-	<include file="Includes_ExtendedDialogInfo_Default.xml" />
-	<include file="Includes_ExtendedDialogInfo_XRay.xml" />
-	<include file="Includes_Home_Widgets_Setup.xml" />
-	<include file="Includes_Keyboard.xml" />
 	<include file="Parameters.xml" />
+	<include file="ParametersHomeWidgets.xml" />
+	<include file="IncludesWidgetLayout.xml" />
+	<include file="IncludesWidgets.xml" />
+	<include file="ViewTypes.xml" />
+	<include file="IncludesViewTypes.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
-	<include file="Viewtype50.xml" />
-	<include file="Viewtype51.xml" />
-	<include file="Viewtype52.xml" />
-	<include file="Viewtype53.xml" />
-	<include file="Viewtype54.xml" />
-	<include file="Viewtype55.xml" />
-	<include file="Viewtype56.xml" />
-	<include file="Viewtype57.xml" />
-	<include file="ForcedViewtype60.xml" />
-	<include file="ForcedViewtype61.xml" />
 	<include file="Variables.xml" />
 	<!-- Fullscreen dimensions -->
 	<include name="FullscreenDimensions">
@@ -57,30 +48,11 @@
 		<bordertexture border="32">dialogs/Empty.png</bordertexture>
 		<bordersize>-82</bordersize>
 	</include>
-	<!-- Dialog Heights -->
-	<include name="Height295">
-		<height>295</height>
-	</include>
-	<include name="Height289">
-		<height>289</height>
-	</include>
-	<include name="Height253">
-		<height>253</height>
-	</include>
-	<!-- Button Widths -->
-	<include name="Width242">
-		<width>242</width>
-	</include>
-	<include name="Width358">
-		<width>358</width>
-	</include>
-	<!-- OSD Padding -->
 	<include name="osd_padding">
 		<height>82</height>
 		<width>17.36</width>
 		<texture>-</texture>
 	</include>
-	<!-- Hidden Home List -->
 	<include name="HiddenHomeList">
 		<top>-10</top>
 		<width>10</width>
@@ -98,6 +70,18 @@
 				<include>FullscreenDimensions</include>
 				<fadetime>400</fadetime>
 				<colordiffuse>26ffffff</colordiffuse>
+				<texture background="true">$VAR[Fanart]</texture>
+			</control>
+		</control>
+	</include>
+	<!-- PVR Fanart -->
+	<include name="PVRFanart">
+		<control type="group">
+			<animation condition="!Window.Previous(visualisation)" delay="800" effect="fade" end="100" start="0" time="200">WindowOpen</animation>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<colordiffuse>0effffff</colordiffuse>
 				<texture background="true">$VAR[Fanart]</texture>
 			</control>
 		</control>
@@ -475,7 +459,14 @@
 			<width>90</width>
 			<height>90</height>
 			<texture>views/OverlayHD.png</texture>
-			<visible>IntegerGreaterThan(ListItem.VideoResolution,719)</visible>
+			<visible>IntegerGreaterThan(ListItem.VideoResolution,719) + !ListItem.IsStereoscopic</visible>
+		</control>
+		<control type="image">
+			<top>48</top>
+			<width>90</width>
+			<height>90</height>
+			<texture>views/Overlay3D.png</texture>
+			<visible>ListItem.IsStereoscopic</visible>
 		</control>
 	</include>
 	<include name="OverlayWatched">

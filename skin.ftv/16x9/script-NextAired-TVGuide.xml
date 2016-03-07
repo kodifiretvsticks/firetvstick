@@ -40,7 +40,7 @@
 						<font>Bold32</font>
 						<align>center</align>
 						<textcolor>ffdadada</textcolor>
-						<label>$LOCALIZE[31230]</label>
+						<label>$LOCALIZE[31221]</label>
 					</control>
 					<control type="label">
 						<top>34</top>
@@ -48,7 +48,7 @@
 						<font>Reg22</font>
 						<align>center</align>
 						<textcolor>ff717171</textcolor>
-						<label>$LOCALIZE[31231]</label>
+						<label>$LOCALIZE[31222]</label>
 					</control>
 				</control>
 			</control>
@@ -187,7 +187,7 @@
 						<font>Med24</font>
 						<aligny>bottom</aligny>
 						<textcolor>ffbebebe</textcolor>
-						<label>$VAR[NextAiredShortTime[COLOR ff707070]$LOCALIZE[31227]: [/COLOR]]</label>
+						<label>$VAR[NextAiredShortTime[COLOR ff707070]$LOCALIZE[31534]: [/COLOR]]</label>
 					</control>
 				</control>
 				<control type="group">

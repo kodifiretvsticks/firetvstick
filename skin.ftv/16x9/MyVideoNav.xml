@@ -272,7 +272,7 @@
 						<visible>!Control.HasFocus(1002) + !Control.HasFocus(20) + !Control.HasFocus(1003) + !Control.HasFocus(1004) + !Control.HasFocus(1005)</visible>
 					</control>
 					<control id="1002" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -287,10 +287,10 @@
 						<focusedcolor>ff222222</focusedcolor>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
-						<visible>!ListItem.IsParentFolder + !SubString(Container.FolderName,$LOCALIZE[20434]) + !SubString(ListItem.Path,videodb://movies/sets,left)</visible>
+						<visible>!StringCompare(ListItem.Label,..) + !SubString(Container.FolderName,$LOCALIZE[20434]) + !SubString(ListItem.Path,videodb://movies/sets,left)</visible>
 					</control>
 					<control id="1003" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -307,7 +307,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="1004" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -323,7 +323,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="1005" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -338,7 +338,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="20" type="togglebutton">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -465,7 +465,7 @@
 					<control type="textbox">
 						<top>103</top>
 						<width>1192</width>
-						<height>126</height>
+						<height>124</height>
 						<align>left</align>
 						<font>Reg30Spaced</font>
 						<pagecontrol>97</pagecontrol>
@@ -476,7 +476,7 @@
 					<control id="97" type="scrollbar">
 						<top>103</top>
 						<width>1192</width>
-						<height>126</height>
+						<height>124</height>
 						<showonepage>false</showonepage>
 						<orientation>vertical</orientation>
 					</control>
@@ -565,7 +565,7 @@
 						<onleft>50</onleft>
 						<onright>50</onright>
 						<onclick>SetProperty(OpenTextViewer,1,home)</onclick>
-						<onclick>RunScript(script.toolbox,info=textviewer,header=$INFO[ListItem.Title],text='$ESCVAR[Plot]')</onclick>
+						<onclick>RunScript(script.toolbox,info=textviewer,header='$INFO[ListItem.Title]',text='$ESCVAR[Plot]')</onclick>
 						<visible>Control.IsVisible(98)</visible>
 						<texturefocus>views/more_fo.png</texturefocus>
 						<texturenofocus>views/more_nf.png</texturenofocus>
@@ -598,7 +598,7 @@
 						<visible>!Control.HasFocus(1002) + !Control.HasFocus(1003) + !Control.HasFocus(1004) + !Control.HasFocus(1005) + !Control.HasFocus(16)</visible>
 					</control>
 					<control id="1003" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -615,7 +615,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="1004" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -631,7 +631,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="1005" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -646,7 +646,7 @@
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
 					<control id="16" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>
@@ -661,7 +661,7 @@
 						<visible>Container.Content(musicvideos)</visible>
 					</control>
 					<control id="20" type="togglebutton">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="204">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>100</height>
 						<onup>50</onup>

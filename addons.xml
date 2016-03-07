@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.program.firetvupdater" name="Fire TV Updater" version="1.2" provider-name="John">
+<addon id="plugin.program.firetvupdater" name="Fire TV Updater" version="1.1" provider-name="John">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -16,6 +16,26 @@
 		<website>http://johnsrepairs.com</website>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="plugin.video.exodus" version="1.1.1" name="Exodus" provider-name="Exodus">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="repository.exodus" version="1.0.0" />
+		<import addon="script.exodus.artwork" version="1.0.0" />
+		<import addon="script.module.urlresolver" version="2.10.11"/>
+		<import addon="script.module.metahandler" version="1.0.0" />
+		<import addon="plugin.video.youtube" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Exodus - w/ Library</summary>
+		<description lang="en">Please visit www.tvaddons.ag for Exodus support and assistance! Kindly note that Exodus is not an official part of the media player you are running, and therefore not to be mentioned within official support channels, this addon has nothing to do with the media player itself, nor itâ€™s intended use, it is simply a third party plugin which has been added to your system.</description>
+		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+		<platform>all</platform>
+	</extension>
 </addon>
 
 <addon id="plugin.video.firelivetv" name="Fire Live TV" version="1.0" provider-name="John">
@@ -38,42 +58,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.youtube" name="YouTube" version="5.1.18" provider-name="John">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-        <summary lang="en">Plugin for YouTube</summary>
-		<disclaimer lang="en"/>
-		<language/>
-		<platform>all</platform>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-		<forum>http://forum.kodi.tv/showthread.php?tid=200735</forum>
-		<website>http://www.youtube.com</website>
-	</extension>
-</addon>
-
-<addon id="repository.exodus" version="1.0.0" name="Exodus repository" provider-name="l*m*d*">
-	<extension point="xbmc.addon.repository" name="Exodus repository">
-		<dir>
-			<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
-			<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
-		</dir>
-		<info compressed="false">https://offshoregit.com/exodus/addons.xml</info>
-		<checksum>https://offshoregit.com/exodus/addons.xml.md5</checksum>
-		<datadir zip="true">https://offshoregit.com/exodus/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Exodus repository</summary>
-		<description lang="en">Exodus repository</description>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.6" provider-name="John">
 	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
 		<info compressed="false">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml</info>
@@ -88,15 +72,15 @@
 	</extension>
 </addon>
 
-<addon id="skin.ftv" version="2.4.20" name="fTV" provider-name="John">
+<addon id="skin.ftv" version="2.4.41" name="fTV" provider-name="John">
 	<requires>
-		<import addon="xbmc.gui" version="5.11.0"/>
+		<import addon="xbmc.gui" version="5.10.0"/>
 		<import addon="script.toolbox" version="1.0.0"/>
 		<import addon="script.favourites" version="5.0.2"/>
 		<import addon="script.extendedinfo" version="2.0.3"/>
 		<import addon="script.globalsearch" version="3.0.4"/>
 		<import addon="script.skinshortcuts" version="0.4.0"/>
-        <import addon="resource.uisounds.ftv" version="1.0.0"/>
+		<import addon="resource.uisounds.ftv" version="1.0.0"/>
 		<import addon="script.artwork.downloader" version="12.0.29"/>
 	</requires>
 	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">

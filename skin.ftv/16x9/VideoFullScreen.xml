@@ -2,102 +2,17 @@
 <window>
 	<!-- fullscreenvideo -->
 	<defaultcontrol>-</defaultcontrol>
-	<onload>SetProperty(RefreshCastList,true,Home)</onload>
+	<onload>ClearProperty(StartedByBanner,home)</onload>
 	<controls>
-		<control id="99" type="group">
+		<control type="image" id="99">
+			<visible>Window.IsVisible(fullscreenvideo) + !IsEmpty(Window(home).Property(ShowXRay)) + [Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml)]</visible>
+			<include>FullscreenDimensions</include>
+			<texture>dialogs/DialogBackground.png</texture>
+			<animation effect="fade" end="100" start="0" time="200">Visible</animation>
+			<animation delay="100" effect="fade" end="0" start="100" time="200">Hidden</animation>
+		</control>
+		<control type="group" id="99">
 			<visible>IsEmpty(Window(home).Property(ShowXRay))</visible>
-			<!-- Cast -->
-			<control id="99" type="fixedlist">
-				<left>90</left>
-				<bottom>-164</bottom>
-				<width>1920</width>
-				<height>128</height>
-				<viewtype label="">list</viewtype>
-				<orientation>horizontal</orientation>
-				<animation effect="slide" start="0,0" end="0,-300" time="0" condition="Window.IsActive(fullscreeninfo)">Conditional</animation>
-				<itemlayout height="128" width="442">
-					<control type="image">
-						<width>412</width>
-						<height>128</height>
-						<texture>dialogs/DialogBackground.png</texture>
-					</control>
-					<control type="image">
-						<width>96</width>
-						<height>128</height>
-						<aspectratio align="center">scale</aspectratio>
-						<texture>views/cast_fallback.png</texture>
-					</control>
-					<control type="image">
-						<width>96</width>
-						<height>128</height>
-						<aspectratio align="center">scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>116</left>
-						<top>27</top>
-						<width>278</width>
-						<height>40</height>
-						<font>Reg32</font>
-						<textcolor>ffffffff</textcolor>
-						<shadowcolor>80000000</shadowcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>116</left>
-						<top>66</top>
-						<width>278</width>
-						<height>36</height>
-						<font>Light26</font>
-						<scroll>false</scroll>
-						<textcolor>ffffffff</textcolor>
-						<shadowcolor>80000000</shadowcolor>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="128" width="442">
-					<control type="image">
-						<width>412</width>
-						<height>128</height>
-						<texture>dialogs/DialogBackground.png</texture>
-					</control>
-					<control type="image">
-						<width>96</width>
-						<height>128</height>
-						<aspectratio align="center">scale</aspectratio>
-						<texture>views/cast_fallback.png</texture>
-					</control>
-					<control type="image">
-						<width>96</width>
-						<height>128</height>
-						<aspectratio align="center">scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>116</left>
-						<top>27</top>
-						<width>278</width>
-						<height>40</height>
-						<font>Reg32</font>
-						<scroll>false</scroll>
-						<textcolor>ffffffff</textcolor>
-						<shadowcolor>80000000</shadowcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>116</left>
-						<top>66</top>
-						<width>278</width>
-						<height>36</height>
-						<font>Light26</font>
-						<scroll>false</scroll>
-						<textcolor>ffffffff</textcolor>
-						<shadowcolor>80000000</shadowcolor>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</focusedlayout>
-				<content limit="4">$VAR[XRayCast]</content>
-			</control>
 			<control id="99" type="group">
 				<animation reversible="true" type="WindowOpen">
 					<effect end="100" start="0" time="200" type="fade" />
@@ -109,57 +24,7 @@
 					<height>210</height>
 					<texture border="1">osd/mask_top.png</texture>
 				</control>
-				<control id="99" type="grouplist">
-					<left>20</left>
-					<top>64</top>
-					<width>1880</width>
-					<height>50</height>
-					<align>center</align>
-					<itemgap>0</itemgap>
-					<orientation>horizontal</orientation>
-					<!--  Movie title -->
-					<control id="99" type="label">
-						<width>auto</width>
-						<height>50</height>
-						<font>Med40</font>
-						<textcolor>ffeaeaea</textcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<label>$INFO[VideoPlayer.Title]</label>
-						<visible>IsEmpty(VideoPlayer.TVShowTitle)</visible>
-					</control>
-					<!--  TV Show title -->
-					<control id="99" type="label">
-						<width>auto</width>
-						<height>50</height>
-						<font>Med40</font>
-						<textcolor>ffeaeaea</textcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<label>$INFO[VideoPlayer.TVShowTitle]</label>
-						<visible>!IsEmpty(VideoPlayer.TVShowTitle)</visible>
-					</control>
-					<!-- Season/Episode number -->
-					<control id="99" type="label">
-						<width>auto</width>
-						<height>50</height>
-						<font>Med40</font>
-						<textcolor>ffeaeaea</textcolor>
-						<shadowcolor>ff000000</shadowcolor>
-						<label>$VAR[PlayerEpisodeValue]</label>
-					</control>
-				</control>
-				<!--  Episode title -->
-				<control id="99" type="label">
-					<left>20</left>
-					<top>127</top>
-					<width>1880</width>
-					<height>40</height>
-					<align>center</align>
-					<font>Light26</font>
-					<textcolor>fffe8e8e8</textcolor>
-					<shadowcolor>ff000000</shadowcolor>
-					<label>$INFO[VideoPlayer.Title]</label>
-					<visible>!IsEmpty(VideoPlayer.TVShowTitle)</visible>
-				</control>
+				<include>PlayerTitles</include>
 				<control id="99" type="image">
 					<bottom>0</bottom>
 					<width>1980</width>
@@ -837,9 +702,10 @@
 				<animation condition="System.IdleTime(2)" reversible="true" type="Conditional">
 					<effect type="fade" start="100" end="0" time="200" />
 				</animation>
+				<visible>!Window.IsVisible(fullscreeninfo)</visible>
 			</control>
 			<control type="group" id="99">
-				<visible>Player.Caching</visible>
+				<visible>Player.Paused + Player.Caching</visible>
 				<!-- Busy -->
 				<control type="image" id="99">
 					<centerleft>50%</centerleft>
@@ -858,53 +724,45 @@
 					<animation effect="rotate" end="360" center="auto" time="1680" loop="true" reversible="false" condition="true">Conditional</animation>
 				</control>
 			</control>
-		</control>
-		<control type="group">
-			<left>80</left>
-			<top>200</top>
-			<width>1620</width>
-			<height>274</height>
-			<!-- Row 1 label -->
-			<control id="10" type="label">
-				<left>20</left>
-				<top>20</top>
-				<width>1580</width>
-				<height>50</height>
-				<font>Reg27</font>
-				<textcolor>ffffffff</textcolor>
-				<shadowcolor>ff000000</shadowcolor>
-				<label>-</label>
-			</control>
-			<!-- Row 2 label -->
-			<control id="11" type="label">
-				<left>20</left>
-				<top>110</top>
-				<width>1580</width>
-				<height>50</height>
-				<font>Reg27</font>
-				<textcolor>ffffffff</textcolor>
-				<shadowcolor>ff000000</shadowcolor>
-				<label>-</label>
-			</control>
-			<!-- Row 3 label -->
-			<control id="12" type="label">
-				<left>20</left>
+			<control type="group">
+				<left>80</left>
 				<top>200</top>
-				<width>1580</width>
-				<height>50</height>
-				<font>Reg27</font>
-				<textcolor>ffffffff</textcolor>
-				<shadowcolor>ff000000</shadowcolor>
-				<label>-</label>
+				<width>1620</width>
+				<height>274</height>
+				<!-- Row 1 label -->
+				<control id="10" type="label">
+					<left>20</left>
+					<top>20</top>
+					<width>1580</width>
+					<height>50</height>
+					<font>Reg27</font>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<label>-</label>
+				</control>
+				<!-- Row 2 label -->
+				<control id="11" type="label">
+					<left>20</left>
+					<top>110</top>
+					<width>1580</width>
+					<height>50</height>
+					<font>Reg27</font>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<label>-</label>
+				</control>
+				<!-- Row 3 label -->
+				<control id="12" type="label">
+					<left>20</left>
+					<top>200</top>
+					<width>1580</width>
+					<height>50</height>
+					<font>Reg27</font>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff000000</shadowcolor>
+					<label>-</label>
+				</control>
 			</control>
-		</control>
-		<!-- X-Ray diffuse -->
-		<control id="99" type="image">
-			<width>1920</width>
-			<height>1080</height>
-			<texture>dialogs/DialogBackground.png</texture>
-			<animation effect="fade" start="0" end="100" time="300">Visible</animation>
-			<visible>!IsEmpty(Window(home).Property(ShowXRay))</visible>
 		</control>
 	</controls>
 </window>

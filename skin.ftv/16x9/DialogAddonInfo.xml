@@ -17,7 +17,7 @@
 			<pagecontrol>96</pagecontrol>
 			<autoscroll>false</autoscroll>
 			<textcolor>ffa4a4a4</textcolor>
-			<label>$INFO[ListItem.AddonDescription]</label>
+			<label>$INFO[ListItem.Property(Addon.Description)]</label>
 		</control>
 		<!-- Hidden scrollbar -->
 		<control id="96" type="scrollbar">
@@ -110,7 +110,7 @@
 				<scroll>true</scroll>
 				<textcolor>ffdadada</textcolor>
 				<scrollspeed>100</scrollspeed>
-				<label>$INFO[ListItem.AddonName]</label>
+				<label>$INFO[ListItem.Property(Addon.Name)]</label>
 				<include>DialogVideoInfoAnimation</include>
 			</control>
 			<!-- Type -->
@@ -128,7 +128,7 @@
 					<font>Reg30Spaced</font>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffbbbbbb</textcolor>
-					<label>[B]$LOCALIZE[146][/B] [LIGHT]$INFO[ListItem.AddonType][/LIGHT]</label>
+					<label>[B]$LOCALIZE[146][/B] [LIGHT]$INFO[ListItem.Property(Addon.Type)][/LIGHT]</label>
 					<include>DialogVideoInfoAnimation</include>
 				</control>
 			</control>
@@ -147,7 +147,7 @@
 					<font>Reg30Spaced</font>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffbbbbbb</textcolor>
-					<label>[B]$LOCALIZE[24051][/B] [LIGHT]$INFO[ListItem.AddonVersion][/LIGHT]</label>
+					<label>[B]$LOCALIZE[24051][/B] [LIGHT]$INFO[ListItem.Property(Addon.Version)][/LIGHT]</label>
 					<include>DialogVideoInfoAnimation</include>
 				</control>
 			</control>
@@ -166,7 +166,7 @@
 					<font>Reg30Spaced</font>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffbbbbbb</textcolor>
-					<label>[B]$LOCALIZE[31151]:[/B] [LIGHT]$INFO[ListItem.AddonCreator][/LIGHT]</label>
+					<label>[B]$LOCALIZE[31151]:[/B] [LIGHT]$INFO[ListItem.Property(Addon.Creator)][/LIGHT]</label>
 					<include>DialogVideoInfoAnimation</include>
 				</control>
 			</control>
@@ -181,7 +181,7 @@
 					<font>Light30</font>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffbbbbbb</textcolor>
-					<label>$INFO[ListItem.AddonSummary]</label>
+					<label>$INFO[ListItem.Property(Addon.Summary)]</label>
 					<include>DialogVideoInfoAnimation</include>
 				</control>
 				<!-- Button grouplist -->
@@ -208,7 +208,7 @@
 					</control>
 					<!-- Update Addon Button -->
 					<control id="8" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -224,7 +224,7 @@
 					</control>
 					<!-- Auto-update Addon Button -->
 					<control id="20" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -244,7 +244,7 @@
 					</control>
 					<!-- Launch Addon Button -->
 					<control id="12" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -260,7 +260,7 @@
 					</control>
 					<!-- Enable/Disable Addon button -->
 					<control id="7" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -275,7 +275,7 @@
 					</control>
 					<!-- Configure Addon button -->
 					<control id="9" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="244">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -291,7 +291,7 @@
 					</control>
 					<!-- Install/UnInstall Addon button -->
 					<control id="6" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -306,7 +306,7 @@
 					</control>
 					<!-- Changelog Button -->
 					<control id="10" type="button">
-						<width min="124" max="204">auto</width>
+						<width min="104" max="224">auto</width>
 						<wrapmultiline>true</wrapmultiline>
 						<height>116</height>
 						<onup>Close</onup>
@@ -352,7 +352,7 @@
 					<font>Med32</font>
 					<textcolor>ffdadada</textcolor>
 					<label>21821</label>
-					<visible>!IsEmpty(ListItem.AddonDescription)</visible>
+					<visible>!IsEmpty(ListItem.Property(Addon.Description))</visible>
 				</control>
 				<control type="textbox">
 					<top>291</top>
@@ -362,7 +362,7 @@
 					<font>Light30</font>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffa4a4a4</textcolor>
-					<label>$INFO[ListItem.AddonDescription]</label>
+					<label>$INFO[ListItem.Property(Addon.Description)]</label>
 				</control>
 				<!-- More button -->
 				<control id="3002" type="button">
@@ -372,7 +372,8 @@
 					<height>23</height>
 					<onleft>7001</onleft>
 					<onright>50</onright>
-					<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.AddonDescription]')</onclick>
+					<onclick>SetProperty(NoLabel,1,home)</onclick>
+					<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Property(Addon.Description)]')</onclick>
 					<texturefocus>views/more_fo.png</texturefocus>
 					<texturenofocus>views/more_nf.png</texturenofocus>
 					<visible>Control.IsVisible(96)</visible>

@@ -3,21 +3,27 @@
 	<fontset id="Default" unicode="true">
 		<!-- Regular -->
 		<font>
+			<name>invisible</name>
+			<filename>invisible1.ttf</filename>
+			<linespacing>1.15</linespacing>
+			<size>10</size>
+		</font>
+		<font>
 			<name>Reg36Spaced</name>
 			<filename>HelveticaNeue.ttf</filename>
 			<linespacing>1.15</linespacing>
 			<size>36</size>
 		</font>
 		<font>
+ 			<name>Reg32</name>
+ 			<filename>HelveticaNeue.ttf</filename>
+ 			<size>32</size>
+ 		</font>
+		<font>
 			<name>Reg30Spaced</name>
 			<filename>HelveticaNeue.ttf</filename>
 			<linespacing>1.15</linespacing>
 			<size>30</size>
-		</font>
-		<font>
-			<name>Reg32</name>
-			<filename>HelveticaNeue.ttf</filename>
-			<size>32</size>
 		</font>
 		<font>
 			<name>Reg27</name>
@@ -178,6 +184,11 @@
 			<size>40</size>
 		</font>
 		<font>
+			<name>Med36</name>
+			<filename>HelveticaNeue_Med.ttf</filename>
+			<size>36</size>
+		</font>
+		<font>
 			<name>Med32</name>
 			<filename>HelveticaNeue_Med.ttf</filename>
 			<size>32</size>
@@ -235,6 +246,16 @@
 			<name>Med20</name>
 			<filename>HelveticaNeue_Med.ttf</filename>
 			<size>20</size>
+		</font>
+		<font>
+			<name>Med18</name>
+			<filename>HelveticaNeue_Med.ttf</filename>
+			<size>18</size>
+		</font>
+		<font>
+			<name>Med16</name>
+			<filename>HelveticaNeue_Med.ttf</filename>
+			<size>16</size>
 		</font>
 		<!-- Med uppercase -->
 		<font>
@@ -330,6 +351,12 @@
 	<fontset id="Roboto" unicode="true">
 		<!-- Regular -->
 		<font>
+			<name>invisible</name>
+			<filename>invisible1.ttf</filename>
+			<linespacing>1.15</linespacing>
+			<size>10</size>
+		</font>
+		<font>
 			<name>Reg36Spaced</name>
 			<filename>Roboto-Regular.ttf</filename>
 			<linespacing>1.18</linespacing>
@@ -340,11 +367,6 @@
 			<filename>Roboto-Regular.ttf</filename>
 			<linespacing>1.12</linespacing>
 			<size>30</size>
-		</font>
-		<font>
-			<name>Reg32</name>
-			<filename>Roboto-Regular.ttf</filename>
-			<size>32</size>
 		</font>
 		<font>
 			<name>Reg27</name>
@@ -537,8 +559,8 @@
 		</font>
 		<font>
 			<name>Med24Num</name>
-			<filename>HelveticaNeue_Med.ttf</filename>
-			<size>24</size>
+			<filename>Roboto-Medium.ttf</filename>
+			<size>21</size>
 			<linespacing>1.1</linespacing>
 		</font>
 		<font>
@@ -657,6 +679,12 @@
 	<fontset id="Arial" unicode="true">
 		<!-- Regular -->
 		<font>
+			<name>invisible</name>
+			<filename>invisible1.ttf</filename>
+			<linespacing>1.15</linespacing>
+			<size>10</size>
+		</font>
+		<font>
 			<name>Reg36Spaced</name>
 			<filename>Arial.ttf</filename>
 			<aspect>0.9</aspect>
@@ -669,12 +697,6 @@
 			<aspect>0.9</aspect>
 			<linespacing>1.12</linespacing>
 			<size>30</size>
-		</font>
-		<font>
-			<name>Reg32</name>
-			<filename>Arial.ttf</filename>
-			<aspect>0.9</aspect>
-			<size>32</size>
 		</font>
 		<font>
 			<name>Reg27</name>
@@ -928,7 +950,7 @@
 		</font>
 		<font>
 			<name>Med24Num</name>
-			<filename>HelveticaNeue_Med.ttf</filename>
+			<filename>Arial.ttf</filename>
 			<size>24</size>
 			<linespacing>1.1</linespacing>
 		</font>

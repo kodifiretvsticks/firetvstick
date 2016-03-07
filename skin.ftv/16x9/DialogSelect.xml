@@ -2,11 +2,13 @@
 <window>
 	<!-- selectdialog -->
 	<defaultcontrol always="true">3</defaultcontrol>
+	<zorder>2</zorder>
+	<onunload>ClearProperty(LabelOverride,home)</onunload>
 	<controls>
 		<!-- Hidden Button -->
-		<control id="7" type="button">
-			<include>HiddenControl</include>
-		</control>
+ 		<control id="7" type="button">
+ 			<include>HiddenControl</include>
+ 		</control>
 		<control id="1" type="label">
 			<visible>false</visible>
 		</control>
@@ -59,6 +61,18 @@
 				<font>Bold30</font>
 				<textcolor>ffdadada</textcolor>
 				<label>$INFO[Control.GetLabel(1)]</label>
+				<visible>IsEmpty(Window(home).Property(LabelOverride))</visible>
+			</control>
+			<control type="label">
+				<left>40</left>
+				<top>14</top>
+				<height>30</height>
+				<width>878</width>
+				<aligny>center</aligny>
+				<font>Bold30</font>
+				<textcolor>ffdadada</textcolor>
+				<label>$INFO[Window(home).Property(LabelOverride)]</label>
+				<visible>!IsEmpty(Window(home).Property(LabelOverride))</visible>
 			</control>
 			<control type="label">
 				<right>520</right>
@@ -185,6 +199,18 @@
 				<font>Bold30</font>
 				<textcolor>ffdadada</textcolor>
 				<label>$INFO[Control.GetLabel(1)]</label>
+				<visible>IsEmpty(Window(home).Property(LabelOverride))</visible>
+			</control>
+			<control type="label">
+				<left>40</left>
+				<top>14</top>
+				<height>30</height>
+				<width>778</width>
+				<aligny>center</aligny>
+				<font>Bold30</font>
+				<textcolor>ffdadada</textcolor>
+				<label>$INFO[Window(home).Property(LabelOverride)]</label>
+				<visible>!IsEmpty(Window(home).Property(LabelOverride))</visible>
 			</control>
 			<control type="label">
 				<left>40</left>
