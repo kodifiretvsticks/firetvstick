@@ -125,10 +125,6 @@ elif action == 'movies':
 elif action == 'movieWidget':
     from resources.lib.indexers import movies
     movies.movies().widget()
-	
-elif action == 'movieFavourites':
-    from resources.lib.indexers import movies
-    movies.movies().favourites()
 
 elif action == 'movieSearch':
     from resources.lib.indexers import movies
@@ -165,10 +161,6 @@ elif action == 'channels':
 elif action == 'tvshows':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().get(url)
-	
-elif action == 'tvFavourites':
-    from resources.lib.indexers import tvshows
-    tvshows.tvshows().favourites()
 
 elif action == 'tvSearch':
     from resources.lib.indexers import tvshows
@@ -209,10 +201,6 @@ elif action == 'calendar':
 elif action == 'tvWidget':
     from resources.lib.indexers import episodes
     episodes.episodes().widget()
-	
-elif action == 'episodeFavourites':
-    from resources.lib.indexers import episodes
-    episodes.episodes().favourites()
 
 elif action == 'calendars':
     from resources.lib.indexers import episodes
@@ -262,14 +250,6 @@ elif action == 'clearCache':
     from resources.lib.modules import cache
     cache.clear()
 
-elif action == 'addFavourite':
-    from resources.lib.modules import favourites
-    favourites.addFavourite(meta, content, query)
-
-elif action == 'deleteFavourite':
-    from resources.lib.modules import favourites
-    favourites.deleteFavourite(meta, content)
-	
 elif action == 'addView':
     from resources.lib.modules import views
     views.addView(content)

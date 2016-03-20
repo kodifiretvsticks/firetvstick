@@ -1077,39 +1077,3 @@ msgstr "Downloading features are disabled by default."
 msgctxt "#30955"
 msgid "Set up your download folders in order to enable them."
 msgstr "Set up your download folders in order to enable them."
-
-msgctxt "#40411"
-msgid "Added to Favourites"
-msgstr "Added to Favourites"
-
-msgctxt "#40412"
-msgid "Removed from Favourites"
-msgstr "Removed from Favourites"
-
-msgctxt "#30040"
-msgid "Favourites"
-msgstr "Favourites"
-
-msgctxt "#30041"
-msgid "Favourites"
-msgstr "Favourites"
-
-msgctxt "#30042"
-msgid "Favourites"
-msgstr "Favourites"
-
-msgctxt "#30043"
-msgid "Favourite Episodes"
-msgstr "Favourite Episodes"
-
-msgctxt "#30099"
-msgid "Favourite Movies"
-msgstr "Favourite Movies"
-
-msgctxt "#30100"
-msgid "Favourite Episodes"
-msgstr "Favourite Episodes"
-
-msgctxt "#30101"
-msgid "Favourite TV"
-msgstr "Favourite TV"
