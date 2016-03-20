@@ -27,6 +27,7 @@ from resources.lib.modules import cleangenre
 from resources.lib.modules import control
 from resources.lib.modules import client
 from resources.lib.modules import cache
+from resources.lib.modules import favourites
 from resources.lib.modules import playcount
 from resources.lib.modules import workers
 from resources.lib.modules import views
@@ -393,6 +394,12 @@ class seasons:
         addonFanart, settingFanart = control.addonFanart(), control.setting('fanart')
         sysaddon = sys.argv[0]
 
+        try:
+            favitems = favourites.getFavourites('tvshows')
+            favitems = [i[0] for i in favitems]
+        except:
+            pass
+
 
         for i in items:
             try:
@@ -429,6 +436,9 @@ class seasons:
 
                 if traktCredentials == True:
                     cm.append((control.lang(30265).encode('utf-8'), 'RunPlugin(%s?action=traktManager&name=%s&tvdb=%s&content=tvshow)' % (sysaddon, sysname, tvdb)))
+
+                if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30266).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+                else: cm.append((control.lang(30267).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
 
                 cm.append((control.lang(30268).encode('utf-8'), 'RunPlugin(%s?action=trailer&name=%s)' % (sysaddon, sysname)))
                 cm.append((control.lang(30262).encode('utf-8'), 'Action(Info)'))
@@ -535,13 +545,39 @@ class episodes:
             setting = control.setting('tv.widget.alt')
         else:
             setting = control.setting('tv.widget')
-
+			
         if setting == '2':
-            self.calendar(self.progress_link)
+            self.favourites()
         elif setting == '3':
+            self.calendar(self.progress_link)
+        elif setting == '4':
             self.calendar(self.mycalendar_link)
         else:
             self.calendar(self.added_link)
+
+			
+    def favourites(self):
+        try:
+            favitems = favourites.getFavourites('tvshows')
+            favitems = [i[0] for i in favitems]
+
+            if len(favitems) == 0: raise Exception()
+
+            threads = []
+            def f(url): self.list += cache.get(self.trakt_list, 8760, url)
+            for i in range(1, 31):
+                url = self.calendar_link % ((self.datetime - datetime.timedelta(days = i)).strftime('%Y-%m-%d'), '1')
+                threads.append(workers.Thread(f, url))
+            [i.start() for i in threads]
+            [i.join() for i in threads]
+
+            self.list = [i for i in self.list if i['imdb'] in favitems or i['tvdb'] in favitems]
+            self.list = sorted(self.list, key=lambda k: k['premiered'], reverse=True)
+
+            self.episodeDirectory(self.list)
+            return self.list
+        except:
+            return
 
 
     def calendars(self):
@@ -1020,6 +1056,11 @@ class episodes:
         try: sysaction = items[0]['action']
         except: sysaction = ''
 
+        try:
+            favitems = favourites.getFavourites('tvshows')
+            favitems = [i[0] for i in favitems]
+        except:
+            pass
 
         for i in items:
             try:
@@ -1096,6 +1137,9 @@ class episodes:
                 cm.append((control.lang(30263).encode('utf-8'), 'RunPlugin(%s?action=episodePlaycount&imdb=%s&tvdb=%s&season=%s&episode=%s&query=7)' % (sysaddon, imdb, tvdb, season, episode)))
                 cm.append((control.lang(30264).encode('utf-8'), 'RunPlugin(%s?action=episodePlaycount&imdb=%s&tvdb=%s&season=%s&episode=%s&query=6)' % (sysaddon, imdb, tvdb, season, episode)))
 
+                if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30266).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+                else: cm.append((control.lang(30267).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+				
                 cm.append((control.lang(30273).encode('utf-8'), 'RunPlugin(%s?action=addView&content=episodes)' % sysaddon))
 
 

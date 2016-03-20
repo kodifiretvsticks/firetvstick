@@ -112,6 +112,7 @@ class navigator:
         if classicMenu == False and traktCredentials == True:
             self.addDirectoryItem(30039, 'movies&url=trakthistory', 'trakt.png', 'DefaultMovies.png', queue=True)
 
+        self.addDirectoryItem(30040, 'movieFavourites', 'movieFavourites.jpg', 'DefaultMovies.png')
         self.addDirectoryItem(30034, 'moviePerson', 'people-search.png', 'DefaultMovies.png')
         self.addDirectoryItem(30035, 'movieSearch', 'search.png', 'DefaultMovies.png')
 
@@ -159,6 +160,8 @@ class navigator:
         if classicMenu == False and traktCredentials == True:
             self.addDirectoryItem(30073, 'calendar&url=trakthistory', 'trakt.png', 'DefaultTVShows.png', queue=True)
 
+        self.addDirectoryItem(30043, 'episodeFavourites', 'tvFavourites.jpg', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem(30041, 'tvFavourites', 'tvFavourites.jpg', 'DefaultTVShows.png')
         self.addDirectoryItem(30065, 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
         self.addDirectoryItem(30066, 'tvSearch', 'search.png', 'DefaultTVShows.png')
 
@@ -194,6 +197,9 @@ class navigator:
             self.addDirectoryItem(30097, 'tvUserlists', 'userlists.png', 'DefaultTVShows.png')
             self.addDirectoryItem(30098, 'episodeUserlists', 'userlists.png', 'DefaultTVShows.png')
 
+        self.addDirectoryItem(30099, 'movieFavourites', 'movieFavourites.jpg', 'DefaultMovies.png')
+        self.addDirectoryItem(30100, 'episodeFavourites', 'tvFavourites.jpg', 'DefaultTVShows.png')
+        self.addDirectoryItem(30101, 'tvFavourites', 'tvFavourites.jpg', 'DefaultTVShows.png')
         self.endDirectory()
 
 

@@ -21,6 +21,9 @@
 
 import os,sys,re,json,urllib,urlparse,base64,datetime
 
+try: action = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))['action']
+except: action = None
+
 from resources.lib.modules import trakt
 from resources.lib.modules import cleantitle
 from resources.lib.modules import cleangenre
@@ -29,6 +32,7 @@ from resources.lib.modules import client
 from resources.lib.modules import cache
 from resources.lib.modules import metacache
 from resources.lib.modules import playcount
+from resources.lib.modules import favourites
 from resources.lib.modules import workers
 from resources.lib.modules import views
 
@@ -117,7 +121,36 @@ class tvshows:
         except:
             pass
 
+			
+    def favourites(self):
+        try:
+            items = favourites.getFavourites('tvshows')
+            self.list = [i[1] for i in items]
 
+            for i in self.list:
+                if not 'name' in i: i['name'] = i['title']
+                try: i['title'] = i['title'].encode('utf-8')
+                except: pass
+                try: i['name'] = i['name'].encode('utf-8')
+                except: pass
+                if not 'originaltitle' in i: i['originaltitle'] = i['title']
+                if not 'year' in i: i['year'] = '0'
+                if not 'duration' in i: i['duration'] = '0'
+                if not 'imdb' in i: i['imdb'] = '0'
+                if not 'tmdb' in i: i['tmdb'] = '0'
+                if not 'tvdb' in i: i['tvdb'] = '0'
+                if not 'tvrage' in i: i['tvrage'] = '0'
+                if not 'poster' in i: i['poster'] = '0'
+                if not 'banner' in i: i['banner'] = '0'
+                if not 'fanart' in i: i['fanart'] = '0'
+
+            self.worker()
+            self.list = sorted(self.list, key=lambda k: k['title'])
+            self.tvshowDirectory(self.list)
+        except:
+            return
+
+			
     def search(self, query=None):
         try:
             if not control.infoLabel('ListItem.Title') == '':
@@ -779,6 +812,12 @@ class tvshows:
         addonPoster, addonBanner = control.addonPoster(), control.addonBanner()
         addonFanart, settingFanart = control.addonFanart(), control.setting('fanart')
         sysaddon = sys.argv[0]
+		
+        try:
+            favitems = favourites.getFavourites('tvshows')
+            favitems = [i[0] for i in favitems]
+        except:
+            pass
 
         for i in items:
             try:
@@ -823,6 +862,15 @@ class tvshows:
                 if traktCredentials == True:
                     cm.append((control.lang(30236).encode('utf-8'), 'RunPlugin(%s?action=traktManager&name=%s&tvdb=%s&content=tvshow)' % (sysaddon, sysname, tvdb)))
 
+                if action == 'tvFavourites':
+                    cm.append((control.lang(30238).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+                elif action.startswith('tvSearch'):
+                    cm.append((control.lang(30237).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&query=0&content=tvshows)' % (sysaddon, sysmeta)))
+                else:
+                    if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30237).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+                    else: cm.append((control.lang(30238).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
+
+					
                 cm.append((control.lang(30242).encode('utf-8'), 'RunPlugin(%s?action=trailer&name=%s)' % (sysaddon, sysname)))
                 cm.append((control.lang(30233).encode('utf-8'), 'Action(Info)'))
                 cm.append((control.lang(30234).encode('utf-8'), 'RunPlugin(%s?action=tvPlaycount&name=%s&imdb=%s&tvdb=%s&query=7)' % (sysaddon, systitle, imdb, tvdb)))

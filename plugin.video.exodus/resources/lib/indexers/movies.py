@@ -30,6 +30,7 @@ from resources.lib.modules import control
 from resources.lib.modules import client
 from resources.lib.modules import cache
 from resources.lib.modules import metacache
+from resources.lib.modules import favourites
 from resources.lib.modules import playcount
 from resources.lib.modules import workers
 from resources.lib.modules import views
@@ -132,6 +133,34 @@ class movies:
             self.get(self.theaters_link)
         else:
             self.get(self.featured_link)
+
+
+    def favourites(self):
+        try:
+            items = favourites.getFavourites('movies')
+            self.list = [i[1] for i in items]
+
+            for i in self.list:
+                if not 'name' in i: i['name'] = '%s (%s)' % (i['title'], i['year'])
+                try: i['title'] = i['title'].encode('utf-8')
+                except: pass
+                try: i['name'] = i['name'].encode('utf-8')
+                except: pass
+                if not 'originaltitle' in i: i['originaltitle'] = i['title']
+                if not 'duration' in i: i['duration'] = '0'
+                if not 'imdb' in i: i['imdb'] = '0'
+                if not 'tmdb' in i: i['tmdb'] = '0'
+                if not 'tvdb' in i: i['tvdb'] = '0'
+                if not 'tvrage' in i: i['tvrage'] = '0'
+                if not 'poster' in i: i['poster'] = '0'
+                if not 'banner' in i: i['banner'] = '0'
+                if not 'fanart' in i: i['fanart'] = '0'
+
+            self.worker()
+            self.list = sorted(self.list, key=lambda k: k['title'])
+            self.movieDirectory(self.list)
+        except:
+            return
 
 
     def search(self, query=None):
@@ -810,6 +839,12 @@ class movies:
         addonFanart, settingFanart = control.addonFanart(), control.setting('fanart')
         sysaddon = sys.argv[0]
 
+        try:
+            favitems = favourites.getFavourites('movies')
+            favitems = [i[0] for i in favitems]
+        except:
+            pass
+		
         for i in items:
             try:
                 label = '%s (%s)' % (i['title'], i['year'])
@@ -865,6 +900,15 @@ class movies:
                 cm.append((control.lang(30205).encode('utf-8'), 'Action(Info)'))
                 cm.append((control.lang(30206).encode('utf-8'), 'RunPlugin(%s?action=moviePlaycount&imdb=%s&query=7)' % (sysaddon, imdb)))
                 cm.append((control.lang(30207).encode('utf-8'), 'RunPlugin(%s?action=moviePlaycount&imdb=%s&query=6)' % (sysaddon, imdb)))
+				
+                if action == 'movieFavourites':
+                    cm.append((control.lang(30210).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=movies)' % (sysaddon, sysmeta)))
+                elif action == 'movieSearch':
+                    cm.append((control.lang(30209).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&query=0&content=movies)' % (sysaddon, sysmeta)))
+                else:
+                    if not imdb in favitems: cm.append((control.lang(30209).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=movies)' % (sysaddon, sysmeta)))
+                    else: cm.append((control.lang(30210).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=movies)' % (sysaddon, sysmeta)))
+				
                 cm.append((control.lang(30212).encode('utf-8'), 'RunPlugin(%s?action=addView&content=movies)' % sysaddon))
 
 
