@@ -20,10 +20,8 @@
 
 
 import os,sys,re,json,urllib,urlparse,base64,datetime
-
 try: action = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))['action']
 except: action = None
-
 from resources.lib.modules import trakt
 from resources.lib.modules import cleantitle
 from resources.lib.modules import cleangenre
@@ -121,7 +119,7 @@ class tvshows:
         except:
             pass
 
-			
+            
     def favourites(self):
         try:
             items = favourites.getFavourites('tvshows')
@@ -153,6 +151,9 @@ class tvshows:
 			
     def search(self, query=None):
         try:
+            if control.infoLabel('Container.PluginName') == '':
+                return control.dialog.ok('Exodus', control.lang(30518).encode('utf-8'), '', '')
+
             if not control.infoLabel('ListItem.Title') == '':
                 self.query = control.window.getProperty('%s.tvshow.search' % control.addonInfo('id'))
 
@@ -818,7 +819,6 @@ class tvshows:
             favitems = [i[0] for i in favitems]
         except:
             pass
-
         for i in items:
             try:
                 label = i['title']
@@ -869,8 +869,6 @@ class tvshows:
                 else:
                     if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30237).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
                     else: cm.append((control.lang(30238).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
-
-					
                 cm.append((control.lang(30242).encode('utf-8'), 'RunPlugin(%s?action=trailer&name=%s)' % (sysaddon, sysname)))
                 cm.append((control.lang(30233).encode('utf-8'), 'Action(Info)'))
                 cm.append((control.lang(30234).encode('utf-8'), 'RunPlugin(%s?action=tvPlaycount&name=%s&imdb=%s&tvdb=%s&query=7)' % (sysaddon, systitle, imdb, tvdb)))

@@ -52,9 +52,14 @@ class seasons:
 
     def get(self, tvshowtitle, year, imdb, tvdb, idx=True):
         if idx == True:
-            self.list = cache.get(self.tvdb_list, 24, tvshowtitle, year, imdb, tvdb, self.lang)
-            self.seasonDirectory(self.list)
-            return self.list
+            if control.setting('flatten.tvshows') == 'true' or control.window.getProperty('PseudoTVRunning') == 'True':
+                self.list = cache.get(self.tvdb_list, 1, tvshowtitle, year, imdb, tvdb, self.lang, '-1')
+                episodes().episodeDirectory(self.list)
+                return self.list
+            else:
+                self.list = cache.get(self.tvdb_list, 24, tvshowtitle, year, imdb, tvdb, self.lang)
+                self.seasonDirectory(self.list)
+                return self.list
         else:
             self.list = self.tvdb_list(tvshowtitle, year, imdb, tvdb, 'en')
             return self.list
@@ -399,8 +404,6 @@ class seasons:
             favitems = [i[0] for i in favitems]
         except:
             pass
-
-
         for i in items:
             try:
                 label = '%s %s' % (control.lang(30275).encode('utf-8'), i['season'])
@@ -439,7 +442,6 @@ class seasons:
 
                 if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30266).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
                 else: cm.append((control.lang(30267).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
-
                 cm.append((control.lang(30268).encode('utf-8'), 'RunPlugin(%s?action=trailer&name=%s)' % (sysaddon, sysname)))
                 cm.append((control.lang(30262).encode('utf-8'), 'Action(Info)'))
                 cm.append((control.lang(30263).encode('utf-8'), 'RunPlugin(%s?action=tvPlaycount&name=%s&imdb=%s&tvdb=%s&season=%s&query=7)' % (sysaddon, systitle, imdb, tvdb, season)))
@@ -491,7 +493,7 @@ class episodes:
         self.tvdb_poster = 'http://thetvdb.com/banners/_cache/'
 
         self.added_link = 'http://api-v2launch.trakt.tv/calendars/all/shows/date[6]/7/'
-        self.mycalendar_link = 'http://api-v2launch.trakt.tv/calendars/my/shows/date[59]/60/'
+        self.mycalendar_link = 'http://api-v2launch.trakt.tv/calendars/my/shows/date[29]/60/'
         self.trakthistory_link = 'http://api-v2launch.trakt.tv/users/%s/history/shows?limit=300' % self.trakt_user
         self.progress_link = 'http://api-v2launch.trakt.tv/users/%s/watched/shows' % self.trakt_user
         self.calendar_link = 'http://api-v2launch.trakt.tv/calendars/all/shows/%s/%s'
@@ -545,12 +547,13 @@ class episodes:
             setting = control.setting('tv.widget.alt')
         else:
             setting = control.setting('tv.widget')
-			
+
         if setting == '2':
             self.favourites()
         elif setting == '3':
             self.calendar(self.progress_link)
         elif setting == '4':
+
             self.calendar(self.mycalendar_link)
         else:
             self.calendar(self.added_link)
@@ -578,8 +581,6 @@ class episodes:
             return self.list
         except:
             return
-
-
     def calendars(self):
         map = [(30521, 'Monday'), (30522, 'Tuesday'), (30523, 'Wednesday'), (30524, 'Thursday'), (30525, 'Friday'), (30526, 'Saturday'), (30527, 'Sunday'), (30528, 'January'), (30529, 'February'), (30530, 'March'), (30531, 'April'), (30532, 'May'), (30533, 'June'), (30534, 'July'), (30535, 'August'), (30536, 'September'), (30537, 'October'), (30538, 'November'), (30539, 'December')]
 

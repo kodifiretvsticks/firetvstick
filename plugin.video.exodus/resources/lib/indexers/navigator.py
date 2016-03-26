@@ -159,7 +159,6 @@ class navigator:
 
         if classicMenu == False and traktCredentials == True:
             self.addDirectoryItem(30073, 'calendar&url=trakthistory', 'trakt.png', 'DefaultTVShows.png', queue=True)
-
         self.addDirectoryItem(30043, 'episodeFavourites', 'tvFavourites.jpg', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem(30041, 'tvFavourites', 'tvFavourites.jpg', 'DefaultTVShows.png')
         self.addDirectoryItem(30065, 'tvPerson', 'people-search.png', 'DefaultTVShows.png')

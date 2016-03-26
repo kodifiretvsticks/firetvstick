@@ -269,7 +269,6 @@ elif action == 'addFavourite':
 elif action == 'deleteFavourite':
     from resources.lib.modules import favourites
     favourites.deleteFavourite(meta, content)
-	
 elif action == 'addView':
     from resources.lib.modules import views
     views.addView(content)

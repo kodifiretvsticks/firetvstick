@@ -133,8 +133,8 @@ class movies:
             self.get(self.theaters_link)
         else:
             self.get(self.featured_link)
-
-
+            
+            
     def favourites(self):
         try:
             items = favourites.getFavourites('movies')
@@ -161,10 +161,11 @@ class movies:
             self.movieDirectory(self.list)
         except:
             return
-
-
     def search(self, query=None):
         try:
+            if control.infoLabel('Container.PluginName') == '':
+                return control.dialog.ok('Exodus', control.lang(30518).encode('utf-8'), '', '')
+
             if not control.infoLabel('ListItem.Title') == '':
                 self.query = control.window.getProperty('%s.movie.search' % control.addonInfo('id'))
 
@@ -844,7 +845,7 @@ class movies:
             favitems = [i[0] for i in favitems]
         except:
             pass
-		
+	
         for i in items:
             try:
                 label = '%s (%s)' % (i['title'], i['year'])
@@ -866,6 +867,8 @@ class movies:
                 try: meta.update({'duration': str(int(meta['duration']) * 60)})
                 except: pass
                 try: meta.update({'genre': cleangenre.lang(meta['genre'], self.lang)})
+                except: pass
+                try: del meta['tagline']
                 except: pass
                 sysmeta = urllib.quote_plus(json.dumps(meta))
 
@@ -908,7 +911,6 @@ class movies:
                 else:
                     if not imdb in favitems: cm.append((control.lang(30209).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=movies)' % (sysaddon, sysmeta)))
                     else: cm.append((control.lang(30210).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=movies)' % (sysaddon, sysmeta)))
-				
                 cm.append((control.lang(30212).encode('utf-8'), 'RunPlugin(%s?action=addView&content=movies)' % sysaddon))
 
 
