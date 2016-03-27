@@ -18,9 +18,10 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.exodus" version="1.2.2" name="Exodus" provider-name="Exodus">
+<addon id="plugin.video.exodus" version="1.2.2" name="Exodus" provider-name="Dynamic Robotics">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="repository.exodus" version="1.0.0" />
 		<import addon="script.exodus.artwork" version="1.0.1" />
 		<import addon="script.module.urlresolver" version="2.10.11"/>
 		<import addon="script.module.metahandler" version="1.0.0" />
@@ -30,7 +31,7 @@
 		<provides>video</provides>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Exodus</summary>
+		<summary lang="en">Exodus w/Faves</summary>
 		<description lang="en">Please visit www.tvaddons.ag for Exodus support and assistance! Kindly note that Exodus is not an official part of the media player you are running, and therefore not to be mentioned within official support channels, this addon has nothing to do with the media player itself, nor itâ€™s intended use, it is simply a third party plugin which has been added to your system.</description>
 		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
 		<platform>all</platform>
@@ -77,8 +78,26 @@
   </extension>
 </addon>
 
-<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.6" provider-name="John">
-	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
+<addon id="repository.exodus" version="1.0.2" name="Exodus repository" provider-name="John">
+	<extension point="xbmc.addon.repository" name="Exodus repository">
+		<dir>
+			<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
+			<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+		</dir>
+		<info compressed="false">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Exodus repository</summary>
+		<description lang="en">Exodus repository</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.7" provider-name="John">
+	<extension point="xbmc.addon.repository" name="Fire TV Stick Add-on Repository">
 		<info compressed="false">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/zips</datadir>
@@ -87,6 +106,33 @@
 		<summary>Fire TV Stick Repository</summary>
 		<description>This is where we update the addons that are maintained by us</description>
 		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.tva.common" name="TVADDONS.ag Libraries Repository" version="1.0.1" provider-name="tvaddons.ag">
+    <extension point="xbmc.addon.repository" name="TVADDONS.ag Libraries Repository">
+        <info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
+        <checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Faster Updating of Common Libraries for Kodi</summary>
+        <description>This repository contains intermediate builds of libraries commonly used by TVAddons Kodi addons, Brought to you by TVADDONS.ag</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="script.exodus.artwork" version="1.0.2" name="Exodus Artwork" provider-name="Exodus">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Exodus Addon</summary>
+		<description>Themes for Exodus are maintained separately to make distribution of the the addon itself easier/faster.</description>
 		<platform>all</platform>
 	</extension>
 </addon>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.6" provider-name="John">
-	<extension point="xbmc.addon.repository" name="Demonstration Add-on Repository">
+<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.7" provider-name="John">
+	<extension point="xbmc.addon.repository" name="Fire TV Stick Add-on Repository">
 		<info compressed="false">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml.md5</checksum>
 		<datadir zip="true">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/zips</datadir>
