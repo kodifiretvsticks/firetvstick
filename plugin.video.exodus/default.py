@@ -165,7 +165,6 @@ elif action == 'channels':
 elif action == 'tvshows':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().get(url)
-	
 elif action == 'tvFavourites':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().favourites()
@@ -209,7 +208,6 @@ elif action == 'calendar':
 elif action == 'tvWidget':
     from resources.lib.indexers import episodes
     episodes.episodes().widget()
-	
 elif action == 'episodeFavourites':
     from resources.lib.indexers import episodes
     episodes.episodes().favourites()

@@ -404,6 +404,7 @@ class seasons:
             favitems = [i[0] for i in favitems]
         except:
             pass
+
         for i in items:
             try:
                 label = '%s %s' % (control.lang(30275).encode('utf-8'), i['season'])
@@ -473,7 +474,7 @@ class seasons:
 
         control.content(int(sys.argv[1]), 'seasons')
         control.directory(int(sys.argv[1]), cacheToDisc=True)
-        views.setView('seasons', {'skin.confluence': 500})
+        views.setView('seasons', {'skin.estuary': 50, 'skin.confluence': 500})
 
 
 class episodes:
@@ -485,7 +486,7 @@ class episodes:
         self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours = 5))
         self.systime = (self.datetime).strftime('%Y%m%d%H%M%S%f')
         self.today_date = (self.datetime).strftime('%Y-%m-%d')
-        self.trakt_user = re.sub('[^a-z0-9]', '-', control.setting('trakt.user').strip().lower())
+        self.trakt_user = control.setting('trakt.user').strip()
         self.lang = control.apiLanguage()['tvdb']
 
         self.tvdb_info_link = 'http://thetvdb.com/api/%s/series/%s/all/%s.zip' % (self.tvdb_key, '%s', '%s')
@@ -494,10 +495,10 @@ class episodes:
 
         self.added_link = 'http://api-v2launch.trakt.tv/calendars/all/shows/date[6]/7/'
         self.mycalendar_link = 'http://api-v2launch.trakt.tv/calendars/my/shows/date[29]/60/'
-        self.trakthistory_link = 'http://api-v2launch.trakt.tv/users/%s/history/shows?limit=300' % self.trakt_user
-        self.progress_link = 'http://api-v2launch.trakt.tv/users/%s/watched/shows' % self.trakt_user
+        self.trakthistory_link = 'http://api-v2launch.trakt.tv/users/me/history/shows?limit=300'
+        self.progress_link = 'http://api-v2launch.trakt.tv/users/me/watched/shows'
         self.calendar_link = 'http://api-v2launch.trakt.tv/calendars/all/shows/%s/%s'
-        self.traktlists_link = 'http://api-v2launch.trakt.tv/users/%s/lists' % self.trakt_user
+        self.traktlists_link = 'http://api-v2launch.trakt.tv/users/me/lists'
         self.traktlikedlists_link = 'http://api-v2launch.trakt.tv/users/likes/lists?limit=1000000'
         self.traktlist_link = 'http://api-v2launch.trakt.tv/users/%s/lists/%s/items'
 
@@ -527,14 +528,14 @@ class episodes:
             except: pass
 
             if url in self.progress_link:
-                self.blist = cache.get(self.trakt_progress_list, 720, url, self.lang)
+                self.blist = cache.get(self.trakt_progress_list, 720, url, self.trakt_user, self.lang)
                 self.list = []
-                self.list = cache.get(self.trakt_progress_list, 0, url, self.lang)
+                self.list = cache.get(self.trakt_progress_list, 0, url, self.trakt_user, self.lang)
             elif '/users/' in url:
-                self.list = cache.get(self.trakt_list, 0, url)
+                self.list = cache.get(self.trakt_list, 0, url, self.trakt_user)
                 self.list = self.list[::-1]
             else:
-                self.list = cache.get(self.trakt_list, 1, url)
+                self.list = cache.get(self.trakt_list, 1, url, self.trakt_user)
 
             self.episodeDirectory(self.list)
             return self.list
@@ -549,6 +550,7 @@ class episodes:
             setting = control.setting('tv.widget')
 
         if setting == '2':
+
             self.favourites()
         elif setting == '3':
             self.calendar(self.progress_link)
@@ -612,20 +614,20 @@ class episodes:
         try:
             if trakt.getTraktCredentialsInfo() == False: raise Exception()
             try:
-                if activity > cache.timeout(self.trakt_user_list, self.traktlists_link): raise Exception()
-                userlists += cache.get(self.trakt_user_list, 720, self.traktlists_link)
+                if activity > cache.timeout(self.trakt_user_list, self.traktlists_link, self.trakt_user): raise Exception()
+                userlists += cache.get(self.trakt_user_list, 720, self.traktlists_link, self.trakt_user)
             except:
-                userlists += cache.get(self.trakt_user_list, 0, self.traktlists_link)
+                userlists += cache.get(self.trakt_user_list, 0, self.traktlists_link, self.trakt_user)
         except:
             pass
         try:
             self.list = []
             if trakt.getTraktCredentialsInfo() == False: raise Exception()
             try:
-                if activity > cache.timeout(self.trakt_user_list, self.traktlikedlists_link): raise Exception()
-                userlists += cache.get(self.trakt_user_list, 720, self.traktlikedlists_link)
+                if activity > cache.timeout(self.trakt_user_list, self.traktlikedlists_link, self.trakt_user): raise Exception()
+                userlists += cache.get(self.trakt_user_list, 720, self.traktlikedlists_link, self.trakt_user)
             except:
-                userlists += cache.get(self.trakt_user_list, 0, self.traktlikedlists_link)
+                userlists += cache.get(self.trakt_user_list, 0, self.traktlikedlists_link, self.trakt_user)
         except:
             pass
 
@@ -635,7 +637,7 @@ class episodes:
         return self.list
 
 
-    def trakt_list(self, url):
+    def trakt_list(self, url, user):
         try:
             for i in re.findall('date\[(\d+)\]', url):
                 url = url.replace('date[%s]' % i, (self.datetime - datetime.timedelta(days = int(i))).strftime('%Y-%m-%d'))
@@ -769,7 +771,7 @@ class episodes:
         return itemlist
 
 
-    def trakt_progress_list(self, url, lang):
+    def trakt_progress_list(self, url, user, lang):
         try:
             url += '?extended=full'
             result = trakt.getTrakt(url)
@@ -1004,7 +1006,7 @@ class episodes:
         return self.list
 
 
-    def trakt_user_list(self, url):
+    def trakt_user_list(self, url, user):
         try:
             result = trakt.getTrakt(url)
             items = json.loads(result)
@@ -1013,14 +1015,14 @@ class episodes:
 
         for item in items:
             try:
-                try: item = item['list']
-                except: pass
-
-                name = item['name']
+                try: name = item['list']['name']
+                except: name = item['name']
                 name = client.replaceHTMLCodes(name)
                 name = name.encode('utf-8')
 
-                url = self.traktlist_link % (item['user']['username'].strip(), item['ids']['slug'])
+                try: url = (trakt.slug(item['list']['user']['username']), item['list']['ids']['slug'])
+                except: url = ('me', item['ids']['slug'])
+                url = self.traktlist_link % url
                 url = url.encode('utf-8')
 
                 self.list.append({'name': name, 'url': url, 'context': url})
@@ -1140,7 +1142,6 @@ class episodes:
 
                 if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30266).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
                 else: cm.append((control.lang(30267).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
-				
                 cm.append((control.lang(30273).encode('utf-8'), 'RunPlugin(%s?action=addView&content=episodes)' % sysaddon))
 
 
@@ -1167,7 +1168,7 @@ class episodes:
 
         control.content(int(sys.argv[1]), 'episodes')
         control.directory(int(sys.argv[1]), cacheToDisc=cacheToDisc)
-        views.setView('episodes', {'skin.confluence': 504})
+        views.setView('episodes', {'skin.estuary': 50, 'skin.confluence': 504})
 
 
     def addDirectory(self, items, queue=False):
