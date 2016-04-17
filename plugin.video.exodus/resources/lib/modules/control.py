@@ -22,7 +22,7 @@
 import os,xbmc,xbmcaddon,xbmcplugin,xbmcgui,xbmcvfs
 
 
-integer = 1
+integer = 1000
 
 lang = xbmcaddon.Addon().getLocalizedString
 
@@ -95,7 +95,6 @@ dataPath = xbmc.translatePath(addonInfo('profile')).decode('utf-8')
 settingsFile = os.path.join(dataPath, 'settings.xml')
 
 favouritesFile = os.path.join(dataPath, 'favourites.db')
-
 viewsFile = os.path.join(dataPath, 'views.db')
 
 bookmarksFile = os.path.join(dataPath, 'bookmarks.db')

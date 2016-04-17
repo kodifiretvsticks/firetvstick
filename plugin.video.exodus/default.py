@@ -122,10 +122,13 @@ elif action == 'movies':
     from resources.lib.indexers import movies
     movies.movies().get(url)
 
+elif action == 'moviePage':
+    from resources.lib.indexers import movies
+    movies.movies().get(url)
+
 elif action == 'movieWidget':
     from resources.lib.indexers import movies
     movies.movies().widget()
-	
 elif action == 'movieFavourites':
     from resources.lib.indexers import movies
     movies.movies().favourites()
@@ -165,9 +168,14 @@ elif action == 'channels':
 elif action == 'tvshows':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().get(url)
-elif action == 'tvFavourites':
+
+elif action == 'tvshowPage':
     from resources.lib.indexers import tvshows
-    tvshows.tvshows().favourites()
+    tvshows.tvshows().get(url)
+
+if action == 'tvFavourites':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().favourites()	
 
 elif action == 'tvSearch':
     from resources.lib.indexers import tvshows
@@ -211,7 +219,6 @@ elif action == 'tvWidget':
 elif action == 'episodeFavourites':
     from resources.lib.indexers import episodes
     episodes.episodes().favourites()
-
 elif action == 'calendars':
     from resources.lib.indexers import episodes
     episodes.episodes().calendars()

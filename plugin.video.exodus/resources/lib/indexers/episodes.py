@@ -395,6 +395,9 @@ class seasons:
 
         traktCredentials = trakt.getTraktCredentialsInfo()
 
+        try: indicators = playcount.getSeasonIndicators(items[0]['imdb'])
+        except: pass
+
         addonPoster, addonBanner = control.addonPoster(), control.addonBanner()
         addonFanart, settingFanart = control.addonFanart(), control.setting('fanart')
         sysaddon = sys.argv[0]
@@ -433,6 +436,14 @@ class seasons:
 
                 url = '%s?action=episodes&tvshowtitle=%s&year=%s&imdb=%s&tvdb=%s&season=%s' % (sysaddon, systitle, year, imdb, tvdb, season)
 
+
+                try:
+                    if season in indicators: meta.update({'playcount': 1, 'overlay': 7})
+                    else: meta.update({'playcount': 0, 'overlay': 6})
+                except:
+                    pass
+
+
                 cm = []
 
                 if isFolder == False:
@@ -440,7 +451,6 @@ class seasons:
 
                 if traktCredentials == True:
                     cm.append((control.lang(30265).encode('utf-8'), 'RunPlugin(%s?action=traktManager&name=%s&tvdb=%s&content=tvshow)' % (sysaddon, sysname, tvdb)))
-
                 if not imdb in favitems and not tvdb in favitems: cm.append((control.lang(30266).encode('utf-8'), 'RunPlugin(%s?action=addFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
                 else: cm.append((control.lang(30267).encode('utf-8'), 'RunPlugin(%s?action=deleteFavourite&meta=%s&content=tvshows)' % (sysaddon, sysmeta)))
                 cm.append((control.lang(30268).encode('utf-8'), 'RunPlugin(%s?action=trailer&name=%s)' % (sysaddon, sysname)))
@@ -550,6 +560,7 @@ class episodes:
             setting = control.setting('tv.widget')
 
         if setting == '2':
+
 
             self.favourites()
         elif setting == '3':
@@ -1043,7 +1054,7 @@ class episodes:
 
         traktCredentials = trakt.getTraktCredentialsInfo()
 
-        indicators = playcount.getTVShowIndicators()
+        indicators = playcount.getTVShowIndicators(refresh=True)
 
         cacheToDisc = False
 
