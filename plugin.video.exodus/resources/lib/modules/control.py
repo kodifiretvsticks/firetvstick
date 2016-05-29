@@ -95,6 +95,7 @@ dataPath = xbmc.translatePath(addonInfo('profile')).decode('utf-8')
 settingsFile = os.path.join(dataPath, 'settings.xml')
 
 favouritesFile = os.path.join(dataPath, 'favourites.db')
+
 viewsFile = os.path.join(dataPath, 'views.db')
 
 bookmarksFile = os.path.join(dataPath, 'bookmarks.db')

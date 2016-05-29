@@ -87,7 +87,7 @@ class source:
                 query = self.search_link % urllib.quote_plus(query)
                 query = urlparse.urljoin(self.base_link, query)
 
-                result += str(client.source(query))
+                result += str(client.request(query))
 
 
             query = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
@@ -95,7 +95,7 @@ class source:
             query = self.search_link % urllib.quote_plus(query)
             query = urlparse.urljoin(self.base_link, query)
 
-            result += str(client.source(query))
+            result += str(client.request(query))
 
 
             posts = client.parseDOM(result, 'div', attrs = {'class': 'entry post'})
@@ -189,7 +189,7 @@ class source:
                     if i['cat'] == 'tvshow':
                         if not i['quality'] in ['1080p', 'HD']: raise Exception()
                         if not any(i['host'].lower() in x for x in hostprDict): raise Exception()
-                        url = client.source(url)
+                        url = client.request(url)
                         url = client.parseDOM(url, 'ol')[0]
                         url = client.parseDOM(url, 'div', attrs = {'style': '.+?'})[int(data['episode'])-1]
 
@@ -198,7 +198,7 @@ class source:
                     host = client.replaceHTMLCodes(host)
                     host = host.encode('utf-8')
 
-                    sources.append({'source': host, 'quality': i['quality'], 'provider': 'rlsBB', 'url': url, 'info': i['info'], 'direct': False, 'debridonly': True})
+                    sources.append({'source': host, 'quality': i['quality'], 'provider': 'releaseBB', 'url': url, 'info': i['info'], 'direct': False, 'debridonly': True})
                 except:
                     pass
 
