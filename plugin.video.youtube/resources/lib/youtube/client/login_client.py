@@ -1,19 +1,31 @@
 __author__ = 'bromix'
 
+import xbmcaddon
 import time
 import urlparse
-import xbmc
 
+from random import randint
 from resources.lib.kodion import simple_requests as requests
 from resources.lib.youtube.youtube_exceptions import LoginException
+from resources.lib.youtube.helper.yt_change_api import Change_API
 
-# Kodi 17 support and API keys by Uukrul
-def log_error(text):
-    xbmc.log('YouTube login_client.py - %s' % (text),xbmc.LOGERROR)
+addon = xbmcaddon.Addon()
+api = Change_API()
+if addon.getSetting('youtube.api.lastused.last_login') == '':
+    api.new_login()
+    pass
+
+api_last_login = addon.getSetting('youtube.api.lastused.last_login')
+api_error = addon.getSetting('youtube.api.lastused.error')
+api_secret = api.get_api_secret(api_error, api_last_login)
+api_key = api.get_api_key(api_error, api_last_login)
+api_id = api.get_api_id(api_error, api_last_login)
+
+# Kodi 17 support by Uukrul
 
 class LoginClient(object):
     CONFIGS = {
-        'youtube-tv': {
+         'youtube-tv': {
             'system': 'All',
             'key': 'AIzaSyAd-YEOqZz9nXVzGtn3KWzYLbLaajhqIDA',
             'id': '861556708454-d6dlm3lh05idd8npek18k6be8ba3oc68.apps.googleusercontent.com',
@@ -23,56 +35,57 @@ class LoginClient(object):
         'youtube-for-kodi-quota': {
             'token-allowed': False,
             'system': 'All',
-            'key': 'AIzaSyBhQvk9fuc6y_0_vdOJn3g5HiGugplyUwg',
-            'id': '1027139679087-8odn2pq90u92qnna7h7j16lp80pabjfq.apps.googleusercontent.com',
-            'secret': 'Z750d1Cs4OtBgwlPOBraz-8u'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-fallback': {
             'token-allowed': False,
             'system': 'Fallback!',
-            'key': 'AIzaSyDXacvXHzPce8UJPK_SJXkvGVS2sjw5ngc',
-            'id': '932124282136-1h2fg2a2bfahpkvbg8nk05injmcm60ao.apps.googleusercontent.com',
-            'secret': 'Z9ctN0RAzB2w0sWuDFnGiLH2'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-12': {
             'system': 'Frodo',
-            'key': 'AIzaSyAtSGFXt7PierQaetyz_zawg6SiMQbEoLU',
-            'id': '132924520075-4bfjom7ig91dgaum22gnnqs54o0pm3cr.apps.googleusercontent.com',
-            'secret': 'UGiB-A2ti-QbrWWeW1ijZaBy'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-13': {
             'system': 'Gotham',
-            'key': 'AIzaSyCmGt3h1JNxoToALdQTECpK5V5dUQXZh8I',
-            'id': '566042245832-qo8a0d9gag422gb2qqneb9k38t1qmi0k.apps.googleusercontent.com',
-            'secret': '5PbZ5SXOQmn95V-oRONbVXxO'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-14': {
             'system': 'Helix',
-            'key': 'AIzaSyDoGc3e7QRlWAn6ukQFoezx3uU2GAynYEI',
-            'id': '679912363153-72r33u32en0k2htqqvrdtt1mt4km013d.apps.googleusercontent.com',
-            'secret': 'GVWjcVQ4q-wKqcqdCrAvdZhM'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-15': {
             'system': 'Isengard',
-            'key': 'AIzaSyA5DyO2a9ThpAgQxwVH64Q6MFjgyn5OCdI',
-            'id': '939835029889-8ipk31auh8snah3ned7t1eqsqeqags4a.apps.googleusercontent.com',
-            'secret': '_9TDAhqdbg-6Fl5_1z1S0ghh'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
         'youtube-for-kodi-16': {
             'system': 'Jarvis',
-            'key': 'AIzaSyB4Wy7VEoCvtcgReJCzKKAZCP1aZyvjuWo',
-            'id': '826708200151-iqi7ovuv4bg3guinsladtd9tq7h08rcb.apps.googleusercontent.com',
-            'secret': '78EjmWrQOWfK5GaCxqe4Tx4w'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         },
-        'youtube-for-kodi-17': {
+            'youtube-for-kodi-17': {
             'system': 'Krypton',
-            'key': 'AIzaSyCf60r8v8K8isYOt4pfcLfAOgyaiOl2gQM',
-            'id': '876361093606-df4dudti2a3j7pksvuvqibr1kmtb7607.apps.googleusercontent.com',
-            'secret': 'mJlpCXQUjKwxQ5KLihh7uJBo'
+            'key': '%s' % api_key,
+            'id': '%s.apps.googleusercontent.com' % api_id,
+            'secret': '%s' % api_secret
         }
     }
-
-    def __init__(self, config={}, language='en-US', access_token='', access_token_tv=''):
+    
+    def __init__(self, config={}, language='en-US', region='', access_token='', access_token_tv=''):
+       
         if not config:
             config = self.CONFIGS['youtube-for-kodi-fallback']
             pass
@@ -86,13 +99,9 @@ class LoginClient(object):
             pass
 
         language = language.replace('-', '_')
-        language_components = language.split('_')
-        if len(language_components) != 2:
-            language = 'en_US'
-            pass
 
         self._language = language
-        self._country = language.split('_')[1]
+        self._region = region
         self._access_token = access_token
         self._access_token_tv = access_token_tv
         self._log_error_callback = None
@@ -111,7 +120,7 @@ class LoginClient(object):
             pass
         pass
 
-    def revoke(self, refresh_token):
+    def revoke(self, refresh_token, context):
         headers = {'Host': 'www.youtube.com',
                    'Connection': 'keep-alive',
                    'Origin': 'https://www.youtube.com',
@@ -130,7 +139,7 @@ class LoginClient(object):
 
         result = requests.post(url, data=post_data, headers=headers, verify=False)
         if result.status_code != requests.codes.ok:
-            log_error('revoke')
+            context.log_debug('Request answer: %s' % result.text)
             raise LoginException('Logout Failed')
 
         pass
@@ -171,7 +180,6 @@ class LoginClient(object):
 
         result = requests.post(url, data=post_data, headers=headers, verify=False)
         if result.status_code != requests.codes.ok:
-            log_error('refresh_token')
             raise LoginException('Login Failed')
 
         if result.headers.get('content-type', '').startswith('application/json'):
@@ -182,12 +190,12 @@ class LoginClient(object):
 
         return '', ''
 
-    def get_device_token_tv(self, code, client_id='', client_secret='', grant_type=''):
+    def get_device_token_tv(self, code, context, client_id='', client_secret='', grant_type=''):
         client_id = self.CONFIGS['youtube-tv']['id']
         client_secret = self.CONFIGS['youtube-tv']['secret']
-        return self.get_device_token(code, client_id=client_id, client_secret=client_secret, grant_type=grant_type)
+        return self.get_device_token(code, context, client_id=client_id, client_secret=client_secret, grant_type=grant_type)
 
-    def get_device_token(self, code, client_id='', client_secret='', grant_type=''):
+    def get_device_token(self, code, context, client_id='', client_secret='', grant_type=''):
         headers = {'Host': 'www.youtube.com',
                    'Connection': 'keep-alive',
                    'Origin': 'https://www.youtube.com',
@@ -217,7 +225,7 @@ class LoginClient(object):
 
         result = requests.post(url, data=post_data, headers=headers, verify=False)
         if result.status_code != requests.codes.ok:
-            log_error('get_device_token')
+            context.log_debug('Request answer: %s' % result.text)
             raise LoginException('Login Failed')
 
         if result.headers.get('content-type', '').startswith('application/json'):
@@ -225,11 +233,11 @@ class LoginClient(object):
 
         return None
 
-    def generate_user_code_tv(self):
+    def generate_user_code_tv(self, context):
         client_id = self.CONFIGS['youtube-tv']['id']
-        return self.generate_user_code(client_id=client_id)
+        return self.generate_user_code(context, client_id=client_id)
 
-    def generate_user_code(self, client_id=''):
+    def generate_user_code(self, context, client_id=''):
         headers = {'Host': 'www.youtube.com',
                    'Connection': 'keep-alive',
                    'Origin': 'https://www.youtube.com',
@@ -253,7 +261,7 @@ class LoginClient(object):
 
         result = requests.post(url, data=post_data, headers=headers, verify=False)
         if result.status_code != requests.codes.ok:
-            log_error(result.text)
+            context.log_debug('Request answer: %s' % result.text)
             raise LoginException('Login Failed')
 
         if result.headers.get('content-type', '').startswith('application/json'):
@@ -273,8 +281,8 @@ class LoginClient(object):
                    'Connection': 'Keep-Alive',
                    'Accept-Encoding': 'gzip'}
 
-        post_data = {'device_country': self._country.lower(),
-                     'operatorCountry': self._country.lower(),
+        post_data = {'device_country': self._region.lower(),
+                     'operatorCountry': self._region.lower(),
                      'lang': self._language.replace('-', '_'),
                      'sdk_version': '19',
                      # 'google_play_services_version': '6188034',
@@ -294,7 +302,6 @@ class LoginClient(object):
 
         result = requests.post(url, data=post_data, headers=headers, verify=False)
         if result.status_code != requests.codes.ok:
-            log_error('authenticate')
             raise LoginException('Login Failed')
 
         lines = result.text.replace('\n', '&')
