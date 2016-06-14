@@ -33,7 +33,7 @@ PATH = "Fire TV Updater"
 
 
 def MainMenu():
-    addFolder('folder', '[COLOR orangered][B]Fire TV Builds[/COLOR][/B]', 'fanart', 'FireTVBuildMenu',
+    addFolder('folder', '[COLOR orangered][B]Fire TV Updates[/COLOR][/B]', 'fanart', 'FireTVBuildMenu',
               'firetvbuilds.png', '', '', '')
     addFolder('folder', '[COLOR orangered][B]Extra Addons and Fixes[/COLOR][/B]', 'fanart', 'FixesMenu',
               'Generalmaintenance.png', '', '', '')

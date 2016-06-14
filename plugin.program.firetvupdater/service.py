@@ -31,15 +31,15 @@ for line in vers:
                 for newversion in match:
                     if newversion > vernumber:
                         yes_pressed = xbmcgui.Dialog().yesno("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
-                                                             '                    [COLOR lime]There is a new update!![/COLOR]',
+                                                             '[COLOR lime]There is a new update!![/COLOR]',
                                                              '[COLOR snow]Would you like to install the latest build?[/COLOR]',
                                                              '', yeslabel='YES', nolabel='LATER')
                         if yes_pressed:
                             dialog.ok('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]',
-                                      '[COLOR snow]a FRESH START is required for the update... Run the FRESH START in the NEXT WINDOW then INSTALL the new build version[/COLOR]',
+                                      '[COLOR snow]Please goto Fire TV Updates and select your update. Remember to unplug the power from the device at the end of the update for the changes to stick.[/COLOR]',
                                       '', '')
                             xbmc.executebuiltin("ActivateWindow(10001,plugin://plugin.program.firetvupdater/,return)")
                         else:
                             dialog.ok('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]',
-                                      '[COLOR snow]No Problem, you can always run the update from the wizard when its convenient for you.[/COLOR]',
+                                      '[COLOR snow]No Problem, you can always run the update from the maintenance menu when its convenient for you.[/COLOR]',
                                       '', '')
