@@ -8,7 +8,7 @@ import time
 import extract
 global debuglog
 
-ADDON          =  xbmcaddon.Addon(id='plugin.program.firetvupdatertvupdater')
+ADDON          =  xbmcaddon.Addon(id='plugin.program.firetvupdater')
 dialog         =  xbmcgui.Dialog()
 dialogprocess  =  xbmcgui.DialogProgress()
 log_path       =  xbmc.translatePath('special://logpath/')
@@ -43,7 +43,7 @@ except:
 
 def freshstart():
 
-	choice = xbmcgui.Dialog().yesno('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]  [COLOR=red][B]WARNING !!![/COLOR][/B]', '		  This will erase all data and reset Kodi to defaults!','   Kodi will try to force close after the process is complete.', '							 [COLOR=red][B]Do you want to continue?[/COLOR][/B]', nolabel='Nope',yeslabel='YES')
+	choice = xbmcgui.Dialog().yesno('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]  [COLOR=red][B]WARNING !!![/COLOR][/B]', 'This will erase all data and reset Kodi to defaults!','Kodi will try to force close after the process is complete.', '[COLOR=red][B]Do you want to continue?[/COLOR][/B]', nolabel='Nope',yeslabel='YES')
 	if choice == 0:
 		return
 	elif choice == 1:
