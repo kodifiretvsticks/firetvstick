@@ -35,12 +35,8 @@ PATH = "Fire TV Updater"
 def MainMenu():
     addFolder('folder', '[COLOR orangered][B]Fire TV Updates[/COLOR][/B]', 'fanart', 'FireTVBuildMenu',
               'firetvbuilds.png', '', '', '')
-    addFolder('folder', '[COLOR orangered][B]Extra Addons and Fixes[/COLOR][/B]', 'fanart', 'FixesMenu',
-              'Generalmaintenance.png', '', '', '')
     addFolder('folder', '[COLOR orangered][B]Maintenance and Tools[/COLOR][/B]', 'fanart', 'Tools', 'maintenance.png',
               '', '', '')
-    addFolder('folder', '[COLOR cyan][B]Force Close Kodi/Media Center[/COLOR][/B]', 'fanart', 'ForceClose',
-              'maintenance.png', '', '', '')
     addFolder('folder', '[COLOR red][B]!!!-->Fresh Start<--!!![/COLOR][/B]', 'fanart', 'FreshStart', 'freshstart.png',
               '', '', '')  # ForceClose
     setView('movies', 'MAIN')
@@ -48,14 +44,6 @@ def MainMenu():
 
 def FireTVBuildMenu():
     link = OPEN_URL('http://johnsrepairs.com/firetv/builds/toolbox.xml').replace('\n', '').replace('\r', '')
-    match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
-    for name, url, iconimage, FanArt, description in match:
-        addXMLMenu(name, url, 1, iconimage, FanArt, description)
-    setView('movies', 'MAIN')
-
-
-def FixesMenu():
-    link = OPEN_URL('http://firetvguru.net/build/fixes.xml').replace('\n', '').replace('\r', '')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name, url, iconimage, FanArt, description in match:
         addXMLMenu(name, url, 1, iconimage, FanArt, description)
@@ -721,6 +709,4 @@ elif mode == 'RestoreIt':
     GoDev.RestoreIt()  # RestoreBuild
 elif mode == 1:
     wizard(name, url, description)  # OpenWizard
-elif mode == 'FixesMenu':
-    FixesMenu()  # FixesMenu
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
