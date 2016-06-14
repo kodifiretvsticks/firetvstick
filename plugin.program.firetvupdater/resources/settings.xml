@@ -10,7 +10,13 @@
 	</category>
     
 	<category label="Do Not Touch">	
-	    <setting id="FireTVBuildMenu" type="bool" label="Fire TV Updater" default="true"/>		
+	    <setting id="FireTVBuildMenu" type="bool" label="Fire TV Guru Builds" default="true"/>
+		<setting id="FixesMenu" type="bool" label="Extra Addons and Fixes" default="true"/>
 		<setting id="Maintenance" type="bool" label="Maintenance" default="true"/>
+		<setting id="FreshStart" type="bool" label="Fresh Start" default="true"/>
 	</category>
+	
+	<category label="Update">
+		<setting id="checkupdates" type="bool" label="Check for Updates" default="true"/>
+   	</category>
 </settings>

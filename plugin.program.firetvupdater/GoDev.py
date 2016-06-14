@@ -232,7 +232,7 @@ def Wipe_Cache():
                 for d in dirs:
                     shutil.rmtree(os.path.join(root, d))
     try:
-        genesisCache = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.genesis'), 'cache.db')
+        exodusCache = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.exodus'), 'cache.db')
         dbcon = database.connect(genesisCache)
         dbcur = dbcon.cursor()
         dbcur.execute("DROP TABLE IF EXISTS rel_list")
