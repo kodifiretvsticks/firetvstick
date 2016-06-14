@@ -452,7 +452,7 @@ def forceUpdate():
 
 def FASTRESET():
     Dialog.ok("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
-              'To start using the build please switch the skin System > Appearance > Skin CCM Fire... if images are not showing, just restart Kodi',
+              'To start using the build please switch the skin System > Appearance > Skin Confluence... if images are not showing, just restart Kodi',
               'Click OK to Continue', '')
     xbmc.executebuiltin('ActivateWindow(Home)')
     xbmc.executebuiltin('Mastermode')

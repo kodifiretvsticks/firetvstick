@@ -11,7 +11,7 @@ checkver = my_addon.getSetting('checkupdates')
 dialog = xbmcgui.Dialog()
 if not os.path.exists(CHECKVERSION):
     file = open(CHECKVERSION, 'w')
-    file.write("<build>FireTvGuru</build><version>0</version>")
+    file.write("<build>FireTv</build><version>0</version>")
     file.close()
 checkurl = "http://johnsrepairs.com/firetv/builds/version.txt"
 vers = open(CHECKVERSION, "r")
@@ -30,16 +30,16 @@ for line in vers:
                 match = re.compile('<build>' + build + '</build><version>(.+?)</version>').findall(link)
                 for newversion in match:
                     if newversion > vernumber:
-                        yes_pressed = xbmcgui.Dialog().yesno("[COLOR dodgerblue][B]Fire Wizard[/COLOR][/B]",
+                        yes_pressed = xbmcgui.Dialog().yesno("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
                                                              '                    [COLOR lime]There is a new update!![/COLOR]',
                                                              '[COLOR snow]Would you like to install the latest build?[/COLOR]',
                                                              '', yeslabel='YES', nolabel='LATER')
                         if yes_pressed:
-                            dialog.ok('[COLOR dodgerblue][B]Fire Wizard[/COLOR][/B]',
+                            dialog.ok('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]',
                                       '[COLOR snow]a FRESH START is required for the update... Run the FRESH START in the NEXT WINDOW then INSTALL the new build version[/COLOR]',
                                       '', '')
                             xbmc.executebuiltin("ActivateWindow(10001,plugin://plugin.program.firetvupdater/,return)")
                         else:
-                            dialog.ok('[COLOR dodgerblue][B]Fire Wizard[/COLOR][/B]',
+                            dialog.ok('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]',
                                       '[COLOR snow]No Problem, you can always run the update from the wizard when its convenient for you.[/COLOR]',
                                       '', '')
