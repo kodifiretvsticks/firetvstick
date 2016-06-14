@@ -43,7 +43,7 @@ except:
 
 def freshstart():
 
-	choice = xbmcgui.Dialog().yesno('[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]  [COLOR=red][B]WARNING !!![/COLOR][/B]', 'This will erase all data and reset Kodi to defaults!','Kodi will try to force close after the process is complete.', '[COLOR=red][B]Do you want to continue?[/COLOR][/B]', nolabel='Nope',yeslabel='YES')
+	choice = xbmcgui.Dialog().yesno('[COLOR blue][B]Fire TV Updater[/COLOR][/B]  [COLOR=red][B]WARNING !!![/COLOR][/B]', 'This will erase all data and reset Kodi to defaults!','Kodi will try to force close after the process is complete.', '[COLOR=red][B]Do you want to continue?[/COLOR][/B]', nolabel='Nope',yeslabel='YES')
 	if choice == 0:
 		return
 	elif choice == 1:
@@ -258,7 +258,7 @@ def freshstart():
 def killkodi():
 
 	dialog = xbmcgui.Dialog()
-	dialog.ok("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]", "[COLOR red][B]Kodi needs to be closed. Press OK to attempt to close Kodi[/COLOR][/B]")
+	dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", "[COLOR red][B]Kodi needs to be closed. Press OK to attempt to close Kodi[/COLOR][/B]")
 	myplatform = platform()
 	print "Platform: " + str(myplatform)
 	if myplatform == 'osx': # OSX
@@ -421,7 +421,7 @@ def Archive_File(sourcefile, destfile):
 	rootlen = len(sourcefile)
 	for_progress = []
 	ITEM =[]
-	dialogprocess.create("Fire TV Updater","Archiving...",'', 'Please Wait')
+	dialogprocess.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]","Archiving...",'', 'Please Wait')
 	for base, dirs, files in os.walk(sourcefile):
 		for file in files:
 			ITEM.append(file)
@@ -593,7 +593,7 @@ def Wipe_Cache():
 	except:
 		pass
 def Destroy_Path(path):
-	dialogprocess.create("Fire TV Updater","Cleaning...",'', 'Please Wait')
+	dialogprocess.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]","Cleaning...",'', 'Please Wait')
 	shutil.rmtree(path, ignore_errors=True)
 def Remove_Textures():
 	textures   =  xbmc.translatePath('special://home/userdata/Database/Textures13.db')
@@ -662,7 +662,7 @@ def Read_Zip(url):
 			f.close()  			
 def Check_Path():
 	if zip=='':
-	 if dialog.yesno("Fire TV Updater", "You Have Not Set Your Storage Path", 'Set The Storage Path Now ?',''):
+	 if dialog.yesno("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", "You Have Not Set Your Storage Path", 'Set The Storage Path Now ?',''):
 		ADDON.openSettings()
 		print '######### ZIP DIRECTORY #########'
 		for filename in os.listdir(USB):
@@ -671,12 +671,12 @@ def RestoreIt():
 	import time
 	dialog = xbmcgui.Dialog()
 	if zip == '':
-		dialog.ok('Fire TV Updater','You have not set your ZIP Folder.\nPlease update the addon settings and try again.','','')
+		dialog.ok('                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]','You have not set your ZIP Folder.\nPlease update the addon settings and try again.','','')
 		ADDON.openSettings(sys.argv[0])
-	dialogprocess.create("Fire TV Updater","Restoring",'', 'Please Wait')   
+	dialogprocess.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]","Restoring",'', 'Please Wait')   
 	lib=xbmc.translatePath(os.path.join(zip,'backup.zip'))
 	Read_Zip(lib)
-	dialogprocess.create("Fire TV Updater","Checking ",'', 'Please Wait')
+	dialogprocess.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]","Checking ",'', 'Please Wait')
 	HOME = xbmc.translatePath(os.path.join('special://','home'))
 	dialogprocess.update(0,"", "Extracting Zip Please Wait")
 	extract.all(lib,HOME,dialogprocess)
@@ -688,17 +688,17 @@ def RestoreIt():
 	xbmc.executebuiltin('ReloadSkin()')	
 	xbmc.executebuiltin("Loadialogprocessrofile(Master user)")
 	dialogprocess.close()
-	dialog.ok("Fire TV Updater", "All Done, DONT PRESS OK", "Wait a 5 minutes and pull the Power Cord then","")	
+	dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", "All Done, DONT PRESS OK", "Wait a 5 minutes and pull the Power Cord then","")	
 def Backupzip():  
 	if zip == '':
-		dialog.ok('Fire TV Updater','You have not set your ZIP Folder.\nPlease update the addon settings and try again.','','')
+		dialog.ok('                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]','You have not set your ZIP Folder.\nPlease update the addon settings and try again.','','')
 		ADDON.openSettings(sys.argv[0])
 	to_backup = xbmc.translatePath(os.path.join('special://','home'))
 	backup_zip = xbmc.translatePath(os.path.join(USB,'backup.zip'))
 	Delete_Packages()	
 	import zipfile
 	
-	dialogprocess.create("Fire TV Updater","Backing Up",'', 'Please Wait')
+	dialogprocess.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]","Backing Up",'', 'Please Wait')
 	zipobj = zipfile.ZipFile(backup_zip , 'w', zipfile.ZIP_DEFLATED)
 	rootlen = len(to_backup)
 	for_progress = []
@@ -722,4 +722,4 @@ def Backupzip():
 					   zipobj.write(fn, fn[rootlen:])  
 	zipobj.close()
 	dialogprocess.close()
-	dialog.ok("Fire TV Updater", "You Are Now Backed Up", '','')
+	dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", "You Are Now Backed Up", '','')

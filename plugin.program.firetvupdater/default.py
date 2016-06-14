@@ -35,6 +35,8 @@ PATH = "Fire TV Updater"
 def MainMenu():
     addFolder('folder', '[COLOR orangered][B]Fire TV Updates[/COLOR][/B]', 'fanart', 'FireTVBuildMenu',
               'firetvbuilds.png', '', '', '')
+    addFolder('folder', '[COLOR orangered][B]Extra Addons and Fixes[/COLOR][/B]', 'fanart', 'FixesMenu',
+              'Generalmaintenance.png', '', '', '')
     addFolder('folder', '[COLOR orangered][B]Maintenance and Tools[/COLOR][/B]', 'fanart', 'Tools', 'maintenance.png',
               '', '', '')
     addFolder('folder', '[COLOR red][B]!!!-->Fresh Start<--!!![/COLOR][/B]', 'fanart', 'FreshStart', 'freshstart.png',
@@ -100,14 +102,14 @@ def Restore_Option():
 
 
 def Clear_Cache():
-    choice = xbmcgui.Dialog().yesno('[COLOR blue][B]Fire TV Updater[/COLOR][/B]',
-                                    '									  [COLOR red][B]Are you Sure?[/COLOR][/B]',
-                                    '					  [COLOR red][B]This will delete all your Cache.[/COLOR][/B]',
+    choice = xbmcgui.Dialog().yesno('                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]',
+                                    '[COLOR red][B]Are you Sure?[/COLOR][/B]',
+                                    '[COLOR red][B]This will delete all your Cache.[/COLOR][/B]',
                                     nolabel='Cancel', yeslabel='Delete')
     if choice == 1:
         GoDev.Wipe_Cache()
-        Dialog.ok("[COLOR blue][B]Fire TV Updater[/COLOR][/B]", '',
-                  '						   [COLOR lime][B]Cache Deleted[/COLOR][/B]', '')
+        Dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", '',
+                  '[COLOR lime][B]Cache Deleted[/COLOR][/B]', '')
 
 
 def Remove_Crash_Logs():
@@ -119,14 +121,14 @@ def Remove_Crash_Logs():
 
 
 def Remove_Packages():
-    choice = xbmcgui.Dialog().yesno('[COLOR blue][B]Fire TV Updater[/COLOR][/B]',
-                                    '							   [COLOR red][B]Delete Packages Folder?[/COLOR][/B]',
-                                    '		   [COLOR red][B]This will free up space by deleting unused zips.[/COLOR][/B]',
+    choice = xbmcgui.Dialog().yesno('                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]',
+                                    '[COLOR red][B]Delete Packages Folder?[/COLOR][/B]',
+                                    '[COLOR red][B]This will free up space by deleting unused zips.[/COLOR][/B]',
                                     '', nolabel='Cancel', yeslabel='Delete')
     if choice == 1:
         GoDev.Delete_Packages()
-        Dialog.ok("[COLOR blue][B]Fire TV Updater[/COLOR][/B]", '',
-                  '									[COLOR lime][B]Packages Deleted[/COLOR][/B]', '')
+        Dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", '',
+                  '[COLOR lime][B]Packages Deleted[/COLOR][/B]', '')
 
 
 def Remove_Textures():
@@ -138,16 +140,16 @@ def Remove_Textures():
 
 
 def Remove_Thumbs():
-    choice = xbmcgui.Dialog().yesno('[COLOR blue][B]Fire TV Updater[/COLOR][/B]',
-                                    '						[COLOR lime][B]Clear Cached Images?[/COLOR][/B]',
-                                    '				[COLOR lime][B]This will clear your thumbnail files.[/COLOR][/B]',
-                                    '			 [COLOR lime][B]These will be repopulated after a restart.[/COLOR][/B]',
+    choice = xbmcgui.Dialog().yesno('                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]',
+                                    '[COLOR lime][B]Clear Cached Images?[/COLOR][/B]',
+                                    '[COLOR lime][B]This will clear your thumbnail files.[/COLOR][/B]',
+                                    '[COLOR lime][B]These will be repopulated after a restart.[/COLOR][/B]',
                                     nolabel='Cancel', yeslabel='Delete')
     if choice == 1:
         GoDev.Destroy_Path(THUMBNAILS)
-        Dialog.ok("[COLOR blue][B]Fire TV Updater[/COLOR][/B]",
-                  '						[COLOR lime][B]Thumbnails Removed[/COLOR][/B]',
-                  '		 [COLOR red][B]Dont forget to restart Kodi to reload the thumbnails and backgrounds!!![/COLOR][/B]',
+        Dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]",
+                  '[COLOR lime][B]Thumbnails Removed[/COLOR][/B]',
+                  '[COLOR red][B]Dont forget to restart Kodi to reload the thumbnails and backgrounds!!![/COLOR][/B]',
                   '')
 
 
@@ -164,7 +166,7 @@ def OPEN_URL(url):
 def wizard(name, url, description):
     path = xbmc.translatePath(os.path.join('special://home/addons', 'packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]", "Downloading ", '', 'Please be Patient')
+    dp.create("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", "Downloading ", '', 'Please be Patient')
     lib = os.path.join(path, 'build.zip')
     try:
         os.remove(lib)
@@ -178,7 +180,7 @@ def wizard(name, url, description):
     print addonfolder
     print '======================================='
     extract.allWithProgress(lib, addonfolder, dp)
-    choice = xbmcgui.Dialog().yesno("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
+    choice = xbmcgui.Dialog().yesno("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]",
                                     'Just installed the build or a fix choose reset',
                                     'If you did something else choose Force Close', '', yeslabel='FORCE CLOSE',
                                     nolabel='RESET')
@@ -254,7 +256,7 @@ def get_params():
 
 def killkodi():
     dialog = xbmcgui.Dialog()
-    dialog.ok("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
+    dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]",
               "[COLOR red][B]Kodi needs to be closed. Press OK to attempt to close Kodi[/COLOR][/B]")
     myplatform = platform()
     print "Platform: " + str(myplatform)
@@ -435,12 +437,12 @@ def killkodi():
 def forceUpdate():
     xbmc.executebuiltin('UpdateAddonRepos()')
     xbmc.executebuiltin('UpdateLocalAddons()')
-    Dialog.ok("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]", '        Addons/Repos updates will be checked ', '', '')
+    Dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]", 'Addons/Repos updates will be checked ', '', '')
 
 
 def FASTRESET():
-    Dialog.ok("[COLOR dodgerblue][B]Fire TV Updater[/COLOR][/B]",
-              'To start using the build please switch the skin System > Appearance > Skin Confluence... if images are not showing, just restart Kodi',
+    Dialog.ok("                    [COLOR blue][B]Fire TV Updater[/COLOR][/B]",
+              'To start using the build please switch the skin System > Appearance > Skin FTV... if images are not showing, just restart Kodi',
               'Click OK to Continue', '')
     xbmc.executebuiltin('ActivateWindow(Home)')
     xbmc.executebuiltin('Mastermode')
