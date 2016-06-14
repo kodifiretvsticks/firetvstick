@@ -35,13 +35,11 @@ PATH = "Fire TV Updater"
 def MainMenu():
     addFolder('folder', '[COLOR orangered][B]Fire TV Updates[/COLOR][/B]', 'fanart', 'FireTVBuildMenu',
               'firetvbuilds.png', '', '', '')
-    addFolder('folder', '[COLOR orangered][B]Extra Addons and Fixes[/COLOR][/B]', 'fanart', 'FixesMenu',
-              'Generalmaintenance.png', '', '', '')
     addFolder('folder', '[COLOR orangered][B]Maintenance and Tools[/COLOR][/B]', 'fanart', 'Tools', 'maintenance.png',
               '', '', '')
     addFolder('folder', '[COLOR red][B]!!!-->Fresh Start<--!!![/COLOR][/B]', 'fanart', 'FreshStart', 'freshstart.png',
               '', '', '')  # ForceClose
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def FireTVBuildMenu():
@@ -49,7 +47,7 @@ def FireTVBuildMenu():
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name, url, iconimage, FanArt, description in match:
         addXMLMenu(name, url, 1, iconimage, FanArt, description)
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def GeneralMaint():
@@ -61,7 +59,7 @@ def GeneralMaint():
     addFolder('', '[COLOR orange][B]Clear Thumbnails[/COLOR][/B]', 'none', 'Remove_Thumbs', 'thumbnails.png', '', '',
               '')
     addFolder('', '[COLOR orange][B]Clear Packages[/COLOR][/B]', 'none', 'Remove_Packages', 'packages.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def Tools():
@@ -72,33 +70,33 @@ def Tools():
     addFolder('', '[COLOR lime][B]Force Update Addons/Repos[/COLOR][/B]', 'none', 'forceUpdate', 'freshstart.png', '',
               '', '')
     addFolder('', '[COLOR red][B]Fresh Start[/COLOR][/B]', 'none', 'Wipe_Kodi', 'freshstart.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def FreshStart():
     addFolder('', '[COLOR red][B]Fresh Start[/COLOR][/B]', 'none', 'Wipe_Kodi', 'freshstart.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def ForceClose():
     addFolder('', '[COLOR red][B]Force Close[/COLOR][/B]', 'none', 'ForceClose', 'Generalmaintenance.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def BackupMenu():
     addFolder('folder', '[COLOR orange][B]Backup[/COLOR][/B]', 'none', 'backup_option', 'Backup.png', '', '', '')
     addFolder('folder', '[COLOR orange][B]Restore[/COLOR][/B]', 'none', 'restore_option', 'Restore.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def Backup_Option():
     addFolder('', '[COLOR orange][B]Full Backup[/COLOR][/B]', 'url', 'backupzip', 'Backup.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def Restore_Option():
     addFolder('', '[COLOR orange][B]Full restore[/COLOR][/B]', 'url', 'RestoreIt', 'restore.png', '', '', '')
-    setView('movies', 'MAIN')
+    setView('addon', 'MAIN')
 
 
 def Clear_Cache():
