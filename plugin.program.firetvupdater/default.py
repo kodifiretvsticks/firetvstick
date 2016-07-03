@@ -37,6 +37,8 @@ def MainMenu():
               'firetvbuilds.png', '', '', '')
     addFolder('folder', '[COLOR orangered][B]Maintenance and Tools[/COLOR][/B]', 'fanart', 'Tools', 'maintenance.png',
               '', '', '')
+    addFolder('folder', '[COLOR lime][B]App Installer[/COLOR][/B]', 'fanart', 'AppInstaller', 'wizardicon.png', '', '',
+              '')
     addFolder('folder', '[COLOR red][B]!!!-->Fresh Start<--!!![/COLOR][/B]', 'fanart', 'FreshStart', 'freshstart.png',
               '', '', '')  # ForceClose
     setView('addon', 'MAIN')
@@ -47,6 +49,26 @@ def FireTVBuildMenu():
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name, url, iconimage, FanArt, description in match:
         addXMLMenu(name, url, 1, iconimage, FanArt, description)
+    setView('movies', 'MAIN')
+
+
+def AppCat():
+    link = OPEN_URL('http://johnsrepairs.com/firetv/builds/appcatagory.xml')
+    match = re.compile('<title>(.+?)</title>.+?url>(.+?)</url>.+?thumb>(.+?)</thumb>.+?fanart>(.+?)</fanart>',
+                       re.DOTALL).findall(link)
+    for name, url, iconimage, fanart in match:
+        name = name.replace(' - ', ' ')
+        iconimage = iconimage.replace(' ', '%20')
+        url = url.replace(' ', '%20')
+        fanart = fanart.replace(' ', '%20')
+        addDir(name, url, 2, iconimage, fanart)
+
+
+def GetList(url):
+    link = OPEN_URL(url).replace('\n', '').replace('\r', '')
+    match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
+    for name, url, iconimage, FanArt, description in match:
+        addXMLMenu(name, url, 3, iconimage, FanArt, description)
     setView('addon', 'MAIN')
 
 
@@ -200,6 +222,16 @@ def addXMLMenu(name, url, mode, iconimage, FanArt, description):
     ok = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=False)
     return ok
 
+
+def addDir(name, url, mode, iconimage, fanart, description=''):
+    u = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=" + str(mode) + "&name=" + urllib.quote_plus(
+        name) + "&iconimage=" + urllib.quote_plus(iconimage) + "&description=" + urllib.quote_plus(description)
+    ok = True
+    liz = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+    liz.setInfo(type="Video", infoLabels={"Title": name, 'plot': description})
+    liz.setProperty('fanart_image', fanart)
+    ok = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=True)
+    return ok
 
 def addFolder(type, name, url, mode, iconimage='', FanArt='', video='', description=''):
     if type != 'folder2' and type != 'addon':
@@ -448,6 +480,28 @@ def FASTRESET():
     xbmc.executebuiltin('ActivateWindow(Home)')
 
 
+def APPINSTALL(name, url, description):
+    confirm = xbmcgui.Dialog()
+    if confirm.yesno(name, description, "", "", "Go Back", "Download"):
+        downloadpath = xbmc.translatePath(os.path.join('special://home/addons', 'packages'))
+        dp = xbmcgui.DialogProgress()
+        dp.create("[COLOR dodgerblue][B]Fire TV App Installer[/COLOR][/B]", ">>>Downloading<<<", name, '>>>Please Wait<<<')
+        lib = os.path.join(downloadpath, name + '.apk')
+        downloader.download(url, lib, dp)
+        addonfolder = xbmc.translatePath(os.path.join('special://', 'home'))
+        dialog = xbmcgui.Dialog()
+        dialog.ok("[COLOR dodgerblue][B]Fire TV App Installer[/COLOR][/B]", ">>>Download Finished<<<", "",
+                  ">>>Click Ok To Install<<<" + name + "")
+        xbmc.executebuiltin(
+            'StartAndroidActivity("","android.intent.action.VIEW","application/vnd.android.package-archive","file:' + lib + '")')  # xbmc.executebuiltin("StartAndroidActivity(com.estrongs.android.pop)")
+        time.sleep(4)
+        dialog.ok("[COLOR dodgerblue][B]Fire TV App Installer[/COLOR][/B]", " ", " ",
+                  "THANKS FOR USING [COLOR dodgerblue][B]Fire TV App Installer[/COLOR]")
+        try:
+            os.remove(lib)
+        except:
+            pass
+
 def platform():
     if xbmc.getCondVisibility('system.platform.android'):
         return 'android'
@@ -677,6 +731,8 @@ elif mode == 'FireTVBuildMenu':
     FireTVBuildMenu()  # FireBuildMenu
 elif mode == 'ForceClose':
     ForceClose()  # ForceClose
+elif mode == 'AppInstaller':
+    AppCat()  # AppInstaller
 elif mode == 'FreshStart':
     FreshStart()  # FreshStart
 elif mode == 'forceUpdate':
@@ -709,4 +765,8 @@ elif mode == 'RestoreIt':
     GoDev.RestoreIt()  # RestoreBuild
 elif mode == 1:
     wizard(name, url, description)  # OpenWizard
+elif mode == 2:
+    GetList(url)
+elif mode == 3:
+    APPINSTALL(name, url, description)  # AppInstaller
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
