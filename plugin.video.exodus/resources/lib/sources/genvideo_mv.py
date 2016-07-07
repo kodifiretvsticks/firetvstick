@@ -27,8 +27,8 @@ from resources.lib.modules import client
 
 class source:
     def __init__(self):
-        self.domains = ['fmovie.co', 'afdah.org', 'xmovies8.org', 'putlockerhd.co']
-        self.base_link = 'https://fmovie.co'
+        self.domains = ['genvideos.org']
+        self.base_link = 'http://genvideos.org'
         self.search_link = '/results?q=%s'
 
 
@@ -80,7 +80,7 @@ class source:
             links += [(i[0], 'HD') for i in r if 720 <= int(i[1]) < 1080]
             links += [(i[0], 'SD') for i in r if 480 <= int(i[1]) < 720]
 
-            for i in links: sources.append({'source': 'gvideo', 'quality': i[1], 'provider': 'Afdah', 'url': i[0], 'direct': True, 'debridonly': False})
+            for i in links: sources.append({'source': 'gvideo', 'quality': i[1], 'provider': 'Genvideo', 'url': i[0], 'direct': True, 'debridonly': False})
 
             return sources
         except:

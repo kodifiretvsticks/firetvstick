@@ -29,7 +29,7 @@ homedir        =  xbmc.translatePath('special://home/')
 packagesfolder =  xbmc.translatePath(os.path.join('special://home/addons','packages'))
 thumbsfolder   =  xbmc.translatePath(os.path.join('special://home/userdata','Thumbnails'))
 addondatafolder=  xbmc.translatePath(os.path.join('special://home/userdata','addon_data'))
-addondir       =  xbmc.translatePath('special://home/addons/script.areswizard')
+addondir       =  xbmc.translatePath('special://home/addons/plugin.program.firetvupdater')
 mainaddondir   =  xbmc.translatePath('special://home/addons')
 temp1          =  xbmc.translatePath('special://home/userdata')
 temp2          =  xbmc.translatePath('special://temp')
@@ -71,7 +71,7 @@ def freshstart():
 										pass
 									else:
 										path = os.path.join(root, f)
-										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdatertvupdater' not in path and 'script.module.elementtree' not in path:
+										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'skin.ftv' not in path:
 											dp.update(1, '', '', 'Deleting: ' + f)
 											os.unlink(path)
 											print 'from HOMEDIR deleted: ' + root + f
@@ -79,11 +79,11 @@ def freshstart():
 									pass
 			for d in dirs:
 							try:
-									if d == "Database" or d == "addon_data" or d == "userdata" or d == "packages" or d == "addons" or d == "Thumbnails" or d == "temp" or d == "repository.firetvstick" or d == "plugin.program.firetvupdatertvupdater" or d == "script.module.elementtree":
+									if d == "Database" or d == "addon_data" or d == "userdata" or d == "packages" or d == "addons" or d == "Thumbnails" or d == "temp" or d == "repository.firetvstick" or d == "plugin.program.firetvupdater" or d == "skin.ftv":
 										pass
 									else:
 										path = os.path.join(root, d)
-										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdatertvupdater' not in path and 'script.module.elementtree' not in path:
+										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'skin.ftv' not in path:
 											dp.update(1, '', '', 'Deleting: ' + d)
 											shutil.rmtree(os.path.join(root, d))
 											print 'from HOMEDIR removed folder: ' + os.path.join(root, d)
@@ -225,7 +225,7 @@ def freshstart():
 										pass
 									else:
 										path = os.path.join(root, f)
-										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'script.module.elementtree' not in path:
+										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'skin.ftv' not in path:
 											dp.update(85, '', '', 'Deleting: ' + f)
 											os.unlink(path)
 											print 'from MAINADDONDIR deleted: ' + root + f
@@ -233,10 +233,10 @@ def freshstart():
 									pass
 			for d in dirs:
 							try:
-									if d == "packages" or d == "repository.firetvstick" or d == "plugin.program.firetvupdater" or d == "script.module.elementtree":
+									if d == "packages" or d == "repository.firetvstick" or d == "plugin.program.firetvupdater" or d == "skin.ftv":
 										pass
 									else:
-										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'script.module.elementtree' not in path:
+										if 'repository.firetvstick' not in path and 'plugin.program.firetvupdater' not in path and 'skin.ftv' not in path:
 											dp.update(85, '', '', 'Deleting: ' + d)
 											shutil.rmtree(os.path.join(root, d))
 											print 'from MAINADDONDIR removed folder: ' + os.path.join(root, d)

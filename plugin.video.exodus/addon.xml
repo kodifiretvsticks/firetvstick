@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.exodus" version="1.3.8" name="Exodus" provider-name="JohnsRepairs">
+<addon id="plugin.video.exodus" version="1.3.9" name="Exodus" provider-name="JohnsRepairs">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="repository.exodus" version="1.0.0" />
