@@ -20,74 +20,42 @@
 
 
 import urlparse,sys
+
 params = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))
 
+action = params.get('action')
 
-try:
-    action = params['action']
-except:
-    action = None
-try:
-    name = params['name']
-except:
-    name = None
-try:
-    title = params['title']
-except:
-    title = None
-try:
-    year = params['year']
-except:
-    year = None
-try:
-    imdb = params['imdb']
-except:
-    imdb = None
-try:
-    tvdb = params['tvdb']
-except:
-    tvdb = None
-try:
-    season = params['season']
-except:
-    season = None
-try:
-    episode = params['episode']
-except:
-    episode = None
-try:
-    tvshowtitle = params['tvshowtitle']
-except:
-    tvshowtitle = None
-try:
-    premiered = params['premiered']
-except:
-    premiered = None
-try:
-    url = params['url']
-except:
-    url = None
-try:
-    image = params['image']
-except:
-    image = None
-try:
-    meta = params['meta']
-except:
-    meta = None
-try:
-    query = params['query']
-except:
-    query = None
-try:
-    source = params['source']
-except:
-    source = None
-try:
-    content = params['content']
-except:
-    content = None
+name = params.get('name')
 
+title = params.get('title')
+
+year = params.get('year')
+
+imdb = params.get('imdb')
+
+tvdb = params.get('tvdb')
+
+season = params.get('season')
+
+episode = params.get('episode')
+
+tvshowtitle = params.get('tvshowtitle')
+
+premiered = params.get('premiered')
+
+url = params.get('url')
+
+image = params.get('image')
+
+meta = params.get('meta')
+
+select = params.get('select')
+
+query = params.get('query')
+
+source = params.get('source')
+
+content = params.get('content')
 
 
 if action == None:
@@ -98,13 +66,33 @@ elif action == 'movieNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().movies()
 
+elif action == 'movieliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().movies(lite=True)
+
+elif action == 'mymovieNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mymovies()
+
+elif action == 'mymovieliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mymovies(lite=True)
+
 elif action == 'tvNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().tvshows()
 
-elif action == 'myNavigator':
+elif action == 'tvliteNavigator':
     from resources.lib.indexers import navigator
-    navigator.navigator().lists()
+    navigator.navigator().tvshows(lite=True)
+
+elif action == 'mytvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mytvshows()
+
+elif action == 'mytvliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mytvshows(lite=True)
 
 elif action == 'downloadNavigator':
     from resources.lib.indexers import navigator
@@ -118,6 +106,14 @@ elif action == 'searchNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().search()
 
+elif action == 'viewsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().views()
+
+elif action == 'clearCache':
+    from resources.lib.indexers import navigator
+    navigator.navigator().clearCache()
+
 elif action == 'movies':
     from resources.lib.indexers import movies
     movies.movies().get(url)
@@ -129,9 +125,6 @@ elif action == 'moviePage':
 elif action == 'movieWidget':
     from resources.lib.indexers import movies
     movies.movies().widget()
-elif action == 'movieFavourites':
-    from resources.lib.indexers import movies
-    movies.movies().favourites()
 
 elif action == 'movieSearch':
     from resources.lib.indexers import movies
@@ -145,6 +138,10 @@ elif action == 'movieGenres':
     from resources.lib.indexers import movies
     movies.movies().genres()
 
+elif action == 'movieLanguages':
+    from resources.lib.indexers import movies
+    movies.movies().languages()
+
 elif action == 'movieCertificates':
     from resources.lib.indexers import movies
     movies.movies().certifications()
@@ -155,7 +152,7 @@ elif action == 'movieYears':
 
 elif action == 'moviePersons':
     from resources.lib.indexers import movies
-    movies.movies().persons()
+    movies.movies().persons(url)
 
 elif action == 'movieUserlists':
     from resources.lib.indexers import movies
@@ -172,10 +169,6 @@ elif action == 'tvshows':
 elif action == 'tvshowPage':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().get(url)
-
-if action == 'tvFavourites':
-    from resources.lib.indexers import tvshows
-    tvshows.tvshows().favourites()	
 
 elif action == 'tvSearch':
     from resources.lib.indexers import tvshows
@@ -197,6 +190,10 @@ elif action == 'tvCertificates':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().certifications()
 
+elif action == 'tvPersons':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().persons(url)
+
 elif action == 'tvUserlists':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().userlists()
@@ -216,9 +213,7 @@ elif action == 'calendar':
 elif action == 'tvWidget':
     from resources.lib.indexers import episodes
     episodes.episodes().widget()
-elif action == 'episodeFavourites':
-    from resources.lib.indexers import episodes
-    episodes.episodes().favourites()
+
 elif action == 'calendars':
     from resources.lib.indexers import episodes
     episodes.episodes().calendars()
@@ -235,10 +230,6 @@ elif action == 'queueItem':
     from resources.lib.modules import control
     control.queueItem()
 
-elif action == 'openPlaylist':
-    from resources.lib.modules import control
-    control.openPlaylist()
-
 elif action == 'openSettings':
     from resources.lib.modules import control
     control.openSettings(query)
@@ -246,6 +237,10 @@ elif action == 'openSettings':
 elif action == 'artwork':
     from resources.lib.modules import control
     control.artwork()
+
+elif action == 'addView':
+    from resources.lib.modules import views
+    views.addView(content)
 
 elif action == 'moviePlaycount':
     from resources.lib.modules import playcount
@@ -263,21 +258,6 @@ elif action == 'trailer':
     from resources.lib.modules import trailer
     trailer.trailer().play(name, url)
 
-elif action == 'clearCache':
-    from resources.lib.modules import cache
-    cache.clear()
-
-elif action == 'addFavourite':
-    from resources.lib.modules import favourites
-    favourites.addFavourite(meta, content, query)
-
-elif action == 'deleteFavourite':
-    from resources.lib.modules import favourites
-    favourites.deleteFavourite(meta, content)
-elif action == 'addView':
-    from resources.lib.modules import views
-    views.addView(content)
-
 elif action == 'traktManager':
     from resources.lib.modules import trakt
     trakt.manager(name, imdb, tvdb, content)
@@ -294,20 +274,20 @@ elif action == 'download':
     import json
     from resources.lib.sources import sources
     from resources.lib.modules import downloader
-    try: downloader.download(name, image, sources().sourcesResolve(json.loads(source)[0]))
+    try: downloader.download(name, image, sources().sourcesResolve(json.loads(source)[0], True))
     except: pass
 
 elif action == 'play':
     from resources.lib.sources import sources
-    sources().play(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta, url)
+    sources().play(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta, select)
 
-elif action == 'sources':
+elif action == 'addItem':
     from resources.lib.sources import sources
-    sources().addItem(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta)
+    sources().addItem(title)
 
 elif action == 'playItem':
     from resources.lib.sources import sources
-    sources().playItem(source)
+    sources().playItem(title, source)
 
 elif action == 'alterSources':
     from resources.lib.sources import sources
