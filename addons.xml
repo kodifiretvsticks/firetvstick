@@ -19,26 +19,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.exodus" version="2.0.3" name="Exodus" provider-name="Exodus">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0" />
-		<import addon="repository.exodus" version="1.0.0" />
-		<import addon="script.exodus.artwork" version="1.0.4" />
-		<import addon="script.module.urlresolver" version="3.0.0" />
-		<import addon="script.module.metahandler" version="1.0.0" />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="exodus.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Exodus</summary>
-		<description lang="en">Please visit www.tvaddons.ag for Exodus support and assistance! Kindly note that Exodus is not an official part of the media player you are running, and therefore not to be mentioned within official support channels, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
-		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.7" provider-name="John">
+<addon id="repository.firetvstick" name="Fire TV Stick Repository" version="0.0.8" provider-name="John">
 	<extension point="xbmc.addon.repository" name="Fire TV Stick Add-on Repository">
 		<info compressed="false">https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml</info>
 		<checksum>https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/addons.xml.md5</checksum>
@@ -63,18 +44,6 @@
         <description>This repository contains intermediate builds of libraries commonly used by TVAddons Kodi addons, Brought to you by TVADDONS.ag</description>
         <platform>all</platform>
     </extension>
-</addon>
-
-<addon id="script.exodus.artwork" version="1.0.4" name="Exodus Artwork" provider-name="Exodus">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Themes for the Exodus Addon</summary>
-		<description>Themes for Exodus are maintained separately to make distribution of the the addon itself easier/faster.</description>
-		<platform>all</platform>
-	</extension>
 </addon>
 
 <addon id="skin.ftv" version="2.4.41" name="fTV" provider-name="John">
