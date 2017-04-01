@@ -102,14 +102,16 @@ REPOZIPURL     = 'https://github.com/kodifiretvsticks/firetvstick/raw/master/zip
 ### NOTIFICATION WINDOW##################################
 #########################################################
 # Enable Notification screen Yes or No
-ENABLE         = 'No'
+ENABLE         = 'Yes'
 # Url to notification file
-NOTIFICATION   = ''
+NOTIFICATION   = 'http://unlockmytv.com/firetv/builds/message.txt'
 # Use either 'Text' or 'Image'
-HEADERTYPE     = ''
-HEADERMESSAGE  = ''
+HEADERTYPE     = 'Text'
+FONTHEADER     = 'Font14'
+HEADERMESSAGE  = 'Fire TV Updater'
 # url to image if using Image 424x180
 HEADERIMAGE    = ''
+FONTSETTINGS   = 'Font12'
 # Background for Notification Window
 BACKGROUND     = ''
 #########################################################
