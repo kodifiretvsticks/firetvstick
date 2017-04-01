@@ -5,19 +5,19 @@ import os, xbmc, xbmcaddon
 #########################################################
 ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
 ADDONTITLE     = 'Fire TV Updater'
-EXCLUDES       = [ADDON_ID, 'repository.firetvstick']
+EXCLUDES       = [ADDON_ID, 'repository.firetvstick', 'roms', 'My_Builds', 'backupdir']
 # Text File with build info in it.
 BUILDFILE      = 'http://unlockmytv.com/firetv/builds/build.txt'
 # How often you would list it to check for build updates in days
 # 0 being every startup of kodi
 UPDATECHECK    = 0
 # Text File with apk info in it.
-APKFILE        = 'http://'
+APKFILE        = 'http://unlockmytv.com/firetv/builds/apps.txt'
 # Text File with Youtube Videos urls.  Leave as 'http://' to ignore
 YOUTUBETITLE   = ''
 YOUTUBEFILE    = 'http://'
 # Text File for addon installer.  Leave as 'http://' to ignore
-ADDONFILE      = 'http://'
+ADDONFILE      = 'http://firetvguru.net/wizard/addons.txt'
 # Text File for advanced settings.  Leave as 'http://' to ignore
 ADVANCEDFILE   = 'http://'
 
@@ -37,7 +37,7 @@ ART            = os.path.join(PATH, 'resources', 'art')
 ICONBUILDS     = 'http://unlockmytv.com/firetv/icons/firetvbuilds.png'
 ICONMAINT      = 'http://unlockmytv.com/firetv/icons/generalmaintenance.png'
 ICONAPK        = 'http://'
-ICONADDONS     = ''
+ICONADDONS     = 'http://'
 ICONYOUTUBE    = 'http://'
 ICONSAVE       = 'http://unlockmytv.com/firetv/icons/backup.png'
 ICONTRAKT      = 'http://'
@@ -48,14 +48,14 @@ ICONSETTINGS   = 'http://unlockmytv.com/firetv/icons/wizardicon.PNG'
 # Hide the ====== seperators 'Yes' or 'No'
 HIDESPACERS    = 'Yes'
 # Character used in seperator
-SPACER         = '='
+SPACER         = '~'
 
 # You can edit these however you want, just make sure that you have a %s in each of the
 # THEME's so it grabs the text from the menu item
 COLOR1         = 'dodgerblue'
 COLOR2         = 'white'
 # Primary menu items   / %s is the menu item and is required
-THEME1         = '[COLOR '+COLOR1+'][I]([COLOR '+COLOR2+']Fire TV Updater[/COLOR])[/COLOR] [COLOR '+COLOR2+']%s[/COLOR][/I]'
+THEME1         = '[COLOR '+COLOR1+']%s[/COLOR]'
 # Build Names          / %s is the menu item and is required
 THEME2         = '[COLOR '+COLOR2+']%s[/COLOR]'
 # Alternate items      / %s is the menu item and is required
@@ -70,6 +70,9 @@ THEME5         = '[COLOR '+COLOR1+']Current Theme:[/COLOR] [COLOR '+COLOR2+']%s[
 HIDECONTACT    = 'Yes'
 # You can add \n to do line breaks
 CONTACT        = ''
+#Images used for the contact window.  http:// for default icon and fanart
+CONTACTICON    = 'http://'
+CONTACTFANART  = 'http://'
 #########################################################
 
 #########################################################
@@ -78,20 +81,20 @@ CONTACT        = ''
 # Enable Auto Update 'Yes' or 'No'
 AUTOUPDATE     = 'No'
 # Url to wizard version
-WIZARDFILE     = 'http://unlockmytv.com/firetv/builds/autobuilds.txt'
+WIZARDFILE     = ''
 #########################################################
 
 #########################################################
 ### AUTO INSTALL ########################################
 ########## REPO IF NOT INSTALLED ########################
 # Enable Auto Install 'Yes' or 'No'
-AUTOINSTALL    = 'No'
+AUTOINSTALL    = 'Yes'
 # Addon ID for the repository
 REPOID         = 'repository.firetvstick'
 # Url to Addons.xml file in your repo folder(this is so we can get the latest version)
-REPOADDONXML   = 'http://unlockmytv.com/firetv/addon.xml'
+REPOADDONXML   = 'https://raw.githubusercontent.com/kodifiretvsticks/firetvstick/master/repository.firetvstick/addon.xml'
 # Url to folder zip is located in
-REPOZIPURL     = 'http://unlockmytv.com/firetv/repository.firetvstick.zip'
+REPOZIPURL     = 'https://github.com/kodifiretvsticks/firetvstick/raw/master/zips/repository.firetvstick'
 #########################################################
 
 #########################################################
@@ -103,13 +106,9 @@ ENABLE         = 'No'
 NOTIFICATION   = ''
 # Use either 'Text' or 'Image'
 HEADERTYPE     = ''
-# Font size of header
-FONTHEADER     = ''
 HEADERMESSAGE  = ''
 # url to image if using Image 424x180
 HEADERIMAGE    = ''
-# Font for Notification Window
-FONTSETTINGS   = ''
 # Background for Notification Window
 BACKGROUND     = ''
 #########################################################
