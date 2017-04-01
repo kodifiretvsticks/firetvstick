@@ -20,7 +20,8 @@ YOUTUBEFILE    = 'http://'
 ADDONFILE      = 'http://firetvguru.net/wizard/addons.txt'
 # Text File for advanced settings.  Leave as 'http://' to ignore
 ADVANCEDFILE   = 'http://'
-
+ROMPACK        = 'http://firetvguru.net/wizard/rom-packs.txt'
+EMUAPKS        = 'http://firetvguru.net/wizard/emuapks.txt'
 # Dont need to edit just here for icons stored locally
 PATH           = xbmcaddon.Addon().getAddonInfo('path')
 ART            = os.path.join(PATH, 'resources', 'art')

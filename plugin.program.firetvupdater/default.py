@@ -40,6 +40,8 @@ DP               = xbmcgui.DialogProgress()
 HOME             = xbmc.translatePath('special://home/')
 LOG              = xbmc.translatePath('special://logpath/')
 PROFILE          = xbmc.translatePath('special://profile/')
+ROMLOC           = xbmc.translatePath(os.path.join('//storage//emulated//0//Download//roms',''))
+WROMLOC          = xbmc.translatePath(os.path.join('C:\\roms\\',''))
 ADDONS           = os.path.join(HOME,      'addons')
 USERDATA         = os.path.join(HOME,      'userdata')
 PLUGIN           = os.path.join(ADDONS,    ADDON_ID)
@@ -96,6 +98,7 @@ TRAKTSAVE        = wiz.getS('traktlastsave')
 REALSAVE         = wiz.getS('debridlastsave')
 LOGINSAVE        = wiz.getS('loginlastsave')
 KEEPFAVS         = wiz.getS('keepfavourites')
+FAVSsave         = wiz.getS('favouriteslastsave')
 KEEPSOURCES      = wiz.getS('keepsources')
 KEEPPROFILES     = wiz.getS('keepprofiles')
 KEEPADVANCED     = wiz.getS('keepadvanced')
@@ -129,6 +132,8 @@ YOUTUBETITLE     = uservar.YOUTUBETITLE
 YOUTUBEFILE      = uservar.YOUTUBEFILE
 ADDONFILE        = uservar.ADDONFILE
 ADVANCEDFILE     = uservar.ADVANCEDFILE
+ROMPACK          = uservar.ROMPACK
+EMUAPKS          = uservar.EMUAPKS
 UPDATECHECK      = uservar.UPDATECHECK if str(uservar.UPDATECHECK).isdigit() else 1
 NEXTCHECK        = TODAY + timedelta(days=UPDATECHECK)
 NOTIFICATION     = uservar.NOTIFICATION
@@ -164,7 +169,6 @@ TRAKTID          = traktit.TRAKTID
 DEBRIDID         = debridit.DEBRIDID
 LOGINID          = loginit.LOGINID
 MODURL           = 'http://tribeca.tvaddons.ag/tools/maintenance/modules/'
-MODURL2          = 'http://mirrors.kodi.tv/addons/jarvis/'
 INSTALLMETHODS   = ['Always Ask', 'Reload Profile', 'Force Close']
 DEFAULTPLUGINS   = ['metadata.album.universal', 'metadata.artists.universal', 'metadata.common.fanart.tv', 'metadata.common.imdb.com', 'metadata.common.musicbrainz.org', 'metadata.themoviedb.org', 'metadata.tvdb.com', 'service.xbmc.versioncheck']
 
@@ -194,12 +198,16 @@ def index():
 	if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
 	addDir ('Builds'        ,'builds',   icon=ICONBUILDS,   themeit=THEME1)
 	addDir ('Maintenance'   ,'maint',    icon=ICONMAINT,    themeit=THEME1)
+	addDir ('Internet Tools' ,'net', icon=ICONCONTACT, themeit=THEME1)
 	if wiz.platform() == 'android' or DEVELOPER == 'true': addDir ('Apk Installer' ,'apk', icon=ICONAPK, themeit=THEME1)
+	if wiz.platform() == 'android' or wiz.platform() == 'windows' or DEVELOPER == 'true': addDir ('Retro Gaming Zone'       ,'retromenu', icon=ICONAPK,     themeit=THEME1)
 	if not ADDONFILE == 'http://': addDir ('Addon Installer' ,'addons', icon=ICONADDONS, themeit=THEME1)
 	if not YOUTUBEFILE == 'http://' and not YOUTUBETITLE == '': addDir (YOUTUBETITLE ,'youtube', icon=ICONYOUTUBE, themeit=THEME1)
 	addDir ('Save Data'     ,'savedata', icon=ICONSAVE,     themeit=THEME1)
+	addDir ('Backup/Restore Data Options'     ,'backuprestore', icon=ICONSAVE,     themeit=THEME1)
 	if HIDECONTACT == 'No': addFile('Contact' ,'contact', icon=ICONCONTACT,  themeit=THEME1)
 	if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
+	addFile('Advanced Settings/Cache Settings',      'autoadvanced',      icon=ICONCONTACT, themeit=THEME1)
 	addFile('Settings'      ,'settings', icon=ICONSETTINGS, themeit=THEME1)
 	if DEVELOPER == 'true': addDir('Developer Menu','developer', icon=ICONSETTINGS, themeit=THEME1)
 	setView('files', 'viewType')
@@ -369,113 +377,182 @@ def editThirdParty(number):
 	wiz.setS('wizard%sname' % number, name2)
 	wiz.setS('wizard%surl' % number, url2)
 
-def apkScraper(name=""):
-	if name == 'kodi':
-		kodiurl1 = 'http://mirrors.kodi.tv/releases/android/arm/'
-		kodiurl2 = 'http://mirrors.kodi.tv/releases/android/arm/old/'
-		url1 = wiz.openURL(kodiurl1).replace('\n', '').replace('\r', '').replace('\t', '')
-		url2 = wiz.openURL(kodiurl2).replace('\n', '').replace('\r', '').replace('\t', '')
-		x = 0
-		match1 = re.compile('<tr><td><a href="(.+?)">(.+?)</a></td><td>(.+?)</td><td>(.+?)</td></tr>').findall(url1)
-		match2 = re.compile('<tr><td><a href="(.+?)">(.+?)</a></td><td>(.+?)</td><td>(.+?)</td></tr>').findall(url2)
-		
-		addFile("Official Kodi Apk\'s", themeit=THEME1)
-		rc = False
-		for url, name, size, date in match1:
-			if url in ['../', 'old/']: continue
-			if not url.endswith('.apk'): continue
-			if not url.find('_') == -1 and rc == True: continue
-			try:
-				tempname = name.split('-')
-				if not url.find('_') == -1:
-					rc = True
-					name2, v2 = tempname[2].split('_')
-				else: 
-					name2 = tempname[2]
-					v2 = ''
-				title = "[COLOR %s]%s v%s%s %s[/COLOR] [COLOR %s]%s[/COLOR] [COLOR %s]%s[/COLOR]" % (COLOR1, tempname[0].title(), tempname[1], v2.upper(), name2, COLOR2, size.replace(' ', ''), COLOR1, date)
-				download = urljoin(kodiurl1, url)
-				addFile(title, 'apkinstall', "%s v%s%s %s" % (tempname[0].title(), tempname[1], v2.upper(), name2), download)
-				x += 1
-			except:
-				wiz.log("Error on: %s" % name)
-			
-		for url, name, size, date in match2:
-			if url in ['../', 'old/']: continue
-			if not url.endswith('.apk'): continue
-			if not url.find('_') == -1: continue
-			try:
-				tempname = name.split('-')
-				title = "[COLOR %s]%s v%s %s[/COLOR] [COLOR %s]%s[/COLOR] [COLOR %s]%s[/COLOR]" % (COLOR1, tempname[0].title(), tempname[1], tempname[2], COLOR2, size.replace(' ', ''), COLOR1, date)
-				download = urljoin(kodiurl2, url)
-				addFile(title, 'apkinstall', "%s v%s %s" % (tempname[0].title(), tempname[1], tempname[2]), download)
-				x += 1
-			except:
-				wiz.log("Error on: %s" % name)
-		if x == 0: addFile("Error Kodi Scraper Is Currently Down.")
-	elif name == 'spmc':
-		spmcurl1 = 'https://github.com/koying/SPMC/releases'
-		url1 = wiz.openURL(spmcurl1).replace('\n', '').replace('\r', '').replace('\t', '')
-		x = 0
-		match1 = re.compile('<div.+?lass="release-body.+?div class="release-header".+?a href=.+?>(.+?)</a>.+?ul class="release-downloads">(.+?)</ul>.+?/div>').findall(url1)
-		
-		addFile("Official SPMC Apk\'s", themeit=THEME1)
+def net_tools(view=None):
+	addFile ('Speed Tester' ,'speed', icon=ICONAPK, themeit=THEME1)
+	if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
+	addDir ('View IP Address & MAC Address',        'viewIP',    icon=ICONMAINT, themeit=THEME1)
+	setView('files', 'viewType')
+def viewIP():
+	infoLabel = ['System.FriendlyName', 
+				 'System.BuildVersion', 
+				 'System.CpuUsage',
+				 'System.ScreenMode',
+				 'Network.IPAddress',
+				 'Network.MacAddress',
+				 'System.Uptime',
+				 'System.TotalUptime',
+				 'System.FreeSpace',
+				 'System.UsedSpace',
+				 'System.TotalSpace',
+				 'System.Memory(free)',
+				 'System.Memory(used)',
+				 'System.Memory(total)']
+	data      = []; x = 0
+	for info in infoLabel:
+		temp = wiz.getInfo(info)
+		y = 0
+		while temp == "Busy" and y < 10:
+			temp = wiz.getInfo(info); y += 1; wiz.log("%s sleep %s" % (info, str(y))); xbmc.sleep(200)
+		data.append(temp)
+		x += 1
+	exter_ip, provider, location = getIP()
+	addFile('[COLOR %s]Local IP:[/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, data[4]), '', icon=ICONMAINT, themeit=THEME2)
+	addFile('[COLOR %s]External IP:[/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, exter_ip), '', icon=ICONMAINT, themeit=THEME2)
+	addFile('[COLOR %s]Provider:[/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, provider), '', icon=ICONMAINT, themeit=THEME2)
+	addFile('[COLOR %s]Location:[/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, location), '', icon=ICONMAINT, themeit=THEME2)
+	addFile('[COLOR %s]MacAddress:[/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, data[5]), '', icon=ICONMAINT, themeit=THEME2)
+	setView('files', 'viewType')
 
-		for name, urls in match1:
-			tempurl = ''
-			match2 = re.compile('<li>.+?<a href="(.+?)" rel="nofollow">.+?<small class="text-gray float-right">(.+?)</small>.+?strong>(.+?)</strong>.+?</a>.+?</li>').findall(urls)
-			for apkurl, apksize, apkname in match2:
-				if apkname.find('armeabi') == -1: continue
-				if apkname.find('launcher') > -1: continue
-				tempurl = urljoin('https://github.com', apkurl)
-				break
-			if tempurl == '': continue
-			try:
-				name = "SPMC %s" % name
-				title = "[COLOR %s]%s[/COLOR] [COLOR %s]%s[/COLOR]" % (COLOR1, name, COLOR2, apksize.replace(' ', ''))
-				download = tempurl
-				addFile(title, 'apkinstall', name, download)
-				x += 1
-			except Exception, e:
-				wiz.log("Error on: %s / %s" % (name, str(e)))
-		if x == 0: addFile("Error SPMC Scraper Is Currently Down.")
-
-def apkMenu(url=None):
-	if url == None:
-		addDir ('Official Kodi Apk\'s', 'apkscrape', 'kodi', icon=ICONAPK, themeit=THEME1)
-		addDir ('Official SPMC Apk\'s', 'apkscrape', 'spmc', icon=ICONAPK, themeit=THEME1)
-		if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
+#AppInstaller
+def ftgmod():
 	if not APKFILE == 'http://':
-		if url == None:
-			APKWORKING  = wiz.workingURL(APKFILE)
-			TEMPAPKFILE = uservar.APKFILE
-		else:
-			APKWORKING  = wiz.workingURL(url)
-			TEMPAPKFILE = url
+		APKWORKING = wiz.workingURL(APKFILE)
 		if APKWORKING == True:
-			link = wiz.openURL(TEMPAPKFILE).replace('\n','').replace('\r','').replace('\t','')
-			match = re.compile('name="(.+?)".+?ection="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)".+?dult="(.+?)".+?escription="(.+?)"').findall(link)
+			link = wiz.openURL(APKFILE).replace('\n','').replace('\r','').replace('\t','')
+			match = re.compile('name="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)"').findall(link)
 			if len(match) > 0:
-				x = 0
-				for name, section, url, icon, fanart, adult, description in match:
-					if not SHOWADULT == 'true' and adult.lower() == 'yes': continue
-					if section.lower() == 'yes':
-						x += 1
-						addDir ("[B]%s[/B]" % name, 'apk', url, description=description, icon=icon, fanart=fanart, themeit=THEME3)
-					else:
-						x += 1
-						addFile(name, 'apkinstall', name, url, description=description, icon=icon, fanart=fanart, themeit=THEME2)
-					if x < 1:
-						addFile("No addons added to this menu yet!", '', themeit=THEME2)
-			else: wiz.log("[APK Menu] ERROR: Invalid Format.", xbmc.LOGERROR)
+				for name, url, icon, fanart in match:
+					#if not SHOWADULT == 'true' and adult.lower() == 'yes': continue
+					addDir(name, 'GetList', name, url, icon=icon, fanart=fanart, themeit=THEME1)
+			else: wiz.log("[APK Menu] ERROR: Invalid Format.")
 		else: 
 			wiz.log("[APK Menu] ERROR: URL for apk list not working.", xbmc.LOGERROR)
 			addFile('Url for txt file not valid', '', themeit=THEME3)
 			addFile('%s' % APKWORKING, '', themeit=THEME3)
 		return
 	else: wiz.log("[APK Menu] No APK list added.")
-	setView('files', 'viewType')
+	
+def GetList(url):
+	if not wiz.workingURL(url) == True: return False
+	link = wiz.openURL(url).replace('\n','').replace('\r','').replace('\t','')
+	match = re.compile('name="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)"').findall(link)
+	if len(match) > 0:
+		for name, url, icon, fanart in match:
+			addFile(name, 'apkinstall', name, url, icon=icon, fanart=fanart, themeit=THEME1)
+		else: wiz.log("[APK Menu] ERROR: Invalid Format.")
+	else: wiz.log("[APK Menu] ERROR: URL for emu list not working.")
 
+def apkMenu():
+	if HIDESPACERS == 'No': addFile(wiz.sep('Install Kodi or SPMC'), '', themeit=THEME3)
+	addDir ('Streaming Apps'       ,'ftgmod', icon=ICONAPK,     themeit=THEME1)
+
+def apkfiles():
+	if HIDESPACERS == 'No': addFile(wiz.sep('Apps from apkfiles.com'), '', themeit=THEME3)
+	html= wiz.openURL('https://www.apkfiles.com/')
+	match = re.compile('href="([^"]*)">Applications(.+?)</a>').findall(html)
+	match2 = re.compile('href="([^"]*)">Games(.+?)</a>').findall(html)
+	for url,count in match:
+		addDir2('[COLOR blue]Android Apps[/COLOR]','https://www.apkfiles.com' +url,'apkgame',ICONAPK,FANART)
+	for url,count in match2:
+		addDir2('[COLOR blue]Android Games[/COLOR]','https://www.apkfiles.com' +url,'apkgame',ICONAPK,FANART)
+	setView('movies', 'MAIN')
+def kodi1():
+	if HIDESPACERS == 'No': addFile(wiz.sep('Latest Kodi'), '', themeit=THEME3)
+	kver, kurl, kdesc = wiz.latestApk('kodi')
+	addFile('Kodi (v%s)' % kver     ,'apkinstall',  'kodi', kurl, description=kdesc, icon=ICONAPK, themeit=THEME1)
+def spmc1():
+	if HIDESPACERS == 'No': addFile(wiz.sep('Lastest SPMC'), '', themeit=THEME3)
+	sver, surl, sdesc = wiz.latestApk('spmc')
+	addFile('SPMC (v%s)' % sver     ,'apkinstall',  'spmc', surl, description=sdesc, icon=ICONAPK, themeit=THEME1)
+def apkshowMenu(url):
+	if not wiz.workingURL(url) == True: return False
+	link = wiz.openURL(url).replace('\n','').replace('\r','').replace('\t','')
+	match = re.compile('name="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)"').findall(link)
+	if len(match) > 0:
+		for name, url, icon, fanart in match:
+			addFile(name, 'apkinstall', name, url, icon=icon, fanart=fanart, themeit=THEME1)
+		else: wiz.log("[APK Menu] ERROR: Invalid Format.")
+	else: wiz.log("[APK Menu] ERROR: URL for emu list not working.")
+def APKGAME(url):
+	html=wiz.openURL(url)
+	match = re.compile('<a href="([^"]*)" >(.+?)</a>').findall(html)
+	for url,name in match:
+		if '/cat' in url:
+			addDir2((name).replace('&amp;',' - '),'https://www.apkfiles.com'+url,'select',ART+'APK.png',FANART)
+def APKSELECT2(url):
+	html=wiz.openURL(url)
+	url1 = url
+	if "page=" in str(url):
+		url1 = url.split('?')[0]
+	match = re.compile('<a href="([^"]*)".+?<img src="([^"]*)" class="file_list_icon".+?alt="([^"]*)"',re.DOTALL).findall(html)
+	match2 = re.compile('class="[^"]*".+?ref="([^"]*)".+?yle=.+?</a>').findall(html)
+	for url,img,name in match:
+		if 'apk' in url:
+			addDir2((name).replace('&#39;','').replace('&amp;',' - ').replace('&#174;:',': ').replace('&#174;',' '),'https://www.apkfiles.com'+url,'grab','http:'+img, FANART)
+	if len(match2) > 1:
+		match2 = str(match2[len(match2) - 1])
+	addDir2('Next Page',url1+str(match2),'select',ART+'Next.png',FANART)
+
+def APKGRAB(name,url):
+	html=wiz.openURL(url)
+	name=name
+	match = re.compile('href="([^"]*)".+?lass="yellow_button".+?itle=').findall(html)
+	for url in match:
+		url = 'https://www.apkfiles.com'+url
+		apkInstaller1(name,url,'Brackets')
+###########################################################################
+#################################RETRO PACKS###############################
+def retromenu():
+	MKDIRS()#if not os.path.exists(ROMLOC): os.makedirs(ROMLOC)
+	if HIDESPACERS == 'No': addFile(wiz.sep('Emulators'), '', themeit=THEME3)
+	if wiz.platform() == 'android' or DEVELOPER == 'true': addDir ('Emulator APKs'       ,'emumenu', icon=ICONSAVE,     themeit=THEME1)
+	if wiz.platform() == 'windows' or DEVELOPER == 'true': addDir ('Emulator APPs'       ,'emumenu', icon=ICONSAVE,     themeit=THEME1)
+	if HIDESPACERS == 'No': addFile(wiz.sep('Rom Packs'), '', themeit=THEME3)
+	addDir ('Rom Pack Zips'       ,'rompackmenu', icon=ICONSAVE,     themeit=THEME1)
+def emumenu():
+	link = wiz.openURL(EMUAPKS).replace('\n','').replace('\r','').replace('\t','')
+	match = re.compile('name="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)"').findall(link)
+	if len(match) > 0:
+		if wiz.platform() == 'android':
+			for name, url, icon, fanart in match:
+				addFile(name, 'apkinstall', name, url, icon=icon, fanart=fanart, themeit=THEME1)
+		elif wiz.platform() == 'windows':
+			DIALOG.ok(ADDONTITLE, "[COLOR yellow]Please go download RetroArch for PC[/COLOR]", " Goto http://tinyurl.com/RetroFTG for a full tutorial")
+		elif wiz.platform() == 'linux':
+			DIALOG.ok(ADDONTITLE, "[COLOR yellow]Please go download RetroArch for PC[/COLOR]", " Goto http://tinyurl.com/RetroFTG for a full tutorial")
+def rompackmenu():
+	link = wiz.openURL(ROMPACK).replace('\n','').replace('\r','').replace('\t','')
+	match = re.compile('name="(.+?)".+?rl="(.+?)".+?con="(.+?)".+?anart="(.+?)"').findall(link)
+	if len(match) > 0:
+		for name, url, icon, fanart in match:
+			addFile(name, 'UNZIPROM', name, url, icon=icon, fanart=fanart, themeit=THEME1)
+def UNZIPROM():
+	DP.create(ADDONTITLE,"","",'ROM: ' + name)
+	zipname = name.replace('\\', '').replace('/', '').replace(':', '').replace('*', '').replace('?', '').replace('"', '').replace('<', '').replace('>', '').replace('|', '')
+	lib=os.path.join(PACKAGES, '%s.zip' % zipname)
+	downloader.download(url, lib, DP)
+	DP.update(0)
+	if wiz.platform() == 'android':
+		extract.all(lib,ROMLOC,DP)
+		DIALOG.ok(ADDONTITLE, "[COLOR yellow]Download complete, ROM Location: [/COLOR][COLOR white]" + ROMLOC + "[/COLOR]")
+	elif wiz.platform() == 'windows':
+		extract.all(lib,WROMLOC,DP)
+		DIALOG.ok(ADDONTITLE, "[COLOR yellow]Download complete, ROM Location: [/COLOR][COLOR white]" + WROMLOC + "[/COLOR]")
+	elif wiz.platform() == 'linux':
+		extract.all(lib,WROMLOC,DP)
+		DIALOG.ok(ADDONTITLE, "[COLOR yellow]Download complete, ROM Location: [/COLOR][COLOR white]" + WROMLOC + "[/COLOR]")
+	
+	
+def MKDIRS():
+	if wiz.platform() == 'android':
+		if not os.path.exists(ROMLOC): os.makedirs(ROMLOC)
+	elif wiz.platform() == 'windows':
+		if not os.path.exists(WROMLOC): os.makedirs(WROMLOC)
+	elif wiz.platform() == 'linux':
+		if not os.path.exists(WROMLOC): os.makedirs(WROMLOC)
+
+####################################################################################
+####################################################################################
 def addonMenu(url=None):
 	if not ADDONFILE == 'http://':
 		if url == None:
@@ -1058,6 +1135,19 @@ def traktMenu():
 	addFile('Clear All Addon Data',         'addontrakt',   'all', icon=ICONTRAKT,  themeit=THEME3)
 	setView('files', 'viewType')
 
+def FavsMenu():
+	on = '[COLOR green]ON[/COLOR]'; off = '[COLOR red]OFF[/COLOR]'
+	fav = '[COLOR green]ON[/COLOR]' if KEEPFAVS == 'true' else '[COLOR red]OFF[/COLOR]'
+	last = str(FAVSsave) if not FAVSsave == '' else 'Favourites hasnt been saved yet.'
+	if HIDESPACERS == 'No': addFile(wiz.sep('Backs up a copy'), '', themeit=THEME3)
+	addFile('Save Favourites: %s' % fav, 'togglesetting', 'keepfavourites', icon=ICONTRAKT, themeit=THEME3)
+	if KEEPFAVS == 'true': addFile('Last Save: %s' % str(last), '', icon=ICONTRAKT, themeit=THEME3)
+	
+	if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
+	addFile('Save Favourites',      'savefav',    icon=ICONTRAKT,  themeit=THEME1)
+	addFile('Recover Favourites',   'restorefav', icon=ICONTRAKT,  themeit=THEME1)
+	addFile('Clear Favourite Backup', 'clearfav', icon=ICONTRAKT,  themeit=THEME1)
+	setView('files', 'viewType')
 def realMenu():
 	real = '[COLOR green]ON[/COLOR]' if KEEPREAL == 'true' else '[COLOR red]OFF[/COLOR]'
 	last = str(REALSAVE) if not REALSAVE == '' else 'Real Debrid hasnt been saved yet.'
@@ -2044,6 +2134,7 @@ def freshStart(install=None, over=False):
 		DP.update(0, "[COLOR %s]Clearing out files and folders:" % COLOR2)
 		latestAddonDB = wiz.latestDB('Addons')
 		for root, dirs, files in os.walk(xbmcPath,topdown=True):
+			EXCLUDES.append('My_Builds')
 			dirs[:] = [d for d in dirs if d not in EXCLUDES]
 			for name in files:
 				del_file += 1
@@ -2171,6 +2262,79 @@ def testupdate():
 def testfirst():
 	notify.firstRun()
 
+def testinstaller():
+	notify.apkInstaller('SPMC')
+#################Speed Test#################################
+def speedMenu():
+	xbmc.executebuiltin('Runscript("special://home/addons/plugin.program.firetvupdater/speedtest.py")')
+	
+###########################APK Installers####################
+
+def apkInstaller1(apk, url, Brackets):
+	if wiz.platform() == 'android' or DEVELOPER == 'true':
+		if apk in ['kodi', 'spmc']:
+			yes=DIALOG.yesno(ADDONTITLE, "Would you like to download and install:", "          [COLOR yellow]%s (v%s)[/COLOR]" % (apk.upper(),wiz.latestApk(apk,'version')))
+			if not yes: wiz.LogNotify(ADDONTITLE, '[COLOR red]ERROR:[/COLOR] Install Cancelled'); return
+			display = "%s v%s" % (apk.upper(), wiz.latestApk(apk, 'version'))
+		else:
+			yes=DIALOG.yesno(ADDONTITLE, "Would you like to download and install:", "          [COLOR yellow]%s[/COLOR]" % apk)
+			if not yes: wiz.LogNotify(ADDONTITLE, '[COLOR red]ERROR:[/COLOR] Install Cancelled'); return
+			display = apk
+		if yes:
+			if not os.path.exists(PACKAGES): os.makedirs(PACKAGES)
+			if not wiz.workingURL(url) == True: wiz.LogNotify(ADDONTITLE, 'APK Installer: [COLOR red]Invalid Apk Url![/COLOR]'); return
+			DP.create(ADDONTITLE,'Downloading %s' % display,'', 'Please Wait')
+			lib=os.path.join(PACKAGES, "%s.apk" % apk)
+			try: os.remove(lib)
+			except: pass
+			downloader.download(url, lib, DP)
+			xbmc.sleep(500)
+			DP.close()
+			if "Brackets" in Brackets:
+				zf = zipfile.ZipFile(lib)
+				for file in  zf.namelist():
+					if file.endswith('.apk'):
+						with open(os.path.join(PACKAGES,os.path.basename(file)), 'wb') as f:
+							file2 = file.split('/')[1]
+							f.write(zf.read(file))
+							xbmc.sleep(500)
+							f.close()
+							try:
+								os.remove(lib)
+							except:
+								pass
+							lib = os.path.join(PACKAGES, file2)
+			DIALOG.ok(ADDONTITLE, "Launching the APK to be installed", "Follow the install process to complete.")
+			xbmc.executebuiltin('StartAndroidActivity("","android.intent.action.VIEW","application/vnd.android.package-archive","file:'+lib+'")')
+		else: wiz.LogNotify(ADDONTITLE, '[COLOR red]ERROR:[/COLOR] Install Cancelled')
+	else: wiz.LogNotify(ADDONTITLE, '[COLOR red]ERROR:[/COLOR] None Android Device')
+
+def apkInstaller(apk, url):
+	if wiz.platform() == 'android' or DEVELOPER == 'true':
+		if apk in ['kodi', 'spmc']: 
+			ver, url, description = wiz.latestApk(apk)
+			yes = DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to download and install:" % COLOR2, "[COLOR %s]%s v%s[/COLOR]" % (COLOR1, apk.upper(), ver))
+			if not yes: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]ERROR: Install Cancelled[/COLOR]' % COLOR2); return
+			display = "%s v%s" % (apk.upper(), ver)
+		else: 
+			yes = DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to download and install:" % COLOR2, "[COLOR %s]%s[/COLOR]" % (COLOR1, apk))
+			if not yes: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]ERROR: Install Cancelled[/COLOR]' % COLOR2); return
+			display = apk
+		if yes:
+			if not os.path.exists(PACKAGES): os.makedirs(PACKAGES)
+			if not wiz.workingURL(url) == True: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]APK Installer: Invalid Apk Url![/COLOR]' % COLOR2); return
+			DP.create(ADDONTITLE,'[COLOR %s][B]Downloading:[/B][/COLOR] [COLOR %s]%s[/COLOR]' % (COLOR2, COLOR1, display),'', 'Please Wait')
+			lib=os.path.join(PACKAGES, "%s.apk" % apk)
+			try: os.remove(lib)
+			except: pass
+			downloader.download(url, lib, DP)
+			xbmc.sleep(500)
+			DP.close()
+			#notify.apkInstaller(apk)
+			DIALOG.ok(ADDONTITLE, "Launching the APK to be installed", "Follow the install process to complete.")
+			wiz.ebi('StartAndroidActivity("","android.intent.action.VIEW","application/vnd.android.package-archive","file:'+lib+'")')
+		else: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]ERROR: Install Cancelled[/COLOR]' % COLOR2)
+	else: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]ERROR: None Android Device[/COLOR]' % COLOR2)
 def testfirstRun():
 	notify.firstRunSettings()
 
@@ -2239,10 +2403,11 @@ except:  pass
 wiz.log('[ Version : \'%s\' ] [ Mode : \'%s\' ] [ Name : \'%s\' ] [ Url : \'%s\' ]' % (VERSION, mode if not mode == '' else None, name, url))
 
 def setView(content, viewType):
-	#if content:
-	#	xbmcplugin.setContent(int(sys.argv[1]), content)
 	if wiz.getS('auto-view')=='true':
-		wiz.ebi("Container.SetViewMode(%s)" % wiz.getS(viewType) )
+		views = wiz.getS(viewType)
+		if views == '50' and KODIV >= 17 and SKIN == 'skin.estuary': views = '55'
+		if views == '500' and KODIV >= 17 and SKIN == 'skin.estuary': views = '50'
+		wiz.ebi("Container.SetViewMode(%s)" %  views)
 
 if   mode==None             : index()
 
@@ -2253,15 +2418,21 @@ elif mode=='buildinfo'      : buildInfo(name)
 elif mode=='buildpreview'   : buildVideo(name)
 elif mode=='install'        : buildWizard(name, url)
 elif mode=='theme'          : buildWizard(name, mode, url)
+elif mode=='viewthirdparty' : viewThirdList(name)
+elif mode=='installthird'   : thirdPartyInstall(name, url)
+elif mode=='editthird'      : editThirdParty(name); wiz.refresh()
 
 elif mode=='maint'          : maintMenu(name)
-elif mode=='advancedsetting': advancedWindow()
+elif mode=='kodi17fix'      : wiz.kodi17Fix()
+elif mode=='advancedsetting': advancedWindow(name)
 elif mode=='autoadvanced'   : showAutoAdvanced(); wiz.refresh()
+elif mode=='removeadvanced' : removeAdvanced(); wiz.refresh()
 elif mode=='asciicheck'     : wiz.asciiCheck()
 elif mode=='backupbuild'    : wiz.backUpOptions('build')
 elif mode=='backupgui'      : wiz.backUpOptions('guifix')
 elif mode=='backuptheme'    : wiz.backUpOptions('theme')
 elif mode=='backupaddon'    : wiz.backUpOptions('addondata')
+elif mode=='oldThumbs'      : wiz.oldThumbs()
 elif mode=='clearbackup'    : wiz.cleanupBackup()
 elif mode=='convertpath'    : wiz.convertSpecial(HOME)
 elif mode=='currentsettings': viewAdvanced()
@@ -2274,6 +2445,7 @@ elif mode=='checksources'   : wiz.checkSources(); wiz.refresh()
 elif mode=='checkrepos'     : wiz.checkRepos(); wiz.refresh()
 elif mode=='freshstart'     : freshStart()
 elif mode=='forceupdate'    : wiz.forceUpdate()
+elif mode=='forceprofile'   : wiz.reloadProfile(wiz.getInfo('System.ProfileName'))
 elif mode=='forceclose'     : wiz.killxbmc()
 elif mode=='forceskin'      : wiz.ebi("ReloadSkin()"); wiz.refresh()
 elif mode=='hidepassword'   : wiz.hidePassword()
@@ -2284,17 +2456,17 @@ elif mode=='togglecache'    : toggleCache(name); wiz.refresh()
 elif mode=='toggleadult'    : wiz.toggleAdult(); wiz.refresh()
 elif mode=='changefeq'      : changeFeq(); wiz.refresh()
 elif mode=='uploadlog'      : uploadLog.Main()
-elif mode=='viewlog'        : viewLogFile()
-elif mode=='viewwizlog'     : viewWizLogFile()
-elif mode=='viewerrorlog'   : errorChecking()
-elif mode=='clearwizlog'    : f = open(WIZLOG, 'w'); f.close(); wiz.LogNotify(ADDONTITLE, "Wizard Log Cleared!")
+elif mode=='viewlog'        : LogViewer()
+elif mode=='viewwizlog'     : LogViewer(WIZLOG)
+elif mode=='viewerrorlog'   : errorChecking(all=True)
+elif mode=='clearwizlog'    : f = open(WIZLOG, 'w'); f.close(); wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), "[COLOR %s]Wizard Log Cleared![/COLOR]" % COLOR2)
 elif mode=='purgedb'        : purgeDb()
-elif mode=='fixaddonupdate' : wiz.purgeDb(os.path.join(DATABASE, wiz.latestDB('Addons')))
+elif mode=='fixaddonupdate' : fixUpdate()
 elif mode=='removeaddons'   : removeAddonMenu()
 elif mode=='removeaddon'    : removeAddon(name)
 elif mode=='removeaddondata': removeAddonDataMenu()
 elif mode=='removedata'     : removeAddonData(name)
-elif mode=='resetaddon'     : total = wiz.cleanHouse(ADDONDATA, ignore=True); wiz.LogNotify("[COLOR %s]%s[/COLOR]" (COLOR1, ADDONTITLE), "[COLOR %s]Addon_Data reset[/COLOR]" % COLOR2)
+elif mode=='resetaddon'     : total = wiz.cleanHouse(ADDONDATA, ignore=True); wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), "[COLOR %s]Addon_Data reset[/COLOR]" % COLOR2)
 elif mode=='systeminfo'     : systemInfo()
 elif mode=='restorezip'     : restoreit('build')
 elif mode=='restoregui'     : restoreit('gui')
@@ -2302,19 +2474,22 @@ elif mode=='restoreaddon'   : restoreit('addondata')
 elif mode=='restoreextzip'  : restoreextit('build')
 elif mode=='restoreextgui'  : restoreextit('gui')
 elif mode=='restoreextaddon': restoreextit('addondata')
-elif mode=='writeadvanced'  : writeAdvanced(name)
+elif mode=='writeadvanced'  : writeAdvanced(name, url)
 
 elif mode=='apk'            : apkMenu()
+elif mode=='apkscrape'      : apkScraper(name)
 elif mode=='apkinstall'     : apkInstaller(name, url)
 
-elif mode=='youtube'        : youtubeMenu()
+elif mode=='youtube'        : youtubeMenu(name)
 elif mode=='viewVideo'      : playVideo(url)
 
-elif mode=='addons'         : addonMenu()
-elif mode=='addoninstall'   : addonInstaller(name)
+elif mode=='addons'         : addonMenu(name)
+elif mode=='addoninstall'   : addonInstaller(name, url)
 
 elif mode=='savedata'       : saveMenu()
 elif mode=='togglesetting'  : wiz.setS(name, 'false' if wiz.getS(name) == 'true' else 'true'); wiz.refresh()
+elif mode=='managedata'     : manageSaveData(name)
+elif mode=='whitelist'      : wiz.whiteList(name)
 
 elif mode=='trakt'          : traktMenu()
 elif mode=='savetrakt'      : traktit.traktIt('update',      name)
@@ -2348,11 +2523,12 @@ elif mode=='settings'       : wiz.openS(name); wiz.refresh()
 elif mode=='opensettings'   : id = eval(url.upper()+'ID')[name]['plugin']; addonid = wiz.addonId(id); addonid.openSettings(); wiz.refresh()
 
 elif mode=='developer'      : developer()
-elif mode=='converttext'    : wiz.convertText(name)
+elif mode=='converttext'    : wiz.convertText()
+elif mode=='createqr'       : wiz.createQR()
 elif mode=='testnotify'     : testnotify()
 elif mode=='testupdate'     : testupdate()
 elif mode=='testfirst'      : testfirst()
-
+elif mode=='testfirstrun'   : testfirstRun()
 elif mode=='backup'         : backup()
 elif mode=='addon'          : addon()
 elif mode=='misc'           : misc()
@@ -2386,4 +2562,6 @@ elif mode=='retromenu'      : retromenu()
 elif mode=='emumenu'        : emumenu()
 elif mode=='rompackmenu'    : rompackmenu()
 elif mode=='UNZIPROM'       : UNZIPROM()
+elif mode=='testapk'        : notify.apkInstaller('SPMC')
+
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
