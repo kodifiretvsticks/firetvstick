@@ -113,5 +113,5 @@ HEADERMESSAGE  = 'Fire TV Updater'
 HEADERIMAGE    = ''
 FONTSETTINGS   = 'Font12'
 # Background for Notification Window
-BACKGROUND     = ''
+BACKGROUND     = 'http://i.imgur.com/GP8U2Pk.jpg'
 #########################################################
