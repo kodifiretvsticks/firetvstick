@@ -55,23 +55,6 @@
                 <onleft>103</onleft>
                 <onright>103</onright>
             </control>
-            <control type="scrollbar" id="103">
-                <left>1880</left>
-                <top>70</top>
-                <width>30</width>
-                <height>915</height>
-                <subtype>text</subtype>
-                <visible>true</visible>
-                <texturesliderbackground>Button/scrollbar-V-background.png</texturesliderbackground>
-                <texturesliderbar>Button/scrollbar-V.png</texturesliderbar>
-                <texturesliderbarfocus colordiffuse="FF12B2E7">Button/scrollbar-V-focus.png</texturesliderbarfocus>
-                <orientation>vertical</orientation>
-                <showonepage>true</showonepage>
-                <onup>201</onup>
-                <ondown>201</ondown>
-                <onleft>201</onleft>
-                <onright>201</onright>
-            </control>
             <control type="button" id="201">
                 <left>1605</left>
                 <top>1015</top>

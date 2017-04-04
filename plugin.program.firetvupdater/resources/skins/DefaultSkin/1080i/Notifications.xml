@@ -49,23 +49,6 @@
                 <colordiffuse>FFFF00FF</colordiffuse>
                 <pagecontrol>105</pagecontrol>
             </control>
-            <control type="scrollbar" id="105">
-                <left>1660</left>
-                <top>90</top>
-                <width>30</width>
-                <height>790</height>
-                <subtype>text</subtype>
-                <visible>true</visible>
-                <texturesliderbackground>Button/scrollbar-V-background.png</texturesliderbackground>
-                <texturesliderbar>Button/scrollbar-V.png</texturesliderbar>
-                <texturesliderbarfocus colordiffuse="FF12B2E7">Button/scrollbar-V-focus.png</texturesliderbarfocus>
-                <orientation>vertical</orientation>
-                <showonepage>true</showonepage>
-                <onup>201</onup>
-                <ondown>201</ondown>
-                <onleft>201</onleft>
-                <onright>201</onright>
-            </control>
         </control>
         <control type="group">
             <control type="button" id="201">
