@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.unlockmytv2" version="0.3" name="UnlockMyTV" provider-name="John">
+<addon id="skin.unlockmytv2" version="0.4" name="UnlockMyTV" provider-name="John">
 	<requires>
 		<import addon="xbmc.gui" version="5.10.0"/>
 		<import addon="script.skinshortcuts" version="0.6.0"/>
 		<import addon="script.module.autocompletion" version="1.1.2"/>
 		<import addon="script.skin.helper.service" version="0.0.1"/>
 	</requires>
-	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">
+	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="1.00" debugging="false">
 		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
 	</extension>
 	<extension point="xbmc.addon.metadata">
