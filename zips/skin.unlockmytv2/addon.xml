@@ -2,20 +2,16 @@
 <addon id="skin.unlockmytv2" version="0.3" name="UnlockMyTV" provider-name="John">
 	<requires>
 		<import addon="xbmc.gui" version="5.10.0"/>
-		<import version="0.6.0" addon="script.skinshortcuts"/>
+		<import addon="script.skinshortcuts" version="0.6.0"/>
 		<import addon="script.module.autocompletion" version="1.1.2"/>
-		<import version="0.0.1" addon="script.skin.helper.service"/>
+		<import addon="script.skin.helper.service" version="0.0.1"/>
 	</requires>
-	<extension
-        point="xbmc.gui.skin"
-        defaultthemename="Textures.xbt"
-        debugging="false"
-        effectslowdown="1.0">
+	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">
 		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<disclaimer lang="en_GB">UnlockMyTV is the default skin for Kodi, removing it may cause issues</disclaimer>
 		<platform>all</platform>
-		<source>https://unlockmytv.com</source>
+		<summary lang="en">New Skin for Kodi</summary>
+		<disclaimer lang="en">UnlockMyTV is the default skin for Kodi, removing it may cause issues</disclaimer>
 	</extension>
 </addon>
