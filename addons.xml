@@ -84,36 +84,6 @@
 	</extension>
 </addon>
 
-<addon
-  id="skin.unlockmytv"
-  version="1.0.2"
-  name="Unlock My TV"
-  provider-name="John">
-	<requires>
-		<import addon="xbmc.gui" version="5.12.0"/>
-		<import addon="resource.images.studios.white" version="0.0.4"/>
-		<import addon="script.skinshortcuts" version="0.6.6"/>
-		<import addon="script.toolbox" version="1.0.0"/>
-		<import addon="script.skin.helper.service" version="1.0.0"/>
-	</requires>
-	<extension
-	  point="xbmc.gui.skin"
-	  debugging="false"
-	  effectslowdown="0.75">
-		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en_US">Skin For UnlockMyTV</summary>
-		<platform>all</platform>
-		<website>www.unlockmytv.com</website>
-		<assets>
-			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
-		</assets>
-		<news>1.0.2 - New skin because of Krypton update for speed and quality.</news>
-	</extension>
-</addon>
-
 <addon id="skin.unlockmytv2" version="0.2" name="UnlockMyTV" provider-name="John">
 	<requires>
 		<import addon="xbmc.gui" version="5.10.0"/>
