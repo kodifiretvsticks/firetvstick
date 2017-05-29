@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<includes>
+	<include name="skinshortcuts-mainmenu">
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<label>Movies</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/director.png</thumb>
+			<property name="labelID">movies</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
+			<property name="widget">Addon</property>
+			<property name="widgetName">In Theaters</property>
+			<property name="widgetType">movies</property>
+			<property name="widgetTarget">videos</property>
+			<property name="widgetPath">plugin://plugin.video.exodus/?action=movies&amp;url=theaters&amp;reload=$INFO[Window(Home).Property(widgetreload)]</property>
+			<property name="WidgetStyle.1">40020</property>
+			<onclick>ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=movieNavigator",return)</onclick>
+			<property name="path">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=movieNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=movieNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">movies</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<label>TV Shows</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/tv.png</thumb>
+			<property name="labelID">tvshows</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
+			<property name="widget">Addon</property>
+			<property name="widgetName">Airing Today</property>
+			<property name="widgetType">videos</property>
+			<property name="widgetTarget">videos</property>
+			<property name="widgetPath">plugin://plugin.video.exodus/?action=tvshows&amp;url=airing&amp;reload=$INFO[Window(Home).Property(widgetreload)]</property>
+			<property name="WidgetStyle.1">40020</property>
+			<onclick>ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=tvNavigator",return)</onclick>
+			<property name="path">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=tvNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=tvNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">tvshows</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<label>Favorites</label>
+			<label2>Common menu item</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/favourites.png</thumb>
+			<property name="labelID">favorites</property>
+			<property name="defaultID">1036</property>
+			<property name="translatedPath">ActivateWindow(Favourites)</property>
+			<property name="WidgetStyle.1">40020</property>
+			<property name="WidgetStyle.2">40020</property>
+			<onclick>ActivateWindow(Favourites)</onclick>
+			<property name="path">ActivateWindow(Favourites)</property>
+			<property name="list">Favourites</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">favorites</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<label>Search</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/search.png</thumb>
+			<property name="labelID">search</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=searchNavigator",return)</property>
+			<property name="WidgetStyle.1">40020</property>
+			<property name="WidgetStyle.2">40020</property>
+			<onclick>ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=searchNavigator",return)</onclick>
+			<property name="path">ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=searchNavigator",return)</property>
+			<property name="list">plugin://plugin.video.exodus/?action=searchNavigator</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">search</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<label>Gamepass</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultAddon.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/xbox.png</thumb>
+			<property name="labelID">plugin.video.nfl.gamepass</property>
+			<property name="defaultID">plugin.video.nfl.gamepass</property>
+			<property name="translatedPath">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<property name="WidgetStyle.1">40022</property>
+			<property name="WidgetStyle.2">40022</property>
+			<property name="WidgetStyle.3">40022</property>
+			<onclick>RunAddOn(plugin.video.nfl.gamepass)</onclick>
+			<property name="path">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<property name="list">RunAddOn(plugin.video.nfl.gamepass)</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">plugin-video-nfl-gamepass</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<label>Sports &amp; TV</label>
+			<label2>Video Add-On</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/equalizer.png</thumb>
+			<property name="labelID">sports-tv</property>
+			<property name="defaultID" />
+			<property name="translatedPath">ActivateWindow(Videos,"plugin://plugin.program.super.favourites/?label=Sports%26TV&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSuper+Favourites%5CSports%26TV&amp;image=C%3A%5CUsers%5CJohn%5CAppData%5CRoaming%5CKodi%5Caddons%5Cplugin.program.super.favourites%5Cicon.png&amp;fanart=C%3A%5CUsers%5CJohn%5CAppData%5CRoaming%5CKodi%5Caddons%5Cplugin.program.super.favourites%5Cfanart.jpg&amp;content_type=",return)</property>
+			<property name="WidgetStyle.1">40022</property>
+			<property name="WidgetStyle.2">40022</property>
+			<onclick>ActivateWindow(Videos,"plugin://plugin.program.super.favourites/?label=Sports%26TV&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSuper+Favourites%5CSports%26TV&amp;image=special://home/addons%5Cplugin.program.super.favourites%5Cicon.png&amp;fanart=special://home/addons%5Cplugin.program.super.favourites%5Cfanart.jpg&amp;content_type=",return)</onclick>
+			<property name="path">ActivateWindow(Videos,"plugin://plugin.program.super.favourites/?label=Sports%26TV&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSuper+Favourites%5CSports%26TV&amp;image=special://home/addons%5Cplugin.program.super.favourites%5Cicon.png&amp;fanart=special://home/addons%5Cplugin.program.super.favourites%5Cfanart.jpg&amp;content_type=",return)</property>
+			<property name="list">plugin://plugin.program.super.favourites/?label=Sports%26TV&amp;mode=400&amp;path=special%3A%2F%2Fprofile%2Faddon_data%2Fplugin.program.super.favourites%2FSuper+Favourites%2FSuper+Favourites%5CSports%26TV&amp;image=special://home/addons%5Cplugin.program.super.favourites%5Cicon.png&amp;fanart=special://home/addons%5Cplugin.program.super.favourites%5Cfanart.jpg&amp;content_type=</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">sports-tv</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUMBER[7]</property>
+			<label>Addons</label>
+			<label2>Videos</label2>
+			<icon>DefaultAddonVideo.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/sets.png</thumb>
+			<property name="labelID">addons</property>
+			<property name="defaultID">1037</property>
+			<property name="WidgetStyle.1">40020</property>
+			<property name="WidgetStyle.2">40020</property>
+			<property name="translatedPath">ActivateWindow(Videos,Addons,return)</property>
+			<onclick>ActivateWindow(Videos,Addons,return)</onclick>
+			<property name="path">ActivateWindow(Videos,Addons,return)</property>
+			<property name="list">Addons</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">addons</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUMBER[8]</property>
+			<label>Maintenance</label>
+			<label2>Program</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://home/addons/skin.unlockmytv2/icons/addons.png</thumb>
+			<property name="labelID">plugin.program.firetvupdater</property>
+			<property name="defaultID">plugin.program.firetvupdater</property>
+			<property name="translatedPath">ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</property>
+			<property name="WidgetStyle.1">40020</property>
+			<property name="WidgetStyle.2">40020</property>
+			<onclick>ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</onclick>
+			<property name="path">ActivateWindow(Programs,"plugin://plugin.program.firetvupdater",return)</property>
+			<property name="list">plugin://plugin.program.firetvupdater</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">plugin-program-firetvupdater</property>
+			<property name="group">mainmenu</property>
+			<property name="hasSubmenu">False</property>
+		</item>
+	</include>
+	<include />
+	<include name="skinshortcuts-submenu" />
+	<include name="skinshortcuts-group-movies">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-movies">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-tvshows">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-tvshows">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-favorites">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-favorites">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-search">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-search">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-plugin-video-nfl-gamepass">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-plugin-video-nfl-gamepass">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-sports-tv">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-sports-tv">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-addons">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-addons">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-plugin-program-firetvupdater">
+		<description>No items</description>
+	</include>
+	<include name="skinshortcuts-group-alt-plugin-program-firetvupdater">
+		<description>No items</description>
+	</include>
+</includes>

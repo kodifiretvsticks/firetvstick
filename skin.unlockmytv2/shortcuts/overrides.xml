@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overrides>
+
+<!-- Additionnal Widgets -->
+    <widget label="40008" icon="special://skin/media/icons/widgets/weather.png">WeatherWidget</widget>
+    <widget label="40009" icon="special://skin/media/icons/widgets/movies.png">MoviesWidget</widget>
+    <widget label="40010" icon="special://skin/media/icons/widgets/tvshows.png">TVShowsWidget</widget>
+    <widget label="40011" icon="special://skin/media/icons/widgets/music.png">MusicWidget</widget>
+    <widget label="40012" icon="special://skin/media/icons/widgets/addons.png">AddonsWidget</widget>
+    <widget label="40013" icon="special://skin/media/icons/widgets/sources.png">SourcesWidget</widget>
+    <widget label="40014" icon="special://skin/media/icons/widgets/livetv.png">LiveTVWidget</widget>
+    <widget label="40015" icon="special://skin/media/icons/widgets/radios.png">RadioWidget</widget>
+    <widget label="40016" icon="special://skin/media/icons/widgets/pictures.png">PictureWidget</widget>
+    
+    <propertySettings property="PictureWidget" buttonID="3128" title="Path" showNone="True" imageBrowse="True" />
+
+<!-- Default Widgets -->    
+    <widgetdefault labelID="videos">SourcesWidget</widgetdefault>
+    <widgetdefault labelID="movies">MoviesWidget</widgetdefault>
+    <widgetdefault labelID="tvshows">TVShowsWidget</widgetdefault>
+    <widgetdefault labelID="music">MusicWidget</widgetdefault>
+    <widgetdefault labelID="radio">RadioWidget</widgetdefault>
+    <widgetdefault labelID="livetv">LiveTVWidget</widgetdefault>
+    <widgetdefault labelID="pictures">PictureWidget</widgetdefault>
+    <widgetdefault labelID="addons">AddonsWidget</widgetdefault>
+    <widgetdefault labelID="weather">WeatherWidget</widgetdefault>
+
+<!-- Default Backgrounds -->        
+    <backgrounddefault labelID="videos">special://skin/extras/home-images/videos.jpg</backgrounddefault>
+    <backgrounddefault labelID="movies">special://skin/extras/home-images/movies.jpg</backgrounddefault>
+    <backgrounddefault labelID="tvshows">special://skin/extras/home-images/tvshows.jpg</backgrounddefault>
+    <backgrounddefault labelID="music">special://skin/extras/home-images/music.jpg</backgrounddefault>
+    <backgrounddefault labelID="radio">special://skin/extras/home-images/radio.jpg</backgrounddefault>
+    <backgrounddefault labelID="livetv">special://skin/extras/home-images/livetv.jpg</backgrounddefault>
+    <backgrounddefault labelID="pictures">special://skin/extras/home-images/pictures.jpg</backgrounddefault>
+    <backgrounddefault labelID="addons">special://skin/extras/home-images/addons.jpg</backgrounddefault>
+    <backgrounddefault labelID="weather">special://skin/extras/home-images/weather.jpg</backgrounddefault>
+   
+    
+<!-- Widget Style -->
+    <propertySettings property="WidgetStyle.1" buttonID="3121" title="$LOCALIZE[40017] 1" showNone="False" />
+    <property property="WidgetStyle.1">$LOCALIZE[40020]</property>
+    <property property="WidgetStyle.1">$LOCALIZE[40022]</property>
+    <property property="WidgetStyle.1">$LOCALIZE[40021]</property>
+   
+    <propertySettings property="WidgetStyle.2" buttonID="3123" title="$LOCALIZE[40017] 2" showNone="False" />
+    <property property="WidgetStyle.2">$LOCALIZE[40020]</property>
+    <property property="WidgetStyle.2">$LOCALIZE[40022]</property>
+     <property property="WidgetStyle.2">$LOCALIZE[40021]</property>   
+    <propertySettings property="WidgetStyle.3" buttonID="3125" title="$LOCALIZE[40017] 3" showNone="False" />
+    <property property="WidgetStyle.3">$LOCALIZE[40020]</property>
+    <property property="WidgetStyle.3">$LOCALIZE[40022]</property>
+    <property property="WidgetStyle.3">$LOCALIZE[40021]</property>    
+    <propertySettings property="WidgetStyle.4" buttonID="3127" title="$LOCALIZE[40017] 4" showNone="False" />
+    <property property="WidgetStyle.4">$LOCALIZE[40020]</property>
+    <property property="WidgetStyle.4">$LOCALIZE[40022]</property>
+    <property property="WidgetStyle.4">$LOCALIZE[40021]</property>
+<!-- Background -->
+    <backgroundBrowse default="Yes">Single</backgroundBrowse>
+
+<!-- Additionnal Shortcuts -->    
+    <shortcut label="20183" grouping="commands">ReloadSkin()</shortcut>
+    
+<!-- Icons Directory -->
+    <thumbnailBrowseDefault>special://skin/extras/icons/</thumbnailBrowseDefault>    
+            
+</overrides>

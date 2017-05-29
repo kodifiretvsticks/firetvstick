@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu)</onload>
+	<defaultcontrol>9000</defaultcontrol>
+	<!-- <onload condition="ControlGroup(700).HasFocus">SetFocus(9000,0)</onload> -->
+	<backgroundcolor>background</backgroundcolor>
+	<controls>
+
+		<control type="button" id="20000">
+			<include>HiddenObject</include>
+			<animation effect="fade" time="300" start="100" end="0">Focus</animation>
+			<onfocus>SetFocus(2000)</onfocus>
+			<onclick>noop</onclick>
+			<visible allowhiddenfocus="true">Control.HasFocus(20000)</visible>
+		</control>
+		<control type="button" id="20001">
+			<include>HiddenObject</include>
+			<animation effect="fade" time="300" start="100" end="0">Focus</animation>
+			<onfocus>SetFocus(2000)</onfocus>
+			<onclick>noop</onclick>
+			<visible allowhiddenfocus="true">Control.HasFocus(20001)</visible>
+		</control>
+		<!-- Background -->
+		<include>DefaultBackground</include>
+		<control type="multiimage">
+			<depth>DepthBackground</depth>
+			<include>FullScreenDimensions</include>
+			<aspectratio>scale</aspectratio>
+			<fadetime>600</fadetime>
+			<animation effect="zoom" center="auto" end="102,102" time="0" condition="IntegerGreaterThan(System.StereoscopicMode,0)">conditional</animation>
+			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<imagepath background="true" colordiffuse="35FFFFFF">$VAR[HomeFanartVar]</imagepath>
+			<visible>!Player.HasMedia</visible>
+		</control>
+		<control type="group">
+			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Window.IsActive(musicinformation) | Window.IsActive(movieinformation) | Window.IsActive(addoninformation) | Window.IsActive(pvrguideinfo) | Window.IsActive(pvrrecordinginfo) | Window.IsActive(pictureinfo) | Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-VideoList.xml)">Conditional</animation>
+			<control type="group" id="2000">
+				<animation type="Conditional" condition="Control.IsVisible(20000)" reversible="false">
+					<effect type="slide" end="0,20" time="60" tween="sine" />
+					<effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
+				</animation>
+				<animation type="Conditional" condition="Control.IsVisible(20001)" reversible="false">
+					<effect type="slide" end="0,-20" time="60" tween="sine" />
+					<effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
+				</animation>
+				<top>78</top>
+				<left>20</left>
+				<include>OpenClose_Right</include>
+				<control type="group" id="5000">
+				   	<include>Visible_Right_Delayed</include>
+					<control type="button" id="5888">
+						<width>1</width>
+						<height>1</height>
+						<label>-</label>
+						<onfocus>SetFocus(5001)</onfocus>
+
+						<onclick>noop</onclick>
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+					</control>
+					
+				<control type="grouplist" id="5001">
+					<orientation>vertical</orientation>
+					
+					<height>922</height>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<itemgap>-2</itemgap>
+                                <control type="group">
+			                        <height>110</height>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,0)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,1)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,2)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,3)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,4)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,5)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,6)">conditional</animation>
+			                        <animation effect="slide" end="110,0" time="0" condition="!Integer.IsGreater(Container(5900).NumItems,7)">conditional</animation>
+			                        <control type="label">
+				                        <left>550</left>
+				                        <top>125</top>
+				                        <width>700</width>
+				                        <height>40</height>
+				                        <label>$INFO[Container(5900).Listitem.Label]</label>
+				                        <shadowcolor>text_shadow</shadowcolor>
+				                        <font>font15_title</font>
+				                        <align>left</align>
+				                        <animation effect="fade" time="200">VisibleChange</animation>
+				                        <visible>Control.HasFocus(5900)</visible>
+			                        </control>
+			                        <control type="panel" id="5900">
+										
+				                        <orientation>horizontal</orientation>
+				                        <onleft>9000</onleft>
+				                        <left>350</left>
+				                        <top>22</top>
+				                        <height>110</height>
+				                        <width>625</width>
+										<align>left</align>
+				                        <onup>9000</onup>
+				                        <ondown condition="!String.IsEqual(Container(9000).ListItem.Property(widget),AddonsWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),WeatherWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),SourcesWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),LiveTVWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),RadioWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),TVShowsWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),MusicWidget) + !String.IsEqual(Container(9000).ListItem.Property(widget),MoviesWidget)">5100</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),AddonsWidget)">8100</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),WeatherWidget)">15001</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),SourcesWidget)">11100</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),LiveTVWidget)">12200</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),RadioWidget)">13200</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),TVShowsWidget)">6100</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),MusicWidget)">7100</ondown>
+				                        <ondown condition="String.IsEqual(Container(9000).ListItem.Property(widget),MoviesWidget)">17100</ondown>
+										<onright>5100</onright>
+
+				                        <itemlayout width="100" height="100">
+					                        <control type="image">
+												<top>10</top>
+												<left>5</left>
+						                        <width>75</width>
+						                        <height>75</height>
+						                        <align>center</align>
+						                        <aligny>center</aligny>
+						                        <texture border="40">buttons/button-nofo.png</texture>
+					                        </control>
+					                        <control type="image">
+												<left>3</left>
+												<top>10</top>
+						                        <width>75</width>
+						                        <height>75</height>
+						                        <align>center</align>
+						                        <aligny>center</aligny>
+						                        <texture>$INFO[ListItem.Icon]</texture>
+												<aspectratio>scale</aspectratio>
+					                        </control>
+				                        </itemlayout>
+				                        <focusedlayout width="140" height="100">
+					                        <control type="image">
+												<top>-11</top>
+												<left>-18</left>
+						                        <width>120</width>
+						                        <height>120</height>
+						                        <align>center</align>
+						                        <aligny>center</aligny>
+						                        <texture border="40">buttons/button-theme-fo.png</texture>
+												
+					                        </control>
+					                        <control type="image">
+												<left>3</left>
+												<top>10</top>
+						                        <width>75</width>
+						                        <height>75</height>
+						                        <align>center</align>
+						                        <aligny>center</aligny>
+						                        <texture>$INFO[ListItem.Icon]</texture>
+												<aspectratio>scale</aspectratio>
+					                        </control>
+											
+
+				                        </focusedlayout>
+			                        </control>
+									<control type="group">
+											<visible>Integer.IsGreater(Container(5900).NumItems,6)</visible>
+											<control type="image">
+												<left>900</left>
+												<top>50</top>
+						                        <width>25</width>
+						                        <height>25</height>
+						                        <align>right</align>
+						                        <aligny>center</aligny>
+						                       <texture colordiffuse="button_focus" flipy="true">overlays/arrowright.png</texture>
+											   
+											 </control>
+				                        </control>
+		                        </control>
+		                        
+<!-- 					<include content="WidgetListPosters">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName)] />
+						<param name="widget_target" value=$INFO[Container(9000).ListItem.Property(widgetType)] />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5100"/>
+						<param name="onup_id" value="5900"/>
+						<param name="ondown_id" value="5200"/>
+						<param name="visible" value="String.IsEqual(Container(9000).ListItem.Property(WidgetStyle.1),$LOCALIZE[40020]) | String.IsEmpty(Container(9000).ListItem.Property(WidgetStyle.1))"/>	
+					</include> -->
+					
+						<visible>!IsEmpty(Container(9000).ListItem.Property(widgetPath)</visible>
+						<include name="WidgetListMovies">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5100"/>
+						<param name="onup_id" value="5900"/>
+						<param name="ondown_id" value="5200"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.1),Posters"/>	
+						</include>
+
+						<include name="WidgetListSquare">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5100"/>
+						<param name="onup_id" value="5900"/>
+						<param name="ondown_id" value="5200"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.1),Icons"/>	
+						</include>
+
+						<include name="WidgetListFanart">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5100"/>
+						<param name="onup_id" value="5900"/>
+						<param name="ondown_id" value="5200"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.1),Fanart"/>	
+						</include>
+						
+						<include name="WidgetListMovies">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.2)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.2)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5200"/>
+						<param name="onup_id" value="5100"/>
+						<param name="ondown_id" value="5300"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.2),Posters"/>	
+						</include>
+
+						<include name="WidgetListSquare">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.2)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.2)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5200"/>
+						<param name="onup_id" value="5100"/>
+						<param name="ondown_id" value="5300"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.2),Icons"/>	
+						</include>
+						
+						<include name="WidgetListFanart">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.2)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.2)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5200"/>
+						<param name="onup_id" value="5100"/>
+						<param name="ondown_id" value="5300"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.2),Fanart"/>	
+						</include>						
+						<include name="WidgetListMovies">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.3)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.3)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5300"/>
+						<param name="onup_id" value="5200"/>
+						<param name="ondown_id" value="5400"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.3),Posters"/>	
+						</include>
+
+						<include name="WidgetListSquare">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.3)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.3)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5300"/>
+						<param name="onup_id" value="5200"/>
+						<param name="ondown_id" value="5400"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.3),Icons"/>	
+						</include>
+						<include name="WidgetListSFanart">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.3)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.3)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5300"/>
+						<param name="onup_id" value="5200"/>
+						<param name="ondown_id" value="5400"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.3),Fanart"/>	
+						</include>						
+						
+						<include name="WidgetListMovies">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.4)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.4)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5400"/>
+						<param name="onup_id" value="5300"/>
+						<param name="ondown_id" value="5900"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.4),Posters"/>	
+						</include>
+
+						<include name="WidgetListSquare">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.4)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.4)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5400"/>
+						<param name="onup_id" value="5300"/>
+						<param name="ondown_id" value="5900"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.4),Icons"/>	
+						</include>
+						<include name="WidgetListFanart">
+						<param name="content_path" value=$INFO[Container(9000).ListItem.Property(widgetPath.4)] />
+						<param name="widget_header" value=$INFO[Container(9000).ListItem.Property(widgetName.4)] />
+						<param name="widget_target" value="video" />
+						<param name="item_image" value="$VAR[TVShowWidgetImageVar2]" />
+						<param name="list_id" value="5400"/>
+						<param name="onup_id" value="5300"/>
+						<param name="ondown_id" value="5900"/>
+						<param name="visible" value="!IsEmpty(Container(9000).ListItem.Property(widgetPath)) + Substring(Container(9000).ListItem.Property(WidgetStyle.4),Fanart"/>	
+						</include>
+				</control>
+				</control>
+			</control>
+			<!-- TopBar -->
+			<include name="TopBar">
+				<param name="breadcrumbs_label" value="" />
+				<param name="breadcrumbs_icon" value="" />
+			</include>
+			<!-- Logo -->
+			<!--<control type="group">
+				<animation effect="slide" end="0,-90" time="300" tween="sine" easing="inout" condition="Window.IsActive(musicinformation) | Window.IsActive(movieinformation) | Window.IsActive(addoninformation) | Window.IsActive(pvrguideinfo) | Window.IsActive(pvrrecordinginfo) | Window.IsActive(pictureinfo) | Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-VideoList.xml)">conditional</animation>
+				<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+				<control type="image">
+					<left>20</left>
+					<top>10</top>
+					<aspectratio>keep</aspectratio>
+					<width>56</width>
+					<height>56</height>
+					<texture colordiffuse="button_focus">icons/logo.png</texture>
+				</control>
+				<control type="image">
+					<left>60</left>
+					<top>20</top>
+					<aspectratio>keep</aspectratio>
+					<width>192</width>
+					<height>36</height>
+					<texture>icons/logo-text.png</texture>
+				</control>
+			</control>
+			<!-- BottomBar -->
+			<include>BottomBar</include>
+			<!-- LeftBar -->
+			<control type="group">
+				<include>OpenClose_Left</include>
+				<control type="radiobutton" id="900">
+					<left>37</left>
+					<top>94</top>
+					<width>420</width>
+					<height>110</height>
+					<onup>14200</onup>
+					<ondown>SetFocus(9000,0)</ondown>
+					<ondown>9000</ondown>
+					<onright>2000</onright>
+					<aligny>center</aligny>
+					<onclick>ActivateWindow(Videos,"plugin://plugin.video.exodus/?action=searchNavigator",return)</onclick>
+					<font>font14</font>
+					<label>$LOCALIZE[31001]</label>
+					<textwidth>300</textwidth>
+					<radioposx>338</radioposx>
+					<textoffsetx>40</textoffsetx>
+					<radioposy>0</radioposy>
+					<radiowidth>40</radiowidth>
+					<radioheight>40</radioheight>
+					<textureradioonfocus>icons/search.png</textureradioonfocus>
+					<textureradioonnofocus>icons/search.png</textureradioonnofocus>
+					<textureradioofffocus>icons/search.png</textureradioofffocus>
+					<textureradiooffnofocus>icons/search.png</textureradiooffnofocus>
+				</control>
+			<control type="group">
+				<left>53</left>
+				<top>204</top>
+				<control type="image">
+					<left>-20</left>
+					<top>-20</top>
+					<width>424</width>
+					<height>707</height>
+					<texture border="22">dialogs/dialog-bg.png</texture>
+				</control>
+				<control type="list" id="9000">
+					<left>1</left>
+					<top>1</top>
+					<width>382</width>
+					<height>671</height>
+					<pagecontrol>70</pagecontrol>
+					<onfocus>ClearProperty(listposition,home)</onfocus>
+					<onright>5100</onright>
+					<onup>900</onup>
+					<ondown>700</ondown>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<itemlayout height="74">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>390</width>
+							<height>75</height>
+							<texture border="90,3,90,3">lists/separator.png</texture>
+						</control>
+						<control type="label">
+							<left>74</left>
+							<top>0</top>
+							<height>70</height>
+							<width>560</width>
+							<aligny>center</aligny>
+							<font>font14</font>
+							<scroll>yes</scroll>
+							<label>$INFO[ListItem.Label]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="image">
+							<left>-3</left>
+							<top>1</top>
+							<width>70</width>
+							<height>70</height>
+							<texture>$INFO[ListItem.Icon]</texture>
+						</control>
+					</itemlayout>
+					<focusedlayout height="74">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>390</width>
+							<height>75</height>
+							<texture border="90,3,90,3">lists/separator.png</texture>
+						</control>
+						<control type="group">
+							<animation effect="fade" start="100" end="0" time="0">UnFocus</animation>
+							<control type="image">
+								<left>0</left>
+								<top>0</top>
+								<width>390</width>
+								<height>73</height>
+								<texture colordiffuse="button_focus">lists/focus.png</texture>
+								<animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus(9000) + !Control.HasFocus(900) + !ControlGroup(700).HasFocus + !Control.HasFocus(14200)">Conditional</animation>
+							</control>
+							<control type="image">
+								<left>-3</left>
+								<top>1</top>
+								<width>70</width>
+								<height>70</height>
+								<texture colordiffuse="button_focus">$INFO[ListItem.Icon]</texture>
+								<animation effect="fade" start="0" end="100" time="300" reversible="false">Focus</animation>
+							</control>
+							<control type="image">
+								<left>-5</left>
+								<top>0</top>
+								<width>68</width>
+								<height>74</height>
+								<texture colordiffuse="51FFFFFF">colors/black.png</texture>
+								<animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus(9000) + !Control.HasFocus(900) + !ControlGroup(700).HasFocus + !Control.HasFocus(14200)">Conditional</animation>
+							</control>
+						</control>
+						<control type="image">
+							<left>-3</left>
+							<top>1</top>
+							<width>70</width>
+							<height>70</height>
+							<texture>$INFO[ListItem.Icon]</texture>
+						</control>
+						<control type="image">
+							<left>-3</left>
+							<top>1</top>
+							<width>70</width>
+							<height>70</height>
+							<animation effect="fade" start="0" end="100" time="200" delay="200" condition="!System.HasModalDialog">Conditional</animation>
+							<animation effect="fade" start="100" end="0" time="0" condition="System.HasModalDialog">Conditional</animation>
+							<texture colordiffuse="button_focus">$INFO[ListItem.Icon]</texture>
+							<animation effect="fade" start="0" end="100" time="300" reversible="false">Focus</animation>
+							<visible>!Control.HasFocus(9000) + !Control.HasFocus(900) + !ControlGroup(700).HasFocus + !Control.HasFocus(14200)</visible>
+						</control>
+						<control type="label">
+							<left>74</left>
+							<top>0</top>
+							<height>70</height>
+							<width>560</width>
+							<aligny>center</aligny>
+							<font>font14</font>
+							<scroll>yes</scroll>
+							<label>$INFO[ListItem.Label]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+					</focusedlayout>
+				<control type="textbox">
+					<left>0</left>
+					<top>15</top>
+					<width>1920</width>
+					<height>700</height>
+					<font>font14</font>
+					<label>$INFO[ListItem.Plot]</label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+                                        <include>mainmenu-position-and-appearance</include>
+					<content>
+                                                <include>skinshortcuts-mainmenu</include>
+					</content>
+				</control>
+			</control>
+				<!-- System menu -->
+				<control type="grouplist" id="700">
+					<orientation>horizontal</orientation>
+					<itemgap>-17</itemgap>
+					<left>36</left>
+					<top>878</top>
+					<onup>SetFocus(9000,99)</onup>
+					<onup>9000</onup>
+					<ondown>14200</ondown>
+					<onright>2000</onright>
+					<include name="BottomMainMenuItem">
+						<param name="control_id" value="803" />
+						<param name="onclick" value="ActivateWindow(favourites)" />
+						<param name="icon" value="icons/favourites.png" />
+					</include>
+					<include name="BottomMainMenuItem">
+						<param name="control_id" value="801" />
+						<param name="onclick" value="RunAddOn(plugin.program.firetvupdater)" />
+						<param name="icon" value="icons/logo.png" />
+					</include>
+					<include name="BottomMainMenuItem">
+						<param name="control_id" value="802" />
+						<param name="onclick" value="ActivateWindow(settings)" />
+						<param name="icon" value="icons/settings.png" />
+					</include>
+
+					<include name="BottomMainMenuItem">
+						<param name="control_id" value="804" />
+						<param name="onclick" value="XBMC.Quit()" />
+						<param name="icon" value="icons/power.png" />
+					</include>
+				</control>
+			</control>
+			<!-- FullScreen -->
+			<control type="radiobutton" id="14200">
+				<top>995</top>
+				<left>35</left>
+				<width>420</width>
+				<height>95</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<onclick>FullScreen</onclick>
+				<label>$LOCALIZE[244]</label>
+				<ondown>900</ondown>
+				<onup>700</onup>
+				<radioposx>338</radioposx>
+				<textoffsetx>40</textoffsetx>
+				<radioposy>0</radioposy>
+				<radiowidth>34</radiowidth>
+				<radioheight>34</radioheight>
+				<texturefocus border="40">buttons/dialogbutton-fo.png</texturefocus>
+				<texturenofocus border="40">buttons/dialogbutton-nofo.png</texturenofocus>
+				<textureradioonfocus>icons/now-playing/fullscreen.png</textureradioonfocus>
+				<textureradioonnofocus>icons/now-playing/fullscreen.png</textureradioonnofocus>
+				<textureradioofffocus>icons/now-playing/fullscreen.png</textureradioofffocus>
+				<textureradiooffnofocus>icons/now-playing/fullscreen.png</textureradiooffnofocus>
+				<selected>!Player.Paused</selected>
+				<visible>Player.hasMedia</visible>
+			</control>
+			<!-- RSS -->
+			<control type="rss">
+				<left>0</left>
+				<top>1041</top>
+				<height>30</height>
+				<width>1920</width>
+				<font>font12</font>
+				<urlset>1</urlset>
+				<titlecolor>button_focus</titlecolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<headlinecolor>FFC0C0C0</headlinecolor>
+				<textcolor>white</textcolor>
+				<visible>!Player.hasMedia</visible>
+			</control>
+		</control>
+		<control type="image">
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="#ffffffff">colors/black.png</texture>
+			<visible>!System.hasAddon(plugin.video.schismwizard)</visible>
+		</control>
+	</controls>
+</window>

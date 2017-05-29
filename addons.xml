@@ -29,11 +29,16 @@
 	</extension>
 </addon>
 
-<addon id="repository.tva.common" name="TVADDONS.ag Libraries Repository" version="1.0.1" provider-name="tvaddons.ag">
+<addon id="repository.tva.common" name="TVADDONS.ag Libraries Repository" version="1.0.2" provider-name="tvaddons.ag">
     <extension point="xbmc.addon.repository" name="TVADDONS.ag Libraries Repository">
-        <info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
-        <checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+		<dir>
+			<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
+			<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
+		</dir>
+		<info compressed="false">https://offshoregit.com/exodus/addons.xml</info>
+		<checksum>https://offshoregit.com/exodus/addons.xml.md5</checksum>
+		<datadir zip="true">https://offshoregit.com/exodus/</datadir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary>Faster Updating of Common Libraries for Kodi</summary>
@@ -106,6 +111,27 @@
 			<fanart>resources/fanart.jpg</fanart>
 		</assets>
 		<news>1.0.2 - New skin because of Krypton update for speed and quality.</news>
+	</extension>
+</addon>
+
+<addon id="skin.unlockmytv2" version="0.2" name="UnlockMyTV" provider-name="John">
+	<requires>
+		<import addon="xbmc.gui" version="5.10.0"/>
+		<import version="0.6.0" addon="script.skinshortcuts"/>
+		<import addon="script.module.autocompletion" version="1.1.2"/>
+		<import version="0.0.1" addon="script.skin.helper.service"/>
+	</requires>
+	<extension
+        point="xbmc.gui.skin"
+        defaultthemename="Textures.xbt"
+        debugging="false"
+        effectslowdown="1.0">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<disclaimer lang="en_GB">UnlockMyTV is the default skin for Kodi, removing it may cause issues</disclaimer>
+		<platform>all</platform>
+		<source>https://unlockmytv.com</source>
 	</extension>
 </addon>
 </addons>
